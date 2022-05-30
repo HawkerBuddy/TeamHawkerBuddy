@@ -1,0 +1,4 @@
+#Sun May 29 18:16:39 SGT 2022
+base.0=/Users/s.f/StudioProjects/hawker_buddy/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

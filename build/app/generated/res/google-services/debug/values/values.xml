@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">1052771104834-p51nlncn2k5atp758vsvkjkap7641f3a.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">1052771104834</string>
+    <string name="google_api_key" translatable="false">AIzaSyDnRqc7yrDV-9tQzHWa43mwbJfe67NseTs</string>
+    <string name="google_app_id" translatable="false">1:1052771104834:android:fd6de6d8c59958aa5855db</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDnRqc7yrDV-9tQzHWa43mwbJfe67NseTs</string>
+    <string name="google_storage_bucket" translatable="false">hawkerbuddy.appspot.com</string>
+    <string name="project_id" translatable="false">hawkerbuddy</string>
+</resources>
