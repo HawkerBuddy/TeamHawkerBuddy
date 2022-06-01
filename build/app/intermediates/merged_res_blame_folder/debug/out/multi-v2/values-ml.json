@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/s.f/StudioProjects/hawker_buddy/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ml/values-ml.xml",
+            "outputFile": "/Users/s.f/StudioProjects/HawkBuddy/TeamHawkerBuddy/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ml/values-ml.xml",
             "map": [
                 {
                     "source": "/Users/s.f/.gradle/caches/transforms-3/1e9359c2a7bdc2d4338763efe436fa32/transformed/jetified-play-services-basement-18.0.0/res/values-ml/values.xml",

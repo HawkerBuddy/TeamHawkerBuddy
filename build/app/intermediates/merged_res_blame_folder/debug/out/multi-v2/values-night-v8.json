@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/s.f/StudioProjects/hawker_buddy/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "outputFile": "/Users/s.f/StudioProjects/HawkBuddy/TeamHawkerBuddy/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/Users/s.f/StudioProjects/hawker_buddy/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/s.f/StudioProjects/HawkBuddy/TeamHawkerBuddy/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

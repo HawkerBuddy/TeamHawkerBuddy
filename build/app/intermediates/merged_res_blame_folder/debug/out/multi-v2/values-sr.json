@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/s.f/StudioProjects/hawker_buddy/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sr/values-sr.xml",
+            "outputFile": "/Users/s.f/StudioProjects/HawkBuddy/TeamHawkerBuddy/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sr/values-sr.xml",
             "map": [
                 {
                     "source": "/Users/s.f/.gradle/caches/transforms-3/c7b7ab7bdf67267dcc0cba1dbef340e2/transformed/core-1.6.0/res/values-sr/values-sr.xml",
