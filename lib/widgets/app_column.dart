@@ -17,14 +17,14 @@ class AppColumn extends StatelessWidget {
       //aligning y axis
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        uniqueText(text: text,size: Dimensions.font20),
+        uniqueText(text: text,size: Dimensions.font15),
         //SizedBox(height:10),
-        SizedBox(height: Dimensions.height10),
+        //SizedBox(height: Dimensions.height5),
         Row(
           children: [
             Wrap(
               //creating a list of children
-                children: List.generate(5,(index)=> Icon(Icons.star, color: AppColors.mainColor, size: 15))
+                children: List.generate(5,(index)=> Icon(Icons.star, color: AppColors.mainColor, size: 13))
             ),
             SizedBox(width: Dimensions.width10),
             miniText(text: "5"),

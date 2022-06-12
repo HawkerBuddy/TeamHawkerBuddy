@@ -59,6 +59,7 @@ class FoodpageState extends State<Foodpage> {
       children: [
         //Container Widget with Slider of 5 items
         Container(
+          //color: Colors.redAccent,
           height: Dimensions.pageView,
           child:
             PageView.builder(
@@ -83,9 +84,11 @@ class FoodpageState extends State<Foodpage> {
           ),),
 
         //SizedBox widget creates an empty space of 20
-        SizedBox(height: Dimensions.height20,),
+        //SizedBox(height: Dimensions.height20,),
 
         //Container contain Popular Hawker Centre + food icon + smaller text nearby
+        /*
+
         Container(
           margin: EdgeInsets.only(left: Dimensions.width30),
           //Row Widget contains text +  icon + smaller text
@@ -189,6 +192,7 @@ class FoodpageState extends State<Foodpage> {
               ),
             );
           }),
+         */
       ],
     );
   }
@@ -255,7 +259,6 @@ class FoodpageState extends State<Foodpage> {
                   ),
                 ),
           ),
-
           //Align Widget containing the details about sliding images
           Align(
             alignment: Alignment.bottomCenter,

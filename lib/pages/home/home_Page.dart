@@ -9,6 +9,7 @@ import 'package:hawker_buddy/pages/user/welcome_page.dart';
 
 import 'Main_Food_Page.dart';
 import '../user/login_page.dart';
+import 'newHome.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,17 +23,14 @@ class _HomePageState extends State<HomePage> {
 
 
   final screens = [
-    MainFoodPage(),
-    MainFoodPage(),
-    MainFoodPage(),
-    MainFoodPage(),
+    homepage(),
+    homepage(),
+    homepage(),
     LoginPage(),
-    WelcomePage(email: "test123"),
   ];
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         body: screens[currentIndex],
         bottomNavigationBar: BottomNavigationBar(currentIndex:currentIndex,
@@ -42,16 +40,12 @@ class _HomePageState extends State<HomePage> {
             BottomNavigationBarItem(icon:Icon(Icons.home),
                 label: 'Home',
                 backgroundColor: Color(0xFFFF9500)),
-            BottomNavigationBarItem(icon: Icon(Icons.fastfood_sharp),
-              label: 'Stalls',
-              backgroundColor: Color(0xFFFF9500),
-            ),
-            BottomNavigationBarItem(icon: Icon(Icons.discount),
-                label: 'Deals',
-                backgroundColor: Color(0xFFFF9500)
-            ),
             BottomNavigationBarItem(icon: Icon(Icons.message_outlined),
                 label: 'Message',backgroundColor: Color(0xFFFF9500)
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.shopping_cart),
+              label: 'Cart',
+              backgroundColor: Color(0xFFFF9500),
             ),
             BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined),
                 label: 'Account', backgroundColor: Color(0xFFFF9500)

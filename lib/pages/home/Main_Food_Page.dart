@@ -29,8 +29,9 @@ class _MainFoodPageState extends State<MainFoodPage> {
           // top sections with Search Bar and Search for Hawker Stalls
           Container(
             child: Container(
+              color: Colors.blue,
               //margin for the search bar + text
-              margin: EdgeInsets.only(top: Dimensions.height50, bottom: Dimensions.height15),
+              margin: EdgeInsets.only(top: Dimensions.height30, bottom: Dimensions.height15),
               padding: EdgeInsets.only(left:Dimensions.width20, right: Dimensions.width20),
               child: Row(
                 children: [

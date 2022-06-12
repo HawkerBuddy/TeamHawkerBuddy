@@ -7,9 +7,9 @@ class Dimensions{
   static double screenHeight = Get.context!.height;
   static double screenWidth = Get.context!.width;
   //dimensions reference from SE3 height 667 and width is 375
-  static double pageView = screenHeight/2.08;
-  static double pageViewContainer = screenHeight/3.03;
-  static double pageViewTextContainer = screenHeight/7.41;
+  static double pageView = screenHeight/3.08;
+  static double pageViewContainer = screenHeight/2.80;
+  static double pageViewTextContainer = screenHeight/9.41;
 
   static double height5 = screenHeight/133.4;
   static double height10 = screenHeight/66.7;
