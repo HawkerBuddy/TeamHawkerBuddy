@@ -110,6 +110,7 @@ class FoodDetails extends StatelessWidget {
                           count = count-1;
                           print(count);
                           print(price * count);
+                          //
                         }
                         },
                       child: Container(child: Icon(Icons.remove, color: Colors.grey,))),
