@@ -5,6 +5,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hawker_buddy/pages/splashes/splash_page.dart';
 import 'package:hawker_buddy/pages/user/welcome_page.dart';
 import 'package:hawker_buddy/routes/tabNavigator.dart';
 
@@ -19,6 +20,56 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+class _HomePageState extends State<HomePage> {
+  int selectedIndex = 0;
+  List pages = [
+    homepage(),
+    Container(child: Center(child: Text("Next Page"))),
+    Container(child: Center(child: Text("Next next Page"))),
+    SplashScreen(),
+  ];
+
+  void onTapNav(int index){
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      body:pages[selectedIndex],
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedIndex,
+        onTap: onTapNav,
+        items: const [
+          BottomNavigationBarItem(icon:Icon(Icons.home),
+              label: 'Home',
+              backgroundColor: Color(0xFFFF9500)),
+          BottomNavigationBarItem(icon: Icon(Icons.message_outlined),
+              label: 'Message',backgroundColor: Color(0xFFFF9500)
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart),
+            label: 'Cart',
+            backgroundColor: Color(0xFFFF9500),
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined),
+              label: 'Account', backgroundColor: Color(0xFFFF9500)
+          ),
+        ],
+      ),
+
+
+
+    );
+  }
+
+}
+
+
+
+/*
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
   String currentPage = "Page1";
@@ -105,3 +156,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+*/

@@ -10,8 +10,12 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:hawker_buddy/utils/dimensions.dart';
 import 'package:hawker_buddy/widgets/app_column.dart';
 import 'package:hawker_buddy/widgets/app_icons.dart';
+import 'package:hawker_buddy/utils/mocklist.dart';
 
 import '../../routes/router_helper.dart';
+import '../../utils/colors.dart';
+import '../../widgets/icon_and_text.dart';
+import '../../widgets/small_text.dart';
 import '../../widgets/unique_text.dart';
 
 class ChickenRice extends StatelessWidget {
@@ -74,7 +78,77 @@ class ChickenRice extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppColumn(text: 'Super Chicken rice Store',),
-                    uniqueText(text: "About us",size:20)
+                    uniqueText(text: "About us",size:20),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        //10 dummy datas;
+                        itemCount: 10,
+                        itemBuilder: (context,index){
+                          return GestureDetector(
+                            onTap: () {
+                              Get.toNamed(RouterHelper.getPopularHawkerCentre());
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20, bottom: Dimensions.height10),
+                              child: Row(
+                                children: [
+                                  //image section
+                                  Container(
+                                    width:Dimensions.ListViewImgSize,
+                                    height:Dimensions.ListViewImgSize,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(Dimensions.radius20),
+                                        color: Colors.white,
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: AssetImage(
+                                                "assets/images/" + mocklist.slider_images[index]
+                                            )
+                                        )
+                                    ),
+                                  ),
+
+                                  //text container
+                                  Expanded(
+                                    child: Container(
+                                      height:Dimensions.ListViewTextContSize,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(Dimensions.radius20),
+                                            bottomRight: Radius.circular(Dimensions.radius20)
+                                        ),
+                                        color: Colors.white,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(left: Dimensions.width10),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            uniqueText(text: "Blk 85 Market"),
+                                            SizedBox(height: Dimensions.height10),
+                                            miniText(text:"Founded since 1000BC"),
+                                            SizedBox(height: Dimensions.height10),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text("ChickenRice"),
+                                                Text("ChickenRice"),
+                                                Text("ChickenRice")
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
                   ],
                 ),
 

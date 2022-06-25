@@ -5,7 +5,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hawker_buddy/pages/home/home_Page.dart';
+import 'package:hawker_buddy/pages/splashes/splash_page.dart';
 import 'package:hawker_buddy/pages/user/welcome_page.dart';
+import 'package:hawker_buddy/routes/router_helper.dart';
 
 //navigating the user to different pages
 class AuthController extends GetxController{
@@ -36,7 +38,7 @@ class AuthController extends GetxController{
     //nobody is  not logged in
     if(user == null) {
       print("login page");
-      Get.offAll(() => HomePage());
+      Get.offAll(() => SplashScreen());
     } else {
       Get.offAll(() => WelcomePage(email: user.email!));
     }

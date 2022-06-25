@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hawker_buddy/widgets/small_text.dart';
 import 'package:hawker_buddy/widgets/unique_text.dart';
 
@@ -9,7 +10,7 @@ import 'icon_and_text.dart';
 
 class AppColumn extends StatelessWidget {
   final String text;
-  const AppColumn({Key? key, required this.text}) : super(key: key);
+  const AppColumn({Key? key, required this.text,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class AppColumn extends StatelessWidget {
           children: [
             Wrap(
               //creating a list of children
-                children: List.generate(5,(index)=> Icon(Icons.star, color: AppColors.mainColor, size: 13))
+                children: List.generate(5,(index)=> Icon(Icons.star, color: AppColors.mainColor,size: Dimensions.font15,))
             ),
             SizedBox(width: Dimensions.width10),
             miniText(text: "5"),

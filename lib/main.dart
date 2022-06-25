@@ -4,6 +4,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hawker_buddy/auth_controller.dart';
 import 'package:hawker_buddy/pages/home/home_Page.dart';
 import 'package:get/get.dart';
+import 'package:hawker_buddy/pages/home/newHome.dart';
 import 'package:hawker_buddy/routes/router_helper.dart';
 
 Future<void> main() async {
@@ -25,8 +26,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
-      initialRoute: RouterHelper.initial,
+      //home: homepage(),
+      initialRoute: RouterHelper.getSplashPage(),
       getPages: RouterHelper.routes,
 
 

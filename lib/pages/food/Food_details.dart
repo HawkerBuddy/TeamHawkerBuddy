@@ -6,6 +6,8 @@ import 'package:hawker_buddy/utils/colors.dart';
 import 'package:hawker_buddy/utils/dimensions.dart';
 import 'package:hawker_buddy/widgets/app_column.dart';
 import 'package:hawker_buddy/widgets/app_icons.dart';
+import 'package:hawker_buddy/widgets/expandable_food.dart';
+
 
 import '../../routes/router_helper.dart';
 import '../../widgets/unique_text.dart';
@@ -18,6 +20,7 @@ class FoodDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           Positioned(
@@ -45,14 +48,13 @@ class FoodDetails extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        Get.toNamed(RouterHelper.initial);
+                        Get.back();
                       },
                   child: AppIcons(icon: Icons.arrow_back_outlined,size:50)),
                   //View Digital Menu
                   AppIcons(icon: Icons.shopping_cart,size:50),
                 ],
           )),
-
           Positioned(
               left: 0,
               right: 0,
@@ -71,13 +73,18 @@ class FoodDetails extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppColumn(text: 'Super Spicy Mala ',),
-                    uniqueText(text: "Food details",size:20)
+                    AppColumn(text: 'Super Spicy Mala '),
+                    SizedBox(height: Dimensions.height10),
+                    uniqueText(text: "Food details",size:Dimensions.font20),
+                    SizedBox(height: Dimensions.height10),
+                    Expanded(child:
+                    SingleChildScrollView(child:
+                    ExpandableFood(text: "Protein Protien Protein Protien Protein Protien Protein Protien Protein Protien Protein Protien Protein Protien Protein Protien Protein Protien Protein Protien")),
+                    ),//ExpandableFood(text: "hi"),
                   ],
                 ),
 
           ))
-
         ],
       ),
 

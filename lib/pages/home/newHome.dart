@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hawker_buddy/pages/home/stallsPage.dart';
 
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/unique_text.dart';
-import 'food_page_body.dart';
 
 class homepage extends StatefulWidget {
   const homepage({Key? key}) : super(key: key);
