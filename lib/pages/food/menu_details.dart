@@ -50,11 +50,15 @@ class _MenuPageState extends State<MenuPage> {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        Get.toNamed(RouterHelper.initial);
+                       Get.back();
                       },
                       child: AppIcons(icon: Icons.arrow_back_outlined,size:50)),
                   //View Digital Menu
-                  AppIcons(icon: Icons.shopping_cart,size:50),
+                  GestureDetector(
+                      onTap: (){
+                        Get.toNamed(RouterHelper.getCartPage());
+                      },
+                      child: AppIcons(icon: Icons.shopping_cart,size:50)),
                 ],
               )),
 

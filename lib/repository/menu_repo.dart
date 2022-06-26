@@ -7,10 +7,11 @@ class MenuRepo extends GetxService {
   MenuRepo({required this.apiClient});
 //
 
-  /*
-  Future<Response> getMenuList() async {
 
+  Future<Response> getMenuList() async {
+    //end point url = url of the server 
+    return await apiClient.getData("end point url");
   }
-  */
+
 
 }

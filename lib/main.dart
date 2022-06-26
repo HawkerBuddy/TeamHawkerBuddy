@@ -6,12 +6,13 @@ import 'package:hawker_buddy/pages/home/home_Page.dart';
 import 'package:get/get.dart';
 import 'package:hawker_buddy/pages/home/newHome.dart';
 import 'package:hawker_buddy/routes/router_helper.dart';
+import 'helper/dependencies.dart' as base;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //await base.init();
   await Firebase.initializeApp().then((value) => Get.put(AuthController()));
   //linking app to database before running app
-  //hello
   runApp(const MyApp());
 }
 
@@ -29,7 +30,6 @@ class MyApp extends StatelessWidget {
       //home: homepage(),
       initialRoute: RouterHelper.getSplashPage(),
       getPages: RouterHelper.routes,
-
 
       //HomePage()
       //FoodDetails(),

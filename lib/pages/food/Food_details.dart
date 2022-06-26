@@ -12,10 +12,19 @@ import 'package:hawker_buddy/widgets/expandable_food.dart';
 import '../../routes/router_helper.dart';
 import '../../widgets/unique_text.dart';
 
-class FoodDetails extends StatelessWidget {
+class FoodDetails extends StatefulWidget {
   FoodDetails({Key? key}) : super(key: key);
+
+  @override
+  State<FoodDetails> createState() => _FoodDetailsState();
+}
+
+class _FoodDetailsState extends State<FoodDetails> {
   int count = 0;
+
   double price = 2.5;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +61,11 @@ class FoodDetails extends StatelessWidget {
                       },
                   child: AppIcons(icon: Icons.arrow_back_outlined,size:50)),
                   //View Digital Menu
-                  AppIcons(icon: Icons.shopping_cart,size:50),
+                  GestureDetector(
+                      onTap: (){
+                        Get.toNamed(RouterHelper.getCartPage());
+                      },
+                      child: AppIcons(icon: Icons.shopping_cart,size:50)),
                 ],
           )),
           Positioned(

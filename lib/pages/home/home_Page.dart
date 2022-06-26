@@ -5,6 +5,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hawker_buddy/pages/cart/cart_page.dart';
 import 'package:hawker_buddy/pages/splashes/splash_page.dart';
 import 'package:hawker_buddy/pages/user/welcome_page.dart';
 import 'package:hawker_buddy/routes/tabNavigator.dart';
@@ -25,8 +26,8 @@ class _HomePageState extends State<HomePage> {
   List pages = [
     homepage(),
     Container(child: Center(child: Text("Next Page"))),
-    Container(child: Center(child: Text("Next next Page"))),
-    SplashScreen(),
+    CartPage(),
+    LoginPage(),
   ];
 
   void onTapNav(int index){

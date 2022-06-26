@@ -55,7 +55,11 @@ class ChickenRice extends StatelessWidget {
                       },
                       child: AppIcons(icon: Icons.arrow_back_outlined,size:50)),
                   //View Digital Menu
-                  AppIcons(icon: Icons.menu_book,size:50),
+                  GestureDetector(
+                      onTap: (){
+                        Get.toNamed(RouterHelper.getCartPage());
+                      },
+                      child: AppIcons(icon: Icons.menu_book,size:50)),
                 ],
               )),
 
