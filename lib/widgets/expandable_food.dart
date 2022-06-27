@@ -6,6 +6,7 @@ import 'package:hawker_buddy/widgets/small_text.dart';
 class ExpandableFood extends StatefulWidget {
   const ExpandableFood({Key? key, required this.text}) : super(key: key);
   final String text;
+
   @override
   State<ExpandableFood> createState() => _ExpandableFoodState();
 }

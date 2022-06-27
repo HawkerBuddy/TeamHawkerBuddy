@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hawker_buddy/pages/home/home_Page.dart';
 import 'package:hawker_buddy/pages/splashes/splash_page.dart';
+import 'package:hawker_buddy/pages/user/login_page.dart';
 import 'package:hawker_buddy/pages/user/welcome_page.dart';
 import 'package:hawker_buddy/routes/router_helper.dart';
 
@@ -19,6 +20,7 @@ class AuthController extends GetxController{
   late Rx<User?> user;
   //init firebase object
   FirebaseAuth auth = FirebaseAuth.instance;
+  static late String username;
 
   @override
   void onReady() {
@@ -38,9 +40,10 @@ class AuthController extends GetxController{
     //nobody is  not logged in
     if(user == null) {
       print("login page");
-      Get.offAll(() => SplashScreen());
+      Get.offAll(() => LoginPage());
     } else {
-      Get.offAll(() => WelcomePage(email: user.email!));
+      username = user.email!;
+      Get.offAll(() => SplashScreen());
     }
   }
   void register (String email, password) async {

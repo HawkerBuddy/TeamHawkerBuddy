@@ -11,6 +11,7 @@ import 'package:hawker_buddy/pages/home/Main_Food_Page.dart';
 import 'package:hawker_buddy/pages/home/home_Page.dart';
 import 'package:hawker_buddy/pages/home/newHome.dart';
 import 'package:hawker_buddy/pages/splashes/splash_page.dart';
+import 'package:hawker_buddy/pages/user/login_page.dart';
 
 import '../pages/user/signup_page.dart';
 
@@ -23,6 +24,7 @@ class RouterHelper{
   //page not done, using dummy duplicate pages
   static const String PopularHawkerCentre = "/signup-page";
   static const String cartPage = "/cart_page";
+  static const String loginPage = "/login_page";
 
 
   //$use to pass variables
@@ -32,6 +34,8 @@ class RouterHelper{
   static String getPopularHawkerCentre () => '$PopularHawkerCentre';
   static String getChickenRice () => '$chickenrice';
   static String getCartPage () => "$cartPage";
+  static String getLoginPage ()=> "$loginPage";
+
   static List<GetPage> routes = [
 
     GetPage(name: splashPage, page: () => SplashScreen() ,transition: Transition.fadeIn),
@@ -48,6 +52,8 @@ class RouterHelper{
     GetPage(name: chickenrice, page: () {return MenuPage();},
         transition:Transition.fadeIn),
     GetPage(name: cartPage, page: ()=> CartPage() ,transition: Transition.fadeIn),
+
+    GetPage(name: loginPage, page: () => LoginPage(), transition: Transition.fadeIn),
   ];
 
 

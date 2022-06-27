@@ -5,7 +5,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hawker_buddy/auth_controller.dart';
 import 'package:hawker_buddy/pages/cart/cart_page.dart';
+import 'package:hawker_buddy/pages/notification/message_page.dart';
 import 'package:hawker_buddy/pages/splashes/splash_page.dart';
 import 'package:hawker_buddy/pages/user/welcome_page.dart';
 import 'package:hawker_buddy/routes/tabNavigator.dart';
@@ -20,14 +22,14 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
-
+/*
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
   List pages = [
     homepage(),
-    Container(child: Center(child: Text("Next Page"))),
+    MessageApp(),
     CartPage(),
-    LoginPage(),
+    WelcomePage(email: "Testing1234")
   ];
 
   void onTapNav(int index){
@@ -67,10 +69,10 @@ class _HomePageState extends State<HomePage> {
   }
 
 }
+*/
 
 
 
-/*
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
   String currentPage = "Page1";
@@ -157,4 +159,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-*/

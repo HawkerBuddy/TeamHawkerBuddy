@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hawker_buddy/pages/home/stallsPage.dart';
+import 'package:hawker_buddy/utils/searchBar.dart';
 
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
@@ -42,7 +43,12 @@ class _homepageState extends State<homepage> {
                   //obscureText: true,
                   decoration: InputDecoration(
                       hintText: "Search for Foods/Stalls/Canteens",
-                      prefixIcon: Icon(Icons.search, color: Colors.orange,),
+                      prefixIcon: GestureDetector(
+                          onTap: () {
+                            
+                            showSearch(context: context, delegate: SearchBar());
+                          },
+                          child: Icon(Icons.search, color: Colors.orange,)),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
                           borderSide: BorderSide(
@@ -93,4 +99,6 @@ class _homepageState extends State<homepage> {
       ),
     );
   }
+
+
 }

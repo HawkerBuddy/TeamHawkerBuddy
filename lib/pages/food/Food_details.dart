@@ -21,10 +21,25 @@ class FoodDetails extends StatefulWidget {
 
 class _FoodDetailsState extends State<FoodDetails> {
   int count = 0;
-
   double price = 2.5;
 
+  void _increase() {
+    setState(()
+    { count++;
+        });
 
+  }
+
+  void _decrease() {
+    if(count<1) {
+      return;
+    }
+
+    setState(() {
+      count--;
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -126,12 +141,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                 children: [
                   GestureDetector(
                       onTap:(){
-                        if(count !=0) {
-                          count = count-1;
-                          print(count);
-                          print(price * count);
-                          //22
-                        }
+                         _decrease();
                         },
                       child: Container(child: Icon(Icons.remove, color: Colors.grey,))),
                   SizedBox(width: Dimensions.width10/2),
@@ -139,9 +149,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                   SizedBox(width: Dimensions.width10/2),
                   GestureDetector(
                       onTap: (){
-                        count = count+1;
-                        print(count);
-                        print(price * count);
+                       _increase();
                       },
                       child: Container(child: Icon(Icons.add,color: Colors.grey,)))
                 ],
