@@ -1,14 +1,14 @@
-#Tue Jun 28 09:18:41 SGT 2022
+#Wed Jul 06 20:24:14 SGT 2022
 path.4=classes2.dex
 path.3=1/classes.dex
 path.2=0/classes.dex
 path.1=0/classes.dex
 path.0=classes.dex
-base.4=/Users/s.f/StudioProjects/TeamHawkerBuddy/build/app/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
-base.3=/Users/s.f/StudioProjects/TeamHawkerBuddy/build/app/intermediates/dex/debug/mergeProjectDexDebug/1/classes.dex
-base.2=/Users/s.f/StudioProjects/TeamHawkerBuddy/build/app/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.1=/Users/s.f/StudioProjects/TeamHawkerBuddy/build/app/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
-base.0=/Users/s.f/StudioProjects/TeamHawkerBuddy/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.4=/Users/weideteo/StudioProjects/TeamHawkerBuddy/build/app/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
+base.3=/Users/weideteo/StudioProjects/TeamHawkerBuddy/build/app/intermediates/dex/debug/mergeProjectDexDebug/1/classes.dex
+base.2=/Users/weideteo/StudioProjects/TeamHawkerBuddy/build/app/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.1=/Users/weideteo/StudioProjects/TeamHawkerBuddy/build/app/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
+base.0=/Users/weideteo/StudioProjects/TeamHawkerBuddy/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex

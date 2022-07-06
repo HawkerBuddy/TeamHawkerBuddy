@@ -10,11 +10,11 @@
 		</data>
 		<key>Headers/FIRAdditionalUserInfo.h</key>
 		<data>
-		kw4Te/xGYtfYsRhXwhPI/EFvfXQ=
+		IzPUxuYUTwwCxfpZ3liefh6jB6k=
 		</data>
 		<key>Headers/FIRAuth.h</key>
 		<data>
-		Te2bkeJV2nw3dNIb0kXy3PD8vpM=
+		I0y5dIlpoWOuOA90qZZXPSvUg6w=
 		</data>
 		<key>Headers/FIRAuthAPNSTokenType.h</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>Headers/FIRAuthDataResult.h</key>
 		<data>
-		4WC34erD5IuM2MkgFRAwuF5+bBw=
+		wf1rYadDbP29ybsnVzJeUzuwZvA=
 		</data>
 		<key>Headers/FIRAuthErrors.h</key>
 		<data>
-		g/y3EYJuvW06SZbawhR+JKMX384=
+		enme8FMYm22Hn2UbqCqrj9YBSrI=
 		</data>
 		<key>Headers/FIRAuthSettings.h</key>
 		<data>
@@ -46,31 +46,31 @@
 		</data>
 		<key>Headers/FIREmailAuthProvider.h</key>
 		<data>
-		vt6sPSm5be2bw84Pt4uiY6ABpHQ=
+		P5HqHo/RIqL5e05EinCR9XZia1E=
 		</data>
 		<key>Headers/FIRFacebookAuthProvider.h</key>
 		<data>
-		lUAvK+F4nlCJIg60kLiP+YkMgog=
+		CNdHIIbJMYd+dOgb0mSHoAb2vUw=
 		</data>
 		<key>Headers/FIRFederatedAuthProvider.h</key>
 		<data>
-		BrgTqcjsOi181nZO4RziRVnrJIY=
+		tnJPP+YKR+pSqgvzjGWNvqMesJg=
 		</data>
 		<key>Headers/FIRGameCenterAuthProvider.h</key>
 		<data>
-		La2EbrkTO/zuiPdFM4aDkV+kP44=
+		A2zpJaUBzbWqHSzhbJjtKyDPIaw=
 		</data>
 		<key>Headers/FIRGitHubAuthProvider.h</key>
 		<data>
-		cwwPhS/UbgGkCfjnZdxFZiofrlM=
+		F0Uc6eHJ5Od7tVdsnXiJbufW4S0=
 		</data>
 		<key>Headers/FIRGoogleAuthProvider.h</key>
 		<data>
-		GgGiEXbR5uwzTS/W2nw1/1Gfglo=
+		7SdjDKJeqOZriiunFXchgRVVjZk=
 		</data>
 		<key>Headers/FIRMultiFactor.h</key>
 		<data>
-		Gq5DTNtp5keascFqd2VNwuyR0pg=
+		nP9R00W+8riE4ij1yTX+n3qzijw=
 		</data>
 		<key>Headers/FIRMultiFactorAssertion.h</key>
 		<data>
@@ -94,7 +94,7 @@
 		</data>
 		<key>Headers/FIROAuthProvider.h</key>
 		<data>
-		I8tt5GeacDIdYP+QEbtp2i0cxQ4=
+		+jahqObty/2tZ+UTeqYJTT+jTUM=
 		</data>
 		<key>Headers/FIRPhoneAuthCredential.h</key>
 		<data>
@@ -102,7 +102,7 @@
 		</data>
 		<key>Headers/FIRPhoneAuthProvider.h</key>
 		<data>
-		3XOgj1Csq6/1vQW1MluSVUlltj8=
+		jav1E4kn8B6kvduKXbqRXSo2lSg=
 		</data>
 		<key>Headers/FIRPhoneMultiFactorAssertion.h</key>
 		<data>
@@ -114,15 +114,15 @@
 		</data>
 		<key>Headers/FIRPhoneMultiFactorInfo.h</key>
 		<data>
-		FwIIvsKYOzZkdz9LqZos3Hq136w=
+		xDM9CBaxieUDjbyes+65ss7wBuI=
 		</data>
 		<key>Headers/FIRTwitterAuthProvider.h</key>
 		<data>
-		9SxmFPudkySyn/71vdqoWL7Z0bs=
+		HlC7kq7UgANMTuOHtkJ2lHHrirU=
 		</data>
 		<key>Headers/FIRUser.h</key>
 		<data>
-		cNU0bunVEnFG3b8yea9Uxvya0cs=
+		hX6UtRzgN9yYJ59dRY2EMyOiEb8=
 		</data>
 		<key>Headers/FIRUserInfo.h</key>
 		<data>
@@ -142,7 +142,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		QV4n9CP/qHuB8XKLX61mkG1DpS8=
+		5mUHj2c2Glh9t4fJRz1L4LLtfDs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -166,22 +166,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			kw4Te/xGYtfYsRhXwhPI/EFvfXQ=
+			IzPUxuYUTwwCxfpZ3liefh6jB6k=
 			</data>
 			<key>hash2</key>
 			<data>
-			4GDaNvWRT1Px2N4R152gNyNWk46PX/SFUWgPqcAdiQI=
+			WECnzkL0WVwJGrxY6M0lbCnPdxFsRm+3UweNrRLngZA=
 			</data>
 		</dict>
 		<key>Headers/FIRAuth.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Te2bkeJV2nw3dNIb0kXy3PD8vpM=
+			I0y5dIlpoWOuOA90qZZXPSvUg6w=
 			</data>
 			<key>hash2</key>
 			<data>
-			/l5gan7fmVAzN86mrZPENKWJFzpa2se1s8iqYkiI2fs=
+			BMI9ssFJXL42BQRg/HkGH+4fgB27GQhMOF/8DPWSVDQ=
 			</data>
 		</dict>
 		<key>Headers/FIRAuthAPNSTokenType.h</key>
@@ -210,22 +210,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4WC34erD5IuM2MkgFRAwuF5+bBw=
+			wf1rYadDbP29ybsnVzJeUzuwZvA=
 			</data>
 			<key>hash2</key>
 			<data>
-			Lb13oSi29hlzx9ab/6gCJBbfqauAfgZvXTlz+2J3a6Q=
+			GqU4K63x6aCqErN9EyBWxm4JjLAHnuN0ylvH674zCwA=
 			</data>
 		</dict>
 		<key>Headers/FIRAuthErrors.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			g/y3EYJuvW06SZbawhR+JKMX384=
+			enme8FMYm22Hn2UbqCqrj9YBSrI=
 			</data>
 			<key>hash2</key>
 			<data>
-			wZ2t+04kPkDypXrEQwgYi5GP1y7wtE8ROc7quuKiSjE=
+			XEDekh760AB0gADdrZCOklNJ/NR0QfR6WxV18kjtrS4=
 			</data>
 		</dict>
 		<key>Headers/FIRAuthSettings.h</key>
@@ -265,77 +265,77 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			vt6sPSm5be2bw84Pt4uiY6ABpHQ=
+			P5HqHo/RIqL5e05EinCR9XZia1E=
 			</data>
 			<key>hash2</key>
 			<data>
-			jH6bITQ6CFjcvgCYzMTP++noDob43pTLOby5vV7i/EQ=
+			rZvntZk5fiF1K6y2L0T9xrMODg4VkwHr5vjgYfTGCrs=
 			</data>
 		</dict>
 		<key>Headers/FIRFacebookAuthProvider.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lUAvK+F4nlCJIg60kLiP+YkMgog=
+			CNdHIIbJMYd+dOgb0mSHoAb2vUw=
 			</data>
 			<key>hash2</key>
 			<data>
-			kdLV9O/mq4n2Dkgrqgp9nzjQt2M1KczW59k7HGRQ7hs=
+			/m0eWldeZ9EN59MQjDJQyD4l1lQQNl2nF0CiYLvUxIE=
 			</data>
 		</dict>
 		<key>Headers/FIRFederatedAuthProvider.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			BrgTqcjsOi181nZO4RziRVnrJIY=
+			tnJPP+YKR+pSqgvzjGWNvqMesJg=
 			</data>
 			<key>hash2</key>
 			<data>
-			UjhfxzaAVQ0kMugU9nP4URE51plTIOdqi6D61zONQ3w=
+			siScYIjKM8uzYnCU5qf1EEsnreh1Kpp2Uk8ZAxOQdAc=
 			</data>
 		</dict>
 		<key>Headers/FIRGameCenterAuthProvider.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			La2EbrkTO/zuiPdFM4aDkV+kP44=
+			A2zpJaUBzbWqHSzhbJjtKyDPIaw=
 			</data>
 			<key>hash2</key>
 			<data>
-			ID8Rd4j4bVliAVwcGRFfnPWpOVcF5CSnJI16PE89AKQ=
+			Q99mLFGYgUhrZ4XIzJlzerwjJGBJtPidSq7DUiK2lHQ=
 			</data>
 		</dict>
 		<key>Headers/FIRGitHubAuthProvider.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			cwwPhS/UbgGkCfjnZdxFZiofrlM=
+			F0Uc6eHJ5Od7tVdsnXiJbufW4S0=
 			</data>
 			<key>hash2</key>
 			<data>
-			XiJW9PwyV0JnyXeVQbz50CxvazdRmregzu2hb/1JisY=
+			ht4sYAMz7KkL3eJTZL5d2rtfPEPGEwbUTrnsCAAjFxg=
 			</data>
 		</dict>
 		<key>Headers/FIRGoogleAuthProvider.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			GgGiEXbR5uwzTS/W2nw1/1Gfglo=
+			7SdjDKJeqOZriiunFXchgRVVjZk=
 			</data>
 			<key>hash2</key>
 			<data>
-			JYPANWjvfprmagyOca5uKmtQuzIqrMjQchP8su8491Y=
+			ISyfUYh92tVLRVAz7zDXn5K6ZyWzSQCya+/1OBWa5Gg=
 			</data>
 		</dict>
 		<key>Headers/FIRMultiFactor.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Gq5DTNtp5keascFqd2VNwuyR0pg=
+			nP9R00W+8riE4ij1yTX+n3qzijw=
 			</data>
 			<key>hash2</key>
 			<data>
-			WUSwOuIezyxrZyem7Vg3+ZrUCQyEZczK6LXPy5ykwa0=
+			Q7IMJmXTZs37FIPqywejuia2IOqrVa4ow3SB6DhbfEc=
 			</data>
 		</dict>
 		<key>Headers/FIRMultiFactorAssertion.h</key>
@@ -397,11 +397,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			I8tt5GeacDIdYP+QEbtp2i0cxQ4=
+			+jahqObty/2tZ+UTeqYJTT+jTUM=
 			</data>
 			<key>hash2</key>
 			<data>
-			kXfMj/gsQatd3n7D8bkanXNaL/o3nvmezxQaTVWJYp8=
+			8+FHdkS4An/icBxLZXx/pRBBFVqGx9bNwVSD/8Dm3cs=
 			</data>
 		</dict>
 		<key>Headers/FIRPhoneAuthCredential.h</key>
@@ -419,11 +419,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3XOgj1Csq6/1vQW1MluSVUlltj8=
+			jav1E4kn8B6kvduKXbqRXSo2lSg=
 			</data>
 			<key>hash2</key>
 			<data>
-			WoLzQhE3QVFYzfSPDDK1ie+x6u0pWrMjYlMNLNDREgc=
+			R0idd4RHylawQkgcYXY6QVQ1nx+eAgP/cZ8qMglmf8k=
 			</data>
 		</dict>
 		<key>Headers/FIRPhoneMultiFactorAssertion.h</key>
@@ -452,33 +452,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FwIIvsKYOzZkdz9LqZos3Hq136w=
+			xDM9CBaxieUDjbyes+65ss7wBuI=
 			</data>
 			<key>hash2</key>
 			<data>
-			g+SK9bkOwiIuBS/p+oM+TixBrKu3zQRWX/b8OgakKSY=
+			ZQqUyNCWzglouOwIfdDiAvDzRJzvp47TiK8Exlr6MWY=
 			</data>
 		</dict>
 		<key>Headers/FIRTwitterAuthProvider.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			9SxmFPudkySyn/71vdqoWL7Z0bs=
+			HlC7kq7UgANMTuOHtkJ2lHHrirU=
 			</data>
 			<key>hash2</key>
 			<data>
-			pTmiQ6qgI+5+mYjRzRcQhzONqprCrg5TwNafXiU/wD0=
+			8ac5H8FGof9wsxIegUGmNCQT2rnLuMhj21sPL4NrAk0=
 			</data>
 		</dict>
 		<key>Headers/FIRUser.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			cNU0bunVEnFG3b8yea9Uxvya0cs=
+			hX6UtRzgN9yYJ59dRY2EMyOiEb8=
 			</data>
 			<key>hash2</key>
 			<data>
-			TmVJPrrr2+oJcyPebyxreE1F84A35D/iJpRcm6Z+F94=
+			Nj5iTFK+Lv64ZL3N7aHmlmWT/vm64Q6CBJDfVIfs3Po=
 			</data>
 		</dict>
 		<key>Headers/FIRUserInfo.h</key>
