@@ -11,7 +11,7 @@ import 'package:hawker_buddy/pages/user/welcome_page.dart';
 import 'package:hawker_buddy/routes/router_helper.dart';
 
 //navigating the user to different pages
-class AuthController extends GetxController{
+class AuthController extends GetxController {
   //able to reference from all pages
   static AuthController instance = Get.find();
   //AuthController.instance..
@@ -34,54 +34,48 @@ class AuthController extends GetxController{
 
     //takes a listener and a function
     ever(user, _initialScreen);
-    
   }
-   _initialScreen(User? user){
+
+  _initialScreen(User? user) {
     //nobody is  not logged in
-    if(user == null) {
+    if (user == null) {
       print("login page");
-      Get.offAll(() => LoginPage());
+      Get.offAll(() => HomePage());
     } else {
       username = user.email!;
       Get.offAll(() => SplashScreen());
     }
   }
-  void register (String email, password) async {
+
+  void register(String email, password) async {
     try {
-      await auth.createUserWithEmailAndPassword(email: email, password: password);
+      await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
     } catch (e) {
       Get.snackbar("About User", "User message",
-          backgroundColor: Colors.redAccent, snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.redAccent,
+          snackPosition: SnackPosition.BOTTOM,
           titleText: Text("Acount creation failed",
-              style: TextStyle(
-                  color: Colors.white
-              )),
-          messageText: Text(e.toString(),
-              style: TextStyle(
-                  color: Colors.white
-              )
-          )
-      );
+              style: TextStyle(color: Colors.white)),
+          messageText:
+              Text(e.toString(), style: TextStyle(color: Colors.white)));
     }
   }
-  void login (String email, password) async {
+
+  void login(String email, password) async {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
     } catch (e) {
       Get.snackbar("About User", "User message",
-          backgroundColor: Colors.redAccent, snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.redAccent,
+          snackPosition: SnackPosition.BOTTOM,
           titleText: Text("Login creation failed",
-              style: TextStyle(
-                  color: Colors.white
-              )),
-          messageText: Text(e.toString(),
-              style: TextStyle(
-                  color: Colors.white
-              )
-          )
-      );
+              style: TextStyle(color: Colors.white)),
+          messageText:
+              Text(e.toString(), style: TextStyle(color: Colors.white)));
     }
   }
+
   void logout() async {
     await auth.signOut();
   }
