@@ -7,6 +7,7 @@ import 'package:hawker_buddy/pages/home/newHome.dart';
 import 'package:hawker_buddy/widgets/small_text.dart';
 import 'package:hawker_buddy/widgets/unique_text.dart';
 
+import '../../data_controller.dart';
 import '../../routes/router_helper.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
@@ -96,19 +97,25 @@ class _CartPageState extends State<CartPage> {
 
                       child: Row(
                         children: [
-                          Container(
-                            width: Dimensions.height20*5,
-                            height: Dimensions.height20*5,
-                            margin: EdgeInsets.only(bottom: Dimensions.height10),
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage(
-                                  "assets/images/mala.png"
-                                )
+                          GestureDetector(
+                            onTap: () {
+                              //DataController.addDoc("user", DataController.user);
+                              //DataController.read("user");
+                            },
+                            child: Container(
+                              width: Dimensions.height20*5,
+                              height: Dimensions.height20*5,
+                              margin: EdgeInsets.only(bottom: Dimensions.height10),
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                    "assets/images/mala.png"
+                                  )
+                                ),
+                                borderRadius: BorderRadius.circular(Dimensions.radius20),
+                                color: Colors.white,
                               ),
-                              borderRadius: BorderRadius.circular(Dimensions.radius20),
-                              color: Colors.white,
                             ),
                           ),
                           SizedBox(width: Dimensions.width10),
