@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:hawker_buddy/data/orders_made.dart';
 import 'package:hawker_buddy/pages/home/home_Page.dart';
 import 'package:hawker_buddy/pages/home/newHome.dart';
 import 'package:hawker_buddy/widgets/small_text.dart';
@@ -101,6 +102,8 @@ class _CartPageState extends State<CartPage> {
                             onTap: () {
                               //DataController.addDoc("user", DataController.user);
                               //DataController.read("user");
+                              DataController.create();
+
                             },
                             child: Container(
                               width: Dimensions.height20*5,
