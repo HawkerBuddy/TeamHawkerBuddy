@@ -1,5 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hawker_buddy/auth_controller.dart';
+import 'package:hawker_buddy/data/IDdetails.dart';
 import 'package:hawker_buddy/data/orders_made.dart';
 
 class DataController {
@@ -12,12 +14,12 @@ class DataController {
   };  
   
   static final order =  Orders(
-    cartID: "cart1",
+    cartID: IDdetails.cartId.toString(),
     discountCode: "699999",
-    orderID: "69o1",
-    orderTime: "1620",
+    orderID: IDdetails.orderID.toString(),
+    orderTime: IDdetails.timeStamp(),
     restaurantID: "Protein",
-    userID: "user1",
+    userID: AuthController.userId,
     status: true,
     totalPrice: 200000,
   );
@@ -38,7 +40,7 @@ class DataController {
   static final docRef = db.collection("orders")
       .withConverter(fromFirestore: Orders.fromFireStore,
                      toFirestore: (Orders order, options) => order.toFireStore())
-      .doc("order1");
+      .doc();
 
   static create() async {
     await docRef.set(order);

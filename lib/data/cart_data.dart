@@ -1,5 +1,4 @@
 
-
 class CartData {
 
   int? quantity;
@@ -8,7 +7,6 @@ class CartData {
   String? foodID;
 
   CartData({this.price, this.foodID});
-
 
   setQuantity(int quantity) {
     this.quantity = quantity;

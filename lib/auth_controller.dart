@@ -14,6 +14,7 @@ import 'package:hawker_buddy/routes/router_helper.dart';
 class AuthController extends GetxController{
   //able to reference from all pages
   static AuthController instance = Get.find();
+  static String? userId;
   //AuthController.instance..
 
   //init user
@@ -43,6 +44,8 @@ class AuthController extends GetxController{
       Get.offAll(() => LoginPage());
     } else {
       username = user.email!;
+        userId = auth.currentUser!.uid;
+        print("user id: " + auth.currentUser!.uid);
       Get.offAll(() => SplashScreen());
     }
   }
