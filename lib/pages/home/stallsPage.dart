@@ -2,10 +2,12 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:hawker_buddy/data_controller.dart';
 import 'package:hawker_buddy/routes/router_helper.dart';
 import 'package:hawker_buddy/utils/mocklist.dart';
 import 'package:hawker_buddy/widgets/app_column.dart';
 
+import '../../data/stallDetails.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/icon_and_text.dart';
@@ -203,6 +205,8 @@ class stallsPageState extends State<stallsPage> {
     //scaling function
     Matrix4 matrix = new Matrix4.identity();
 
+    textStallYIH img = textStallYIH(index: index);
+
     var trans = 0.0;
     var scale = 0.0;
 
@@ -241,13 +245,19 @@ class stallsPageState extends State<stallsPage> {
             Container(
               height: 180,
               child: GestureDetector(
-                onTap: (){
+                onTap: () async {
                   Get.toNamed(RouterHelper.getChickenRice());
+                  //print("wwwwwwwwwwwww" * 100);
+
+                  //print(list1[index]);
                 },
+                child: img.stallImage(context),
+                /*
                 child: Container(
                   //margins and overall looks for slider
                   height: Dimensions.pageViewContainer,
                   margin: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
+                  //child:img.stallImage(context),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimensions.radius25),
                     color: index.isEven? Color(0xffe2cc33): Color(0xFFFF9500),
@@ -260,6 +270,8 @@ class stallsPageState extends State<stallsPage> {
                     ),
                   ),
                 ),
+
+                 */
               ),
             ),
             //Align Widget containing the details about sliding images
@@ -296,7 +308,7 @@ class stallsPageState extends State<stallsPage> {
                   //Container Widget including the text xxxx
                   child: Container(
                     padding: EdgeInsets.only(top:Dimensions.height5, left: Dimensions.width15, right: Dimensions.width15),
-                    child: const AppColumn(text: " Chicken rice "),
+                    child: AppColumn(text:DataController.test[index]),
                   ),
                 ),
 

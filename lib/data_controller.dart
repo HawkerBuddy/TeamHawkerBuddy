@@ -6,6 +6,7 @@ import 'package:hawker_buddy/data/orders_made.dart';
 
 class DataController {
   static FirebaseFirestore db = FirebaseFirestore.instance;
+  static List<String> test = [""];
 
   static final user = <String, dynamic>{
     "first": "Ada",
@@ -35,14 +36,12 @@ class DataController {
         print("${doc.id} => ${doc.data()}");
       }
     });
-    //
   }
   
   static final docRef = db.collection("orders")
       .withConverter(fromFirestore: Orders.fromFireStore,
                      toFirestore: (Orders order, options) => order.toFireStore())
       .doc();
-
   static create() async {
     await docRef.set(order);
   }

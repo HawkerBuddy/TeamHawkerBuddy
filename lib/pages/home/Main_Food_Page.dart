@@ -7,6 +7,9 @@ import '../../widgets/unique_text.dart';
 import 'food_page_body.dart';
 
 
+//old page, not used
+
+
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({Key? key}) : super(key: key);
 

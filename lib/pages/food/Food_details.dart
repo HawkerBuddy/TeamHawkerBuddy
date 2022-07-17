@@ -9,6 +9,7 @@ import 'package:hawker_buddy/widgets/app_icons.dart';
 import 'package:hawker_buddy/widgets/expandable_food.dart';
 
 
+import '../../data/cart_data.dart';
 import '../../routes/router_helper.dart';
 import '../../widgets/unique_text.dart';
 
@@ -21,7 +22,7 @@ class FoodDetails extends StatefulWidget {
 
 class _FoodDetailsState extends State<FoodDetails> {
   int count = 0;
-  double price = 2.5;
+  double price = 2.5; //price should be taken from backends
 
   void _increase() {
     setState(()
@@ -78,9 +79,10 @@ class _FoodDetailsState extends State<FoodDetails> {
                   //View Digital Menu
                   GestureDetector(
                       onTap: (){
-                        Get.toNamed(RouterHelper.getCartPage());
+                        Get.back();
+                        //Get.toNamed(RouterHelper.getCartPage());
                       },
-                      child: AppIcons(icon: Icons.shopping_cart,size:50)),
+                      child: AppIcons(icon: Icons.home,size:50)),
                 ],
           )),
           Positioned(
@@ -156,12 +158,21 @@ class _FoodDetailsState extends State<FoodDetails> {
 
               )
             ),
-            Container(
-              padding: EdgeInsets.only(top: Dimensions.width10, bottom: Dimensions.width10, right: Dimensions.width10, left: Dimensions.width10),
-              child: uniqueText(text: '\$'+  (price * count).toString() +'| Add to Cart', color: Colors.black54),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.radius20),
-                color: AppColors.mainColor,
+            GestureDetector(
+              onTap: (){
+                CartData c1 = CartData(count,price, count*price,"foodID","userID");
+                c1.addtoCartindex();
+                c1.addtoCart(c1);
+                Get.back();
+                //one more function to send the order to the backend
+              },
+              child: Container(
+                padding: EdgeInsets.only(top: Dimensions.width10, bottom: Dimensions.width10, right: Dimensions.width10, left: Dimensions.width10),
+                child: uniqueText(text: '\$'+  (price * count).toString() +'| Add to Cart', color: Colors.black54),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.radius20),
+                  color: AppColors.mainColor,
+                ),
               ),
             )
           ],

@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:hawker_buddy/data/stallDetails.dart';
 import 'package:hawker_buddy/routes/router_helper.dart';
 import 'package:hawker_buddy/utils/mocklist.dart';
 import 'package:hawker_buddy/widgets/app_column.dart';
@@ -12,7 +13,7 @@ import '../../widgets/icon_and_text.dart';
 import '../../widgets/small_text.dart';
 import '../../widgets/unique_text.dart';
 
-
+//old page not used
 class Foodpage extends StatefulWidget {
   const Foodpage({Key? key}) : super(key: key);
 
@@ -200,6 +201,8 @@ class FoodpageState extends State<Foodpage> {
   //build page item function
   Widget buildPageItem(int index){
 
+    textStallYIH img = textStallYIH(index: index);
+
     //scaling function
     Matrix4 matrix = new Matrix4.identity();
 
@@ -246,16 +249,20 @@ class FoodpageState extends State<Foodpage> {
                   //margins and overall looks for slider
                   height: Dimensions.pageViewContainer,
                   margin: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
+                 //child:img.stallImage(context),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimensions.radius25),
                     color: index.isEven? Color(0xffe2cc33): Color(0xFFFF9500),
+
                     //image widget to insert picture
                     image: DecorationImage(
                         fit:BoxFit.cover,
-                        image: AssetImage(
-                            "assets/images/" + mocklist.slider_images[index]
+                        image:
+                        AssetImage("assets/images/" + mocklist.slider_images[index]
                         )
                     ),
+
+
                   ),
                 ),
           ),

@@ -9,6 +9,7 @@ import 'package:hawker_buddy/pages/splashes/splash_page.dart';
 import 'package:hawker_buddy/pages/user/login_page.dart';
 import 'package:hawker_buddy/pages/user/welcome_page.dart';
 import 'package:hawker_buddy/routes/router_helper.dart';
+import 'package:hawker_buddy/widgets/test.dart';
 
 //navigating the user to different pages
 class AuthController extends GetxController{
@@ -47,6 +48,7 @@ class AuthController extends GetxController{
         userId = auth.currentUser!.uid;
         print("user id: " + auth.currentUser!.uid);
       Get.offAll(() => SplashScreen());
+      //Get.offAll(() => Test1());
     }
   }
   void register (String email, password) async {

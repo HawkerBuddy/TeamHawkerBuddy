@@ -8,6 +8,7 @@ import 'package:hawker_buddy/pages/home/newHome.dart';
 import 'package:hawker_buddy/widgets/small_text.dart';
 import 'package:hawker_buddy/widgets/unique_text.dart';
 
+import '../../data/cart_data.dart';
 import '../../data_controller.dart';
 import '../../routes/router_helper.dart';
 import '../../utils/colors.dart';
@@ -35,7 +36,6 @@ class _CartPageState extends State<CartPage> {
     if(count<1) {
       return;
     }
-
     setState(() {
       count--;
     });
@@ -50,6 +50,7 @@ class _CartPageState extends State<CartPage> {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
+          /*
           Positioned(
               top: Dimensions.height45,
               left: Dimensions.width20,
@@ -77,8 +78,10 @@ class _CartPageState extends State<CartPage> {
                   AppIcons(icon: Icons.shopping_cart,size:50),
                 ],
               )),
+          */
           Positioned(
-              top:Dimensions.height20 * 5,
+              top: Dimensions.height20 * 2,
+            //top:Dimensions.height20 * 5,
               left: Dimensions.width20,
               right: Dimensions.width20,
               bottom: 0,
@@ -90,7 +93,7 @@ class _CartPageState extends State<CartPage> {
               context: context,
               removeTop: true,
               child: ListView.builder(
-                  itemCount: 1,
+                  itemCount: CartData.itemsOrdered,
                   itemBuilder: (_, index){
                     return Container(
                       height: 100,
@@ -146,7 +149,16 @@ class _CartPageState extends State<CartPage> {
                                          )
                                      ),
 
-                                     child:Row(
+                                     child: Container(
+                                       padding: EdgeInsets.only(top: Dimensions.width10, bottom: Dimensions.width10, right: Dimensions.width10, left: Dimensions.width10),
+                                       child: uniqueText(text: '\$'+  (price * count).toString() +'| Add to Cart', color: Colors.black54),
+                                       decoration: BoxDecoration(
+                                         borderRadius: BorderRadius.circular(Dimensions.radius20),
+                                         color: AppColors.mainColor,
+                                       ),
+                                     ),
+                                       /*
+                                       Row(
                                        children: [
                                                  GestureDetector(
                                                      onTap:(){
@@ -164,7 +176,7 @@ class _CartPageState extends State<CartPage> {
 
 
                                        ],
-                                     ) ,
+                                     ) */
                                    ),
 
 
