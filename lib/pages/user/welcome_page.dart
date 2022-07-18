@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../auth_controller.dart';
+import '../../SignIn/auth_controller.dart';
 import '../../utils/dimensions.dart';
 
 

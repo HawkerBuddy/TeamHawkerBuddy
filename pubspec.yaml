@@ -31,6 +31,7 @@ dependencies:
     sdk: flutter
   #get x package
   get: ^4.1.4
+  provider: ^5.0.0
   #dotindicator package
   dots_indicator: ^2.1.0
   cached_network_image: ^3.2.1
@@ -39,6 +40,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   firebase_auth: ^3.3.19
+  google_sign_in: ^5.4.0
   firebase_core: ^1.17.1
   cloud_firestore: ^3.1.17
 

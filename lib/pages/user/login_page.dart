@@ -8,7 +8,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:hawker_buddy/auth_controller.dart';
+import 'package:hawker_buddy/SignIn/auth_controller.dart';
 import 'package:hawker_buddy/pages/user/signup_page.dart';
 import 'package:hawker_buddy/utils/dimensions.dart';
 

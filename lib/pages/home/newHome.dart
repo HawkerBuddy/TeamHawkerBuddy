@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hawker_buddy/data_controller.dart';
 import 'package:hawker_buddy/pages/home/stallsPage.dart';
 import 'package:hawker_buddy/utils/searchBar.dart';
 
@@ -87,7 +88,7 @@ class _homepageState extends State<homepage> {
             ),
 
             */
-              child: uniqueText(text: 'Utown (Nearest Canteen)'),
+              child: uniqueText(text: DataController.CanteenName[0]),
           ),
           SizedBox(height: Dimensions.height10,),
           Expanded(child: SingleChildScrollView(

@@ -3,10 +3,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:hawker_buddy/auth_controller.dart';
+import 'package:hawker_buddy/SignIn/auth_controller.dart';
 import 'package:hawker_buddy/pages/user/login_page.dart';
 import 'package:hawker_buddy/utils/mocklist.dart';
 
+import '../../SignIn/google_sign_in.dart';
 import '../../utils/dimensions.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -200,25 +201,31 @@ class SignUpPage extends StatelessWidget {
                       fontSize: Dimensions.font10,
                   ),
               )),
-              Wrap(
+              GestureDetector(
+                onTap: () {
+                  GoogleSignInProvider c1 = GoogleSignInProvider();
+                  c1.googleLogin();
+                },
+                child: Wrap(
 
-                children: List<Widget>.generate(
-                    3, (index){
-                      return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Colors.white,
+                  children: List<Widget>.generate(
+                      3, (index){
+                        return Padding(
+                          padding: const EdgeInsets.all(10.0),
                           child: CircleAvatar(
-                            backgroundColor: Color(0),
-                            radius: Dimensions.width20,
-                            backgroundImage: AssetImage(
-                              "assets/images/" + mocklist.signup_images[index]
-                            ),
+                            radius: 30,
+                            backgroundColor: Colors.white,
+                            child: CircleAvatar(
+                              backgroundColor: Color(0),
+                              radius: Dimensions.width20,
+                              backgroundImage: AssetImage(
+                                "assets/images/" + mocklist.signup_images[index]
+                              ),
+                  ),
+                          ),
+                        );
+                  }),
                 ),
-                        ),
-                      );
-                }),
               )
             ],
           ),

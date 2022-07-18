@@ -1,10 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:hawker_buddy/data_controller.dart';
 import 'package:hawker_buddy/utils/mocklist.dart';
 import 'package:hawker_buddy/widgets/expandable_food.dart';
 
+import '../../data/stallDetails.dart';
 import '../../routes/router_helper.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/app_column.dart';
@@ -13,13 +16,16 @@ import '../../widgets/small_text.dart';
 import '../../widgets/unique_text.dart';
 
 class MenuPage extends StatefulWidget {
-  const MenuPage({Key? key}) : super(key: key);
+  int pageID;
+  MenuPage({Key? key, required this.pageID}) : super(key: key);
 
   @override
   State<MenuPage> createState() => _MenuPageState();
 }
 
 class _MenuPageState extends State<MenuPage> {
+
+  //textStallYIH img = textStallYIH(index: pageID);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +34,15 @@ class _MenuPageState extends State<MenuPage> {
           Positioned(
               left: 0,
               right: 0,
-              child: Container(
+              child:
+              Container(
                 width: double.maxFinite,
                 height: Dimensions.foodImgSize,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage(
-                            "assets/images/chickenrice.png"
+                        image: CachedNetworkImageProvider(
+                          DataController.StallsUrl[widget.pageID],
                         )
                     )
                 )
@@ -82,20 +89,21 @@ class _MenuPageState extends State<MenuPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AppColumn(text: 'Weide Chicken rice Store',),
+                      AppColumn(text:DataController.PGPStallNames[widget.pageID],),
                       SizedBox(height:Dimensions.height10),
                       uniqueText(text: "About us",size:20),
                       SizedBox(height:Dimensions.height10),
-                      ExpandableFood(text: "Founded since 1969, recipt was gifted by an angle, taste so good that you can never live without"),
+                      ExpandableFood(text: DataController.PGPStallDes[widget.pageID]),
                       ListView.builder(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
                           //10 dummy datas;
-                          itemCount: 10,
+                          //change to size from backends Food size
+                          itemCount: 3,
                           itemBuilder: (context,index){
                             return GestureDetector(
                               onTap: () {
-                                Get.toNamed(RouterHelper.getPopularHawkerCentre());
+                                Get.toNamed(RouterHelper.getfooddetails());
                               },
                               child: Container(
                                 margin: EdgeInsets.only(right: Dimensions.width20, bottom: Dimensions.height10),
@@ -136,7 +144,7 @@ class _MenuPageState extends State<MenuPage> {
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
 
-                                              uniqueText(text: "Chicken bro"),
+                                              uniqueText(text: DataController.PGPFoodName[widget.pageID][index]),
                                               SizedBox(height: Dimensions.height10),
                                               miniText(text:"Founded 1999 "),
                                               SizedBox(height: Dimensions.height10),

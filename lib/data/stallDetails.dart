@@ -15,90 +15,95 @@ class textStallYIH {
       .collection('Stalls')
       .snapshots();
 
-  Stream<QuerySnapshot> dish = FirebaseFirestore.instance
-      .collection('Canteen')
-      .doc('PGP')
-      .collection('Stalls')
-      .doc('Stall1')
-      .collection('menu')
-      .snapshots();
+  Future<List<String>> getCanteenName() async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance.collection('Canteen').get();
 
-  Widget canteenName(BuildContext context) => StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection('Canteen').snapshots(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text('Loading data..');
-        }
-        return Text(snapshot.data?.docs[index]['name'],
-            style: new TextStyle(fontSize: 20.0));
-      });
+    saveName = List.from(data.docs.map((doc) => doc.get("name")));
+    return saveName;
+  }
 
-  Widget stallName(BuildContext context) => StreamBuilder<QuerySnapshot>(
-      stream: name,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text('Loading');
-        }
-        return Text(snapshot.data?.docs[index]['StallName']);
-      });
+  Future<List<String>> getCanteenAddress() async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance.collection('Canteen').get();
 
-  Widget stallDescription(BuildContext context) => StreamBuilder<QuerySnapshot>(
-      stream: name,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text('Loading');
-        }
-        return Text(snapshot.data?.docs[index]['description']);
-      });
+    saveName = List.from(data.docs.map((doc) => doc.get("address")));
+    return saveName;
+  }
 
-  Widget dishName(BuildContext context) => StreamBuilder<QuerySnapshot>(
-      stream: dish,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text('Loading');
-        }
+  Future<List<String>> getCanteenOpeningHours() async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance.collection('Canteen').get();
 
-        final data = snapshot.requireData;
+    saveName = List.from(data.docs.map((doc) => doc.get("openingHours")));
+    return saveName;
+  }
 
-        return ListView.builder(
-            itemCount: data.size,
-            itemBuilder: (context, index) {
-              return Text(data.docs[index]['foodName']);
-            });
-        //return Text(snapshot.data?.docs[index]['foodId']);
-      });
+  Future<List<String>> getCanteenRegion() async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance.collection('Canteen').get();
 
-  //function fixed
-  Widget stallImage(BuildContext context) => StreamBuilder<QuerySnapshot>(
-      stream: name,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text('No Image Available');
-        }
-        return Container(
-          //margins and overall looks for slider
-          height: Dimensions.pageViewContainer,
-          margin: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
-          //child:img.stallImage(context),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Dimensions.radius25),
-            //color: index.isEven? Color(0xffe2cc33): Color(0xFFFF9500),
-            //image widget to insert picture
-            image: DecorationImage(
-                fit:BoxFit.cover,
-                image: CachedNetworkImageProvider(snapshot.data?.docs[index]['stallImage'])
-            ),
-          ),
-            /* child: CachedNetworkImage(
-              imageUrl: snapshot.data?.docs[index]['stallImage'],
-              fit: BoxFit.cover,
-            )
-             */
-        );
+    saveName = List.from(data.docs.map((doc) => doc.get("region")));
+    return saveName;
+  }
 
+  Future<List<String>> getStallDescription() async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance
+        .collection('Canteen')
+        .doc('PGP')
+        .collection('Stalls')
+        .get();
 
+    saveName = List.from(data.docs.map((doc) => doc.get("description")));
+    return saveName;
+  }
 
-      });
+  //GET STALL ID THEN PLUG INTO GET FOOD NAME TO RETRIEVE THE CORRECT STALL MENU
+  // getFoodName( getStallID() );
+  Future<List<String>> getStallID() async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance
+        .collection('Canteen')
+        .doc('PGP')
+        .collection('Stalls')
+        .get();
+    //print("checkpoint");
+    saveName = List.from(data.docs.map((doc) => doc.get("stallID")));
+    return saveName;
+  }
+
+  Future<List<String>> _getFoodName(String stallName) async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance
+        .collection('Canteen')
+        .doc('PGP')
+        .collection('Stalls')
+        .doc(stallName)
+        .collection('menu')
+        .get();
+   //input take in List<String> then u output List<list<String>>>;
+    saveName = List.from(data.docs.map((doc) => doc.get("foodName")));
+    return saveName;
+  }
+
+  Future<List<List<String>>> foodName(List<String> stallName) async {
+    int row = 34;
+
+    var food  = List.generate(10, (i) => List.filled(10, "", growable: true), growable: true);
+
+    for (int i = 0; i < stallName.length; i++) {
+      List<String> noOfFood = await _getFoodName(stallName[i]);
+      //print(noOfFood.length);
+      for (int j = 0; j < noOfFood.length; j++) {
+        //print(j+10000);
+        print(noOfFood[j]);
+        food[i][j] = noOfFood[j];
+       //print(food[i][j]);
+      }
+    }
+    return food;
+  }
 
   Future<List<String>> getStallName() async {
     List<String> saveName = [];
@@ -112,4 +117,66 @@ class textStallYIH {
     return saveName;
   }
 
+  Future<List<String>> getStallUrl() async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance
+        .collection('Canteen')
+        .doc('PGP')
+        .collection('Stalls')
+        .get();
+
+    saveName = List.from(data.docs.map((doc) => doc.get("stallImage")));
+    return saveName;
+  }
+
+  //function fixed
+  Widget stallImage(BuildContext context) => StreamBuilder<QuerySnapshot>(
+      stream: name,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text('No Image Available');
+        }
+        return Container(
+          //margins and overall looks for slider
+          height: Dimensions.pageViewContainer,
+          margin: EdgeInsets.only(
+              left: Dimensions.width10, right: Dimensions.width10),
+          //child:img.stallImage(context),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(Dimensions.radius25),
+            //color: index.isEven? Color(0xffe2cc33): Color(0xFFFF9500),
+            //image widget to insert picture
+            image: DecorationImage(
+                fit: BoxFit.cover,
+                image: CachedNetworkImageProvider(
+                    snapshot.data?.docs[index]['stallImage'])),
+          ),
+          /* child: CachedNetworkImage(
+              imageUrl: snapshot.data?.docs[index]['stallImage'],
+              fit: BoxFit.cover,
+            )
+
+             */
+        );
+      });
+
+
+  /*
+  Widget MenuBackgroundImage(BuildContext context) => StreamBuilder<QuerySnapshot>(
+      stream: name,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text('No Image Available');
+        }
+        return  Container(
+          width: double.maxFinite,
+          height: Dimensions.foodImgSize,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: CachedNetworkImageProvider(
+                      snapshot.data?.docs[index]['stallImage'])),
+            ));
+      });
+  */
 } //class

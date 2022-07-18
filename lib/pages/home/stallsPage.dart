@@ -97,7 +97,7 @@ class stallsPageState extends State<stallsPage> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children:[
-              uniqueText(text: 'Popular hawker Centre'),
+              uniqueText(text: 'Popular Stalls'),
               Container(
                 child:Icon(Icons.food_bank, color: AppColors.icon1),
               ),
@@ -120,7 +120,7 @@ class stallsPageState extends State<stallsPage> {
               itemBuilder: (context,index){
             return GestureDetector(
               onTap: () {
-                Get.toNamed(RouterHelper.getPopularHawkerCentre());
+                //Get.toNamed(RouterHelper.getfooddetails());
               },
               child: Container(
                 margin: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20, bottom: Dimensions.height10),
@@ -245,33 +245,10 @@ class stallsPageState extends State<stallsPage> {
             Container(
               height: 180,
               child: GestureDetector(
-                onTap: () async {
-                  Get.toNamed(RouterHelper.getChickenRice());
-                  //print("wwwwwwwwwwwww" * 100);
-
-                  //print(list1[index]);
+                onTap: () {
+                  Get.toNamed(RouterHelper.getMenu(index));
                 },
                 child: img.stallImage(context),
-                /*
-                child: Container(
-                  //margins and overall looks for slider
-                  height: Dimensions.pageViewContainer,
-                  margin: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
-                  //child:img.stallImage(context),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(Dimensions.radius25),
-                    color: index.isEven? Color(0xffe2cc33): Color(0xFFFF9500),
-                    //image widget to insert picture
-                    image: DecorationImage(
-                        fit:BoxFit.cover,
-                        image: AssetImage(
-                            "assets/images/" + mocklist.slider_images[index]
-                        )
-                    ),
-                  ),
-                ),
-
-                 */
               ),
             ),
             //Align Widget containing the details about sliding images
@@ -308,7 +285,7 @@ class stallsPageState extends State<stallsPage> {
                   //Container Widget including the text xxxx
                   child: Container(
                     padding: EdgeInsets.only(top:Dimensions.height5, left: Dimensions.width15, right: Dimensions.width15),
-                    child: AppColumn(text:DataController.test[index]),
+                    child: AppColumn(text:DataController.SliderText[index]),
                   ),
                 ),
 

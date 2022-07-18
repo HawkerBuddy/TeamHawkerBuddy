@@ -1,8 +1,6 @@
 /*
 * Class created to store dummpy list datas
 * */
-import '../pages/food/chicken_details.dart';
-import '../pages/home/Main_Food_Page.dart';
 import '../pages/user/login_page.dart';
 
 class mocklist {
@@ -39,14 +37,7 @@ class mocklist {
     "Blk 10 Market",
   ];
 
-  static final screens = [
-    MainFoodPage(),
-    ChickenRice(),
-    MainFoodPage(),
-    MainFoodPage(),
-    LoginPage(),
 
-  ];
 
 
 

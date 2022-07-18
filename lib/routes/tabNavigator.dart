@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hawker_buddy/pages/home/Main_Food_Page.dart';
 import 'package:hawker_buddy/pages/home/newHome.dart';
+import 'package:hawker_buddy/pages/home/stallsPage.dart';
 import 'package:hawker_buddy/pages/user/welcome_page.dart';
 import '../pages/cart/cart_page.dart';
 import '../pages/home/home_Page.dart';
@@ -17,7 +17,7 @@ class tabNavi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget child = MainFoodPage();
+    Widget child = stallsPage();
 
     if(tabItem == "Page1")
       child = homepage();

@@ -4,12 +4,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hawker_buddy/pages/home/home_Page.dart';
 import 'package:hawker_buddy/pages/splashes/splash_page.dart';
 import 'package:hawker_buddy/pages/user/login_page.dart';
-import 'package:hawker_buddy/pages/user/welcome_page.dart';
-import 'package:hawker_buddy/routes/router_helper.dart';
-import 'package:hawker_buddy/widgets/test.dart';
 
 //navigating the user to different pages
 class AuthController extends GetxController{
