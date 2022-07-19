@@ -1,7 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:hawker_buddy/SignIn/auth_controller.dart';
+import 'package:hawker_buddy/data/cart_data2.dart';
+import 'package:hawker_buddy/data_controller.dart';
 import 'package:hawker_buddy/utils/colors.dart';
 import 'package:hawker_buddy/utils/dimensions.dart';
 import 'package:hawker_buddy/widgets/app_column.dart';
@@ -14,7 +18,10 @@ import '../../routes/router_helper.dart';
 import '../../widgets/unique_text.dart';
 
 class FoodDetails extends StatefulWidget {
-  FoodDetails({Key? key}) : super(key: key);
+  int pageId;
+  int foodID;
+
+  FoodDetails({Key? key,required this.pageId, required this.foodID}) : super(key: key);
 
   @override
   State<FoodDetails> createState() => _FoodDetailsState();
@@ -22,7 +29,6 @@ class FoodDetails extends StatefulWidget {
 
 class _FoodDetailsState extends State<FoodDetails> {
   int count = 0;
-  double price = 2.5; //price should be taken from backends
 
   void _increase() {
     setState(()
@@ -57,9 +63,9 @@ class _FoodDetailsState extends State<FoodDetails> {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage(
-                      "assets/images/mala.png"
-                    )
+                    image: CachedNetworkImageProvider(
+                      DataController.PGPFoodImgUrl[widget.pageId][widget.foodID]
+                    ),
                   )
                 )
                 ,)),
@@ -103,13 +109,14 @@ class _FoodDetailsState extends State<FoodDetails> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppColumn(text: 'Super Spicy Mala '),
+                    AppColumn(text: DataController.PGPFoodName[widget.pageId][widget.foodID]),
                     SizedBox(height: Dimensions.height10),
                     uniqueText(text: "Food details",size:Dimensions.font20),
                     SizedBox(height: Dimensions.height10),
                     Expanded(child:
                     SingleChildScrollView(child:
-                    ExpandableFood(text: "Protein Protien Protein Protien Protein Protien Protein Protien Protein Protien Protein Protien Protein Protien Protein Protien Protein Protien Protein Protien")),
+                        //DataController.xxxxx[pageID][foodID]
+                    ExpandableFood(text: DataController.PGPFoodDes[widget.pageId][widget.foodID])),
                     ),//ExpandableFood(text: "hi"),
                   ],
                 ),
@@ -160,15 +167,31 @@ class _FoodDetailsState extends State<FoodDetails> {
             ),
             GestureDetector(
               onTap: (){
-                CartData c1 = CartData(count,price, count*price,"foodID","userID");
+
+                /*
+                CartData c1 = CartData(count,double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]),
+                (count * double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID])),"foodID","userID");
                 c1.addtoCartindex();
-                c1.addtoCart(c1);
+                //c1.addtoCart(c1);
+                //c1.addCollection(count.toString());
+                */
+
+                CartData2 c1 = CartData2(count,double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]),
+                    (count * double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]))
+                    ,DataController.PGPFoodID[widget.pageId][widget.foodID],AuthController.userId);
+                //c1.addCollection(AuthController.userId!);
+                //c1.addtoCart(c1,DataController.StallsID[widget.pageId]);
+
                 Get.back();
+                //dele docs
+                c1.deleteCartDocument(DataController.PGPFoodID[widget.pageId][widget.foodID], DataController.StallsID[widget.pageId]);
+                //c1.addtoCartindex();
+
                 //one more function to send the order to the backend
               },
               child: Container(
                 padding: EdgeInsets.only(top: Dimensions.width10, bottom: Dimensions.width10, right: Dimensions.width10, left: Dimensions.width10),
-                child: uniqueText(text: '\$'+  (price * count).toString() +'| Add to Cart', color: Colors.black54),
+                child: uniqueText(text: '\$'+  (double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]) * count).toString() +'| Add to Cart', color: Colors.black54),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
                   color: AppColors.mainColor,

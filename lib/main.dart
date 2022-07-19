@@ -21,8 +21,13 @@ Future<void> main() async {
   DataController.StallsUrl = await stallYIH.getStallUrl();
   DataController.PGPStallNames = await stallYIH.getStallName();
   DataController.PGPStallDes = await stallYIH.getStallDescription();
+
   //give a List<String> for stall at index 0
   DataController.PGPFoodName = await stallYIH.foodName(DataController.StallsID);
+  DataController.PGPFoodImgUrl = await stallYIH.foodImgUrl(DataController.StallsID);
+  DataController.PGPFoodDes = await stallYIH.foodDes(DataController.StallsID);
+  DataController.PGPFoodPrice = await stallYIH.foodPrice(DataController.StallsID);
+  DataController.PGPFoodID = await stallYIH.foodID(DataController.StallsID);
 
   //linking app to database before running app
   runApp(const MyApp());

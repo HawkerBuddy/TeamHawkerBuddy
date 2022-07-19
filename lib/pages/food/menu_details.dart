@@ -4,15 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hawker_buddy/data_controller.dart';
-import 'package:hawker_buddy/utils/mocklist.dart';
 import 'package:hawker_buddy/widgets/expandable_food.dart';
 
-import '../../data/stallDetails.dart';
 import '../../routes/router_helper.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/app_column.dart';
 import '../../widgets/app_icons.dart';
-import '../../widgets/small_text.dart';
 import '../../widgets/unique_text.dart';
 
 class MenuPage extends StatefulWidget {
@@ -97,13 +94,12 @@ class _MenuPageState extends State<MenuPage> {
                       ListView.builder(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
-                          //10 dummy datas;
-                          //change to size from backends Food size
-                          itemCount: 3,
+                          itemCount: DataController.PGPFoodDes[0].length,
                           itemBuilder: (context,index){
                             return GestureDetector(
                               onTap: () {
-                                Get.toNamed(RouterHelper.getfooddetails());
+                                RouterHelper.gettest(widget.pageID);
+                                Get.toNamed(RouterHelper.getfooddetails(index));
                               },
                               child: Container(
                                 margin: EdgeInsets.only(right: Dimensions.width20, bottom: Dimensions.height10),
@@ -118,9 +114,9 @@ class _MenuPageState extends State<MenuPage> {
                                           color: Colors.white,
                                           image: DecorationImage(
                                               fit: BoxFit.cover,
-                                              image: AssetImage(
-                                                  "assets/images/" + mocklist.slider_images[index]
-                                              )
+                                              image: CachedNetworkImageProvider(
+                                                DataController.PGPFoodImgUrl[widget.pageID][index],
+                                              ),
                                           )
                                       ),
                                     ),
@@ -146,12 +142,15 @@ class _MenuPageState extends State<MenuPage> {
 
                                               uniqueText(text: DataController.PGPFoodName[widget.pageID][index]),
                                               SizedBox(height: Dimensions.height10),
-                                              miniText(text:"Founded 1999 "),
-                                              SizedBox(height: Dimensions.height10),
                                               Row(
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  Text("100% Chicken"),
+                                                  Expanded(
+                                                    child: Text(DataController.PGPFoodDes[widget.pageID][index],
+                                                    overflow: TextOverflow.fade,
+                                                    maxLines: 2,
+                                                    softWrap: false,),
+                                                  ),
                                                 ],
                                               ),
                                             ],

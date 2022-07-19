@@ -25,7 +25,7 @@ class SearchBar extends SearchDelegate {
   }, icon: Icon(Icons.arrow_back));
 
   @override
-  Widget buildResults(BuildContext context) => FoodDetails();
+  Widget buildResults(BuildContext context) => FoodDetails(foodID:0, pageId:0,);
 
   @override
   Widget buildSuggestions(BuildContext context) {

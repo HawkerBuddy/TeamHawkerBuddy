@@ -13,6 +13,11 @@ class DataController {
   static List<String> PGPStallNames = [""];
   static List<String> PGPStallDes = [""];
   static List<List<String>> PGPFoodName = [[""]];
+  static List<List<String>> PGPFoodImgUrl = [[""]];
+  static List<List<String>> PGPFoodDes = [[""]];
+  static List<List<String>> PGPFoodPrice = [[""]];
+  static List<List<String>> PGPFoodID = [[""]];
+
 
   static final user = <String, dynamic>{
     "first": "Ada",
@@ -44,7 +49,7 @@ class DataController {
     });
   }
   
-  static final docRef = db.collection("orders")
+  static final docRef = db.collection("Cart").doc("user1").collection("cartOrder")
       .withConverter(fromFirestore: Orders.fromFireStore,
                      toFirestore: (Orders order, options) => order.toFireStore())
       .doc();

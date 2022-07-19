@@ -44,7 +44,7 @@ class _CartPageState extends State<CartPage> {
               context: context,
               removeTop: true,
               child: ListView.builder(
-                  itemCount: CartData.itemsOrdered,
+                  itemCount: 2,
                   itemBuilder: (_, index){
                     return Container(
                       height: 100,

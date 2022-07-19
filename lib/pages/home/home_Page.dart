@@ -5,14 +5,13 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hawker_buddy/auth_controller.dart';
+import 'package:hawker_buddy/SignIn/auth_controller.dart';
 import 'package:hawker_buddy/pages/cart/cart_page.dart';
 import 'package:hawker_buddy/pages/notification/message_page.dart';
 import 'package:hawker_buddy/pages/splashes/splash_page.dart';
 import 'package:hawker_buddy/pages/user/welcome_page.dart';
 import 'package:hawker_buddy/routes/tabNavigator.dart';
 
-import 'Main_Food_Page.dart';
 import '../user/login_page.dart';
 import 'newHome.dart';
 
