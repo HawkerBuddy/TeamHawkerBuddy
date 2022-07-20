@@ -31,7 +31,7 @@ class RouterHelper{
   static const String test = "/login_page";
 
   static int pageID = 0;
-
+//
   //$use to pass variables
   static String getSplashPage() => '$splashPage';
   static String getinitial() => '$initial';
