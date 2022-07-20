@@ -94,7 +94,7 @@ class _MenuPageState extends State<MenuPage> {
                       ListView.builder(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
-                          itemCount: DataController.PGPFoodDes[0].length,
+                          itemCount: DataController.PGPFoodDes[widget.pageID].length,
                           itemBuilder: (context,index){
                             return GestureDetector(
                               onTap: () {

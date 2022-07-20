@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:hawker_buddy/SignIn/auth_controller.dart';
 
 import '../utils/dimensions.dart';
 
 class textStallYIH {
+
   int index;
 
   textStallYIH({required this.index});
@@ -17,8 +19,8 @@ class textStallYIH {
 
   Future<List<String>> getCanteenName() async {
     List<String> saveName = [];
-    var data = await FirebaseFirestore.instance.collection('Canteen').get();
 
+    var data = await FirebaseFirestore.instance.collection('Canteen').get();
     saveName = List.from(data.docs.map((doc) => doc.get("name")));
     return saveName;
   }
@@ -72,7 +74,6 @@ class textStallYIH {
     saveName = List.from(data.docs.map((doc) => doc.get("stallID")));
     return saveName;
   }
-
   Future<List<String>> _getFoodName(String stallID, String output) async {
     List<String> saveName = [];
     var data = await FirebaseFirestore.instance
@@ -86,7 +87,6 @@ class textStallYIH {
     saveName = List.from(data.docs.map((doc) => doc.get(output)));
     return saveName;
   }
-
   Future<List<List<String>>> foodName(List<String> stallID) async {
     int row = 34;
     var food  = List.generate(10, (i) => List.filled(10, "", growable: true), growable: true);
@@ -151,7 +151,6 @@ class textStallYIH {
     }
     return food;
   }
-
   Future<List<List<String>>> foodID(List<String> stallID) async {
 
     var food  = List.generate(10, (i) => List.filled(10, "", growable: true), growable: true);
@@ -223,6 +222,76 @@ class textStallYIH {
              */
         );
       });
+
+  Future<List<String>> orderGetStallName() async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance
+        .collection("Cart")
+        .doc(AuthController.userId)
+        .collection('Stalls')
+        .get();
+
+    saveName = List.from(data.docs.map((doc) => doc.get("stallName")));
+    return saveName;
+  }
+
+  Future<List<String>> orderGetStallUrl() async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance
+        .collection("Cart")
+        .doc(AuthController.userId)
+        .collection('Stalls')
+        .get();
+
+    saveName = List.from(data.docs.map((doc) => doc.get("stallUrl")));
+    return saveName;
+  }
+
+  Future<List<String>> orderGetStallID() async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance
+        .collection("Cart")
+        .doc(AuthController.userId)
+        .collection('Stalls')
+        .get();
+
+    saveName = List.from(data.docs.map((doc) => doc.get("stallID")));
+    return saveName;
+  }
+
+  Future<List<String>> _path(String stallID, String output) async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance
+        .collection('Cart')
+        .doc(AuthController.userId)
+        .collection('Stalls')
+        .doc(stallID)
+        .collection('Order')
+        .get();
+    //input take in List<String> then u output List<list<String>>>;
+    saveName = List.from(data.docs.map((doc) => doc.get(output)));
+    return saveName;
+  }
+
+  Future<List<List<String>>> orderfoodName(List<String> stallID) async {
+
+    var food  = List.generate(3, (i) => List.filled(3, "", growable: true), growable: true);
+
+    for (int i = 0; i < stallID.length; i++) {
+      List<String> noOfFood = await _path(stallID[i], "foodName");
+      //print(noOfFood.length);
+      for (int j = 0; j < noOfFood.length; j++) {
+        //print(j+10000);
+        print(noOfFood[j]);
+        food[i][j] = noOfFood[j];
+        //print(food[i][j]);
+      }
+    }
+    return food;
+  }
+
+
+
 
 
   /*

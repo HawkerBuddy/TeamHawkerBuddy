@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hawker_buddy/SignIn/auth_controller.dart';
 import 'package:hawker_buddy/data/cart_data2.dart';
+import 'package:hawker_buddy/data/stallDetails.dart';
 import 'package:hawker_buddy/data_controller.dart';
 import 'package:hawker_buddy/utils/colors.dart';
 import 'package:hawker_buddy/utils/dimensions.dart';
@@ -166,8 +167,7 @@ class _FoodDetailsState extends State<FoodDetails> {
               )
             ),
             GestureDetector(
-              onTap: (){
-
+              onTap: () async {
                 /*
                 CartData c1 = CartData(count,double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]),
                 (count * double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID])),"foodID","userID");
@@ -176,15 +176,23 @@ class _FoodDetailsState extends State<FoodDetails> {
                 //c1.addCollection(count.toString());
                 */
 
-                CartData2 c1 = CartData2(count,double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]),
+                CartData c1 = CartData(count,double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]),
                     (count * double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]))
-                    ,DataController.PGPFoodID[widget.pageId][widget.foodID],AuthController.userId);
-                //c1.addCollection(AuthController.userId!);
-                //c1.addtoCart(c1,DataController.StallsID[widget.pageId]);
+                    ,DataController.PGPFoodID[widget.pageId][widget.foodID],
+                    AuthController.userId,DataController.PGPFoodName[widget.pageId][widget.foodID],
+                    DataController.StallsID[widget.pageId], DataController.PGPStallNames[widget.pageId]);
 
+                c1.addtoCart(c1,DataController.StallsUrl[widget.pageId]);
+                //Data is working
+                //c1.deleteCartDocument(DataController.StallsID[widget.pageId]);
                 Get.back();
                 //dele docs
-                c1.deleteCartDocument(DataController.PGPFoodID[widget.pageId][widget.foodID], DataController.StallsID[widget.pageId]);
+                final textStallYIH reading = textStallYIH(index: 0);
+                DataController.OrderStallID = await reading.orderGetStallID();
+                DataController.OrderStallName = await reading.orderGetStallName();
+                DataController.OrderStallImgUrl = await reading.orderGetStallUrl();
+                DataController.OrderFoodName = await reading.orderfoodName(DataController.OrderStallID);
+
                 //c1.addtoCartindex();
 
                 //one more function to send the order to the backend

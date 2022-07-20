@@ -17,6 +17,8 @@ Future<void> main() async {
   textStallYIH stallYIH = textStallYIH(index: 0);
   DataController.SliderText = await stallYIH.getStallName();
   DataController.CanteenName = await stallYIH.getCanteenName();
+
+
   DataController.StallsID = await stallYIH.getStallID();
   DataController.StallsUrl = await stallYIH.getStallUrl();
   DataController.PGPStallNames = await stallYIH.getStallName();
@@ -28,7 +30,6 @@ Future<void> main() async {
   DataController.PGPFoodDes = await stallYIH.foodDes(DataController.StallsID);
   DataController.PGPFoodPrice = await stallYIH.foodPrice(DataController.StallsID);
   DataController.PGPFoodID = await stallYIH.foodID(DataController.StallsID);
-
   //linking app to database before running app
   runApp(const MyApp());
 }

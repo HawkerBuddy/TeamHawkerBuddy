@@ -18,6 +18,15 @@ class DataController {
   static List<List<String>> PGPFoodPrice = [[""]];
   static List<List<String>> PGPFoodID = [[""]];
 
+  static List<String> OrderStallID = [""];
+  static List<String> OrderStallName = [""];
+  static List<String> OrderStallImgUrl = [""];
+  static List<List<String>> OrderFoodName = [[""]];
+
+
+
+  static List<String> orders = [''];
+
 
   static final user = <String, dynamic>{
     "first": "Ada",

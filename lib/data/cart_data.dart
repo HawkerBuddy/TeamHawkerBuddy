@@ -1,92 +1,167 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hawker_buddy/data_controller.dart';
 
 class CartData {
-
   int quantity = 0;
   final double? price;
   double? totalPrice;
   String? foodID;
+  String? foodName;
+  String? stallName;
+  String ? stallID;
 
   //add userID
   String? userID;
   static int itemsOrdered = 0;
 
-  CartData(this.quantity,this.price, this.totalPrice, this.foodID,this.userID);
+  //First Constructor
+  CartData(
+      this.quantity, this.price, this.totalPrice, this.foodID, this.userID, this.foodName, this.stallID, this.stallName);
 
-  //used to send data to backend
-  CartData.n({required this.quantity, this.price, this.totalPrice, this.foodID, this.userID});
+  //Second Constructor
+  CartData.n(
+      {required this.quantity,
+        this.price,
+        this.totalPrice,
+        this.foodID,
+        this.userID,
+        this.foodName,
+        this.stallID,
+        this.stallName});
 
+  //Read from FireStore
   factory CartData.fromFireStore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
-      SnapshotOptions? options,) {
+      SnapshotOptions? options,
+      ) {
     final data = snapshot.data();
     return CartData.n(
-      quantity: data?["quantity"],
-      price:data?["price"],
-      totalPrice: data?["totalPrice"],
-      foodID: data?["foodID"],
-      userID: data?["userID"]
-    );
+        quantity: data?["quantity"],
+        price: data?["price"],
+        totalPrice: data?["totalPrice"],
+        foodID: data?["foodID"],
+        userID: data?["userID"],
+        foodName: data?["foodName"],
+        stallID: data?["stallID"],
+        stallName: data?["stallName"]);
   }
 
+  //Write to FireStore
   Map<String, dynamic> toFireStore() {
     return {
-      if(quantity != null) "quantity":quantity,
-      if(price != null) "price":price,
-      if(totalPrice != null) "totalPrice":totalPrice,
-      if(foodID != null) "foodID":foodID,
-      if(userID != null) "userID":userID,
+      if (quantity != null) "quantity": quantity,
+      if (price != null) "price": price,
+      if (totalPrice != null) "totalPrice": totalPrice,
+      if (foodID != null) "foodID": foodID,
+      if (userID != null) "userID": userID,
+      if (foodName != null) "foodName" : foodName,
+      if  (stallID !=null) "stallID" : stallID,
+      if (stallName != null) "stallName" : stallName,
     };
   }
 
-  addtoCart(CartData cartData){
+  addtoCart(CartData cartData, String stallImg) {
+    final docRef = DataController.db
+        .collection("Cart")
+        .doc(userID)
+        .collection('Stalls')
+        .doc(stallID)
+        .collection('Order')
+        .withConverter(
+        fromFirestore: CartData.fromFireStore,
+        toFirestore: (CartData cartData, options) => cartData.toFireStore())
+        .doc(foodID)
+        .set(cartData);
 
-          final docRef = DataController.db.collection("Cart")
-          .withConverter(fromFirestore: CartData.fromFireStore,
-           toFirestore: (CartData cartData, options) => cartData.toFireStore())
-           .doc().set(cartData);
+    final update = DataController.db
+        .collection("Cart")
+        .doc(userID)
+        .collection('Stalls')
+        .doc(stallID)
+        .set({ "stallUrl": stallImg,
+               "stallName": stallName,
+               "stallID": stallID});
   }
 
+  Future<List<String>> getStallName() async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance
+        .collection('Cart')
+        .doc('Stalls')
+        .collection(stallID!)
+        .get();
+
+    saveName = List.from(data.docs.map((doc) => doc.get("stallName")));
+    return saveName;
+  }
+
+  Future<List<String>> getStallImg() async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance
+        .collection('Cart')
+        .doc('Stalls')
+        .collection(stallID!)
+        .get();
+
+    saveName = List.from(data.docs.map((doc) => doc.get("stallUrl")));
+    return saveName;
+  }
+
+  void deleteCartDocument(String stallID) async {
+    var name = await FirebaseFirestore.instance
+        .collection('Cart')
+        .doc(userID)
+        .collection('Stalls')
+        .doc(stallID)
+        .collection('Order')
+        .get();
+    name.docs.forEach((doc) => doc.reference.delete());
+
+    var name2 = await FirebaseFirestore.instance
+        .collection('Cart')
+        .doc(userID)
+        .collection('Stalls')
+        .doc(stallID).get();
+    name2.reference.delete();
+  }
+
+  //Additional functions
   setQuantity(int quantity) {
     this.quantity = quantity;
     totalPrice = quantity * price!;
   }
 
-  increment(){
-    if(quantity!=0){
+  increment() {
+    if (quantity != 0) {
       quantity++;
     }
   }
 
-  decrement(){
-    if(quantity!=0){
+  decrement() {
+    if (quantity != 0) {
       quantity--;
     }
   }
 
-  int? getQuantity(){
+  int? getQuantity() {
     return quantity;
   }
 
-  double? gettotalPrice(){
+  double? gettotalPrice() {
     return totalPrice;
   }
 
-  double? setTotalPrice(double totalPrice){
+  double? setTotalPrice(double totalPrice) {
     this.totalPrice = totalPrice;
   }
 
-  addtoCartindex(){
+  addtoCartindex() {
     itemsOrdered++;
   }
 
-  removeFromCart(){
-    if(itemsOrdered != 0) {
-      itemsOrdered --;
+  removeFromCart() {
+    if (itemsOrdered != 0) {
+      itemsOrdered--;
     }
   }
-
-
 }

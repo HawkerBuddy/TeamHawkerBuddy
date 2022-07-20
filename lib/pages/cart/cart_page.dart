@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,6 +24,12 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  int number = 0;
+  void refresh() {
+    setState() {
+      number = DataController.OrderStallName.length;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +51,8 @@ class _CartPageState extends State<CartPage> {
               context: context,
               removeTop: true,
               child: ListView.builder(
-                  itemCount: 2,
-                  itemBuilder: (_, index){
+                  itemCount: DataController.OrderStallName.length,
+                  itemBuilder: (context, index){
                     return Container(
                       height: 100,
                       width: double.maxFinite,
@@ -56,7 +63,7 @@ class _CartPageState extends State<CartPage> {
                             onTap: () {
                               //DataController.addDoc("user", DataController.user);
                               //DataController.read("user");
-                              DataController.create();
+                              //DataController.create();
                               //Get.toNamed()
                             },
                             child: Container(
@@ -66,9 +73,9 @@ class _CartPageState extends State<CartPage> {
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: AssetImage(
-                                    "assets/images/mala.png"
-                                  )
+                                  image: CachedNetworkImageProvider(
+                                    DataController.OrderStallImgUrl[index],
+                                  ),
                                 ),
                                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                                 color: Colors.white,
@@ -82,32 +89,37 @@ class _CartPageState extends State<CartPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                uniqueText(text: "ShopName"),
-                                miniText(text: "Number of Items"),
+                                uniqueText(text: DataController.OrderStallName[index]),
+                                miniText(text: "Number of Items: "),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                    children: [
                                    uniqueText(text:"Some Text",color: Colors.redAccent,size: Dimensions.font15,),
-                                   Container(
-
-                                     height: Dimensions.height50*1.25,
-                                     width: Dimensions.width45*3,
-                                     padding: EdgeInsets.only(top: Dimensions.width10, left: Dimensions.width20, bottom: Dimensions.width20, right: Dimensions.width10),
-                                     decoration: BoxDecoration(
-                                       //color: AppColors.iconshopopen,
-                                         borderRadius: BorderRadius.only(
-                                             topLeft: Radius.circular(Dimensions.radius20*2),
-                                             topRight: Radius.circular(Dimensions.radius20*2)
-                                         )
-                                     ),
-
+                                   GestureDetector(
+                                     onTap: (){
+                                       Get.toNamed(RouterHelper.geOrderPage(index));
+                                     },
                                      child: Container(
-                                       //height: Dimensions.height30,
-                                       padding: EdgeInsets.only(right: Dimensions.width10, left: Dimensions.width10,top: Dimensions.height5, bottom: Dimensions.height5),
-                                       child: uniqueText(text:'Place Order', color: Colors.black54,size: Dimensions.font15,),
+
+                                       height: Dimensions.height50*1.25,
+                                       width: Dimensions.width45*3,
+                                       padding: EdgeInsets.only(top: Dimensions.width10, left: Dimensions.width20, bottom: Dimensions.width20, right: Dimensions.width10),
                                        decoration: BoxDecoration(
-                                         borderRadius: BorderRadius.circular(Dimensions.radius20),
-                                         color: AppColors.mainColor,
+                                         //color: AppColors.iconshopopen,
+                                           borderRadius: BorderRadius.only(
+                                               topLeft: Radius.circular(Dimensions.radius20*2),
+                                               topRight: Radius.circular(Dimensions.radius20*2)
+                                           )
+                                       ),
+
+                                       child: Container(
+                                         //height: Dimensions.height30,
+                                         padding: EdgeInsets.only(right: Dimensions.width10, left: Dimensions.width10,top: Dimensions.height5, bottom: Dimensions.height5),
+                                         child: uniqueText(text:'Place Order', color: Colors.black54,size: Dimensions.font15,),
+                                         decoration: BoxDecoration(
+                                           borderRadius: BorderRadius.circular(Dimensions.radius20),
+                                           color: AppColors.mainColor,
+                                         ),
                                        ),
                                      ),
                                    ),
