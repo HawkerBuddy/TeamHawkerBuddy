@@ -14,6 +14,7 @@ import 'package:hawker_buddy/pages/notification/message_page.dart';
 import 'package:hawker_buddy/pages/splashes/splash_page.dart';
 import 'package:hawker_buddy/pages/user/login_page.dart';
 
+import '../data/cart_data.dart';
 import '../pages/user/signup_page.dart';
 
 class RouterHelper{
@@ -31,6 +32,8 @@ class RouterHelper{
   static const String test = "/login_page";
 
   static int pageID = 0;
+  static CartData cart = CartData.delete();
+  static int initialQuantity = 0;
 //
   //$use to pass variables
   static String getSplashPage() => '$splashPage';
@@ -54,7 +57,7 @@ class RouterHelper{
     //food Details Page
     GetPage(name: fooddetails, page: () {
       var foodID = Get.parameters['foodID'];
-      return FoodDetails(foodID: int.parse(foodID!), pageId: RouterHelper.pageID);
+      return FoodDetails(foodID: int.parse(foodID!), pageId: RouterHelper.pageID, count: RouterHelper.initialQuantity,);
       },
         transition:Transition.fadeIn),
 

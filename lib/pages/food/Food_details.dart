@@ -21,30 +21,31 @@ import '../../widgets/unique_text.dart';
 class FoodDetails extends StatefulWidget {
   int pageId;
   int foodID;
+  int count;
 
-  FoodDetails({Key? key,required this.pageId, required this.foodID}) : super(key: key);
+  FoodDetails({Key? key,required this.pageId, required this.foodID, required this.count}) : super(key: key);
 
   @override
   State<FoodDetails> createState() => _FoodDetailsState();
 }
 
 class _FoodDetailsState extends State<FoodDetails> {
-  int count = 0;
+
 
   void _increase() {
     setState(()
-    { count++;
+    { widget.count++;
         });
 
   }
 
   void _decrease() {
-    if(count<1) {
+    if(widget.count<1) {
       return;
     }
 
     setState(() {
-      count--;
+      widget.count--;
     });
 
   }
@@ -155,7 +156,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                         },
                       child: Container(child: Icon(Icons.remove, color: Colors.grey,))),
                   SizedBox(width: Dimensions.width10/2),
-                  uniqueText(text: count.toString()),
+                  uniqueText(text: widget.count.toString()),
                   SizedBox(width: Dimensions.width10/2),
                   GestureDetector(
                       onTap: (){
@@ -175,23 +176,29 @@ class _FoodDetailsState extends State<FoodDetails> {
                 //c1.addtoCart(c1);
                 //c1.addCollection(count.toString());
                 */
+                CartData c1 = CartData(widget.count,double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID])
+                    , (widget.count * double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]))
+                    ,DataController.PGPFoodID[widget.pageId][widget.foodID]
+                    ,AuthController.userId,DataController.PGPFoodName[widget.pageId][widget.foodID]
+                    ,DataController.StallsID[widget.pageId], DataController.PGPStallNames[widget.pageId]
+                    ,DataController.PGPFoodImgUrl[widget.pageId][widget.foodID]
+                    ,DataController.PGPFoodDes[widget.pageId][widget.foodID]);
 
-                CartData c1 = CartData(count,double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]),
-                    (count * double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]))
-                    ,DataController.PGPFoodID[widget.pageId][widget.foodID],
-                    AuthController.userId,DataController.PGPFoodName[widget.pageId][widget.foodID],
-                    DataController.StallsID[widget.pageId], DataController.PGPStallNames[widget.pageId]);
-
+                RouterHelper.cart = c1;
                 c1.addtoCart(c1,DataController.StallsUrl[widget.pageId]);
                 //Data is working
                 //c1.deleteCartDocument(DataController.StallsID[widget.pageId]);
-                Get.back();
                 //dele docs
                 final textStallYIH reading = textStallYIH(index: 0);
                 DataController.OrderStallID = await reading.orderGetStallID();
                 DataController.OrderStallName = await reading.orderGetStallName();
                 DataController.OrderStallImgUrl = await reading.orderGetStallUrl();
                 DataController.OrderFoodName = await reading.orderfoodName(DataController.OrderStallID);
+                DataController.OrderFoodURl = await reading.orderfoodUrl(DataController.OrderStallID);
+                DataController.OrderFoodDes = await reading.orderfoodDes(DataController.OrderStallID);
+                DataController.OrderFoodSize = await reading.orderfoodSize(DataController.OrderStallID);
+                Get.back();
+                //DataController.OrderFoodName[widget.pageId].removeWhere((item) =>["", null].contains(item));
 
                 //c1.addtoCartindex();
 
@@ -199,7 +206,7 @@ class _FoodDetailsState extends State<FoodDetails> {
               },
               child: Container(
                 padding: EdgeInsets.only(top: Dimensions.width10, bottom: Dimensions.width10, right: Dimensions.width10, left: Dimensions.width10),
-                child: uniqueText(text: '\$'+  (double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]) * count).toString() +'| Add to Cart', color: Colors.black54),
+                child: uniqueText(text: '\$'+  (double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]) * widget.count).toString() +'| Add to Cart', color: Colors.black54),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
                   color: AppColors.mainColor,

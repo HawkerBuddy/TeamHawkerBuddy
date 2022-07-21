@@ -1,14 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hawker_buddy/data_controller.dart';
 
+import '../SignIn/auth_controller.dart';
+
 class CartData {
   int quantity = 0;
-  final double? price;
+  double? price;
   double? totalPrice;
   String? foodID;
   String? foodName;
   String? stallName;
   String ? stallID;
+  String ? foodImgUrl;
+  String ? foodDetails;
 
   //add userID
   String? userID;
@@ -16,7 +20,10 @@ class CartData {
 
   //First Constructor
   CartData(
-      this.quantity, this.price, this.totalPrice, this.foodID, this.userID, this.foodName, this.stallID, this.stallName);
+      this.quantity, this.price, this.totalPrice, this.foodID,
+      this.userID, this.foodName, this.stallID, this.stallName, this.foodImgUrl, this.foodDetails);
+
+  CartData.delete();
 
   //Second Constructor
   CartData.n(
@@ -27,7 +34,9 @@ class CartData {
         this.userID,
         this.foodName,
         this.stallID,
-        this.stallName});
+        this.stallName,
+        this.foodImgUrl,
+        this.foodDetails,});
 
   //Read from FireStore
   factory CartData.fromFireStore(
@@ -43,7 +52,9 @@ class CartData {
         userID: data?["userID"],
         foodName: data?["foodName"],
         stallID: data?["stallID"],
-        stallName: data?["stallName"]);
+        stallName: data?["stallName"],
+        foodImgUrl: data?["foodImgUrl"],
+        foodDetails: data?["foodDetails"],);
   }
 
   //Write to FireStore
@@ -55,8 +66,10 @@ class CartData {
       if (foodID != null) "foodID": foodID,
       if (userID != null) "userID": userID,
       if (foodName != null) "foodName" : foodName,
-      if  (stallID !=null) "stallID" : stallID,
+      if (stallID !=null) "stallID" : stallID,
       if (stallName != null) "stallName" : stallName,
+      if (foodImgUrl != null) "foodImgUrl" : foodImgUrl,
+      if (foodDetails !=null) "foodDetails" : foodDetails,
     };
   }
 
@@ -110,7 +123,7 @@ class CartData {
   void deleteCartDocument(String stallID) async {
     var name = await FirebaseFirestore.instance
         .collection('Cart')
-        .doc(userID)
+        .doc(AuthController.userId!)
         .collection('Stalls')
         .doc(stallID)
         .collection('Order')

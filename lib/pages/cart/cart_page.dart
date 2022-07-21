@@ -24,12 +24,6 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  int number = 0;
-  void refresh() {
-    setState() {
-      number = DataController.OrderStallName.length;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +61,8 @@ class _CartPageState extends State<CartPage> {
                               //Get.toNamed()
                             },
                             child: Container(
-                              width: Dimensions.height20*5,
-                              height: Dimensions.height20*5,
+                              width: Dimensions.height20 * 5,
+                              height: Dimensions.height20 * 5,
                               margin: EdgeInsets.only(bottom: Dimensions.height10),
                               decoration: BoxDecoration(
                                 image: DecorationImage(
@@ -90,11 +84,10 @@ class _CartPageState extends State<CartPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 uniqueText(text: DataController.OrderStallName[index]),
-                                miniText(text: "Number of Items: "),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                    children: [
-                                   uniqueText(text:"Some Text",color: Colors.redAccent,size: Dimensions.font15,),
+                                   uniqueText(text:"Self Pick Up",color: Colors.redAccent,size: Dimensions.font15,),
                                    GestureDetector(
                                      onTap: (){
                                        Get.toNamed(RouterHelper.geOrderPage(index));

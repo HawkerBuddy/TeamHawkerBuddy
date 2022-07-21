@@ -99,6 +99,7 @@ class _MenuPageState extends State<MenuPage> {
                             return GestureDetector(
                               onTap: () {
                                 RouterHelper.gettest(widget.pageID);
+                                RouterHelper.initialQuantity = 0;
                                 Get.toNamed(RouterHelper.getfooddetails(index));
                               },
                               child: Container(

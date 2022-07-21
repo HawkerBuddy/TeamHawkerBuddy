@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,6 +12,7 @@ import 'package:hawker_buddy/widgets/small_text.dart';
 import 'package:hawker_buddy/widgets/unique_text.dart';
 
 import '../../data/cart_data.dart';
+import '../../data/stallDetails.dart';
 import '../../data_controller.dart';
 import '../../routes/router_helper.dart';
 import '../../utils/colors.dart';
@@ -32,9 +36,7 @@ class _OrderPageState extends State<OrderPage> {
   }
   @override
   Widget build(BuildContext context) {
-
-    DataController.OrderFoodName[widget.orderpageID].removeWhere((item) =>["", null].contains(item));
-
+    DataController.OrderFoodName[widget.orderpageID].removeWhere((item) =>["",null].contains(item));
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -57,7 +59,6 @@ class _OrderPageState extends State<OrderPage> {
                         return Container(
                           height: 100,
                           width: double.maxFinite,
-
                           child: Row(
                             children: [
                               GestureDetector(
@@ -74,8 +75,8 @@ class _OrderPageState extends State<OrderPage> {
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
                                         fit: BoxFit.cover,
-                                        image: AssetImage(
-                                            "assets/images/mala.png"
+                                        image: CachedNetworkImageProvider(
+                                          DataController.OrderFoodURl[widget.orderpageID][index]
                                         )
                                     ),
                                     borderRadius: BorderRadius.circular(Dimensions.radius20),
@@ -91,11 +92,11 @@ class _OrderPageState extends State<OrderPage> {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     uniqueText(text: DataController.OrderFoodName[widget.orderpageID][index]),
-                                    miniText(text: "Number of Items"),
+                                    miniText(text: DataController.OrderFoodDes[widget.orderpageID][index]),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        uniqueText(text:"Some Text",color: Colors.redAccent,size: Dimensions.font15,),
+                                        uniqueText(text:"Items: " + DataController.OrderFoodSize[widget.orderpageID][index].toString(),color: Colors.redAccent,size: Dimensions.font15,),
                                         Container(
 
                                           height: Dimensions.height50*1.25,
@@ -111,13 +112,15 @@ class _OrderPageState extends State<OrderPage> {
 
                                           child: GestureDetector(
                                             onTap: () {
-                                              RouterHelper.pageID = 1;
-                                              Get.toNamed(RouterHelper.getfooddetails(1));
+                                              RouterHelper.pageID = widget.orderpageID;
+                                              RouterHelper.initialQuantity = DataController.OrderFoodSize[widget.orderpageID][index];
+                                              //RouterHelper.initialQuantity
+                                              Get.toNamed(RouterHelper.getfooddetails(index));
                                             },
                                             child: Container(
                                               //height: Dimensions.height30,
                                               padding: EdgeInsets.only(right: Dimensions.width10, left: Dimensions.width10,top: Dimensions.height5, bottom: Dimensions.height5),
-                                              child: uniqueText(text:'Edit Item', color: Colors.black54,size: Dimensions.font15,),
+                                              child: Center(child: uniqueText(text:'Edit Item', color: Colors.black54,size: Dimensions.font15,)),
                                               decoration: BoxDecoration(
                                                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                                                 color: AppColors.mainColor,
@@ -145,7 +148,7 @@ class _OrderPageState extends State<OrderPage> {
             child: Container(
 
               height: Dimensions.height70,
-              padding: EdgeInsets.only(top: Dimensions.width10, left: Dimensions.width30 * 3 , bottom: Dimensions.width20, right: Dimensions.width30 * 3),
+              padding: EdgeInsets.only(top: Dimensions.width10, bottom: Dimensions.width20,),
               decoration: BoxDecoration(
                 //color: AppColors.iconshopopen,
                   borderRadius: BorderRadius.only(
@@ -156,19 +159,48 @@ class _OrderPageState extends State<OrderPage> {
 
 
 
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: Container(
-                      //height: Dimensions.height30,
-                      padding: EdgeInsets.only(right: Dimensions.width10, left: Dimensions.width10,top:Dimensions.height5/2,),
-                      child: Center(child: uniqueText(text:'Confirm Order', color: Colors.black54,size: Dimensions.font20,)),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(Dimensions.radius20),
-                        color: AppColors.mainColor,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: (){
+                          Get.back();
+                        },
+                        child: Container(
+                          //height: Dimensions.height30,
+                          padding: EdgeInsets.only(right: Dimensions.width10, left: Dimensions.width10,top:Dimensions.height5/2,),
+                          child: Center(child: uniqueText(text:'Back to Cart', color: Colors.black54,size: Dimensions.font20,)),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(Dimensions.radius20),
+                            color: AppColors.mainColor,
+                          ),
+                        ),
                       ),
-                    ),
+                      GestureDetector(
+                        onTap: (){
+                          setState() async {
+                            RouterHelper.cart.deleteCartDocument(DataController.OrderStallID[0]);
+                            final textStallYIH reading = textStallYIH(index: 0);
+                            DataController.OrderStallID = await reading.orderGetStallID();
+                            DataController.OrderStallName = await reading.orderGetStallName();
+                            DataController.OrderStallImgUrl = await reading.orderGetStallUrl();
+                            DataController.OrderFoodName = await reading.orderfoodName(DataController.OrderStallID);
+                          }
+                          setState();
+                          Get.toNamed(RouterHelper.getinitial());
+                          sleep(Duration(seconds: 2));
+                        },
+                        child: Container(
+                          //height: Dimensions.height30,
+                          padding: EdgeInsets.only(right: Dimensions.width10, left: Dimensions.width10,top:Dimensions.height5/2,),
+                          child: Center(child: uniqueText(text:'Confirm Order', color: Colors.black54,size: Dimensions.font20,)),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(Dimensions.radius20),
+                            color: AppColors.mainColor,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
             ),
           )

@@ -2,11 +2,14 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:hawker_buddy/SignIn/auth_controller.dart';
+import 'package:hawker_buddy/data/orders_made.dart';
 import 'package:hawker_buddy/data_controller.dart';
 import 'package:hawker_buddy/routes/router_helper.dart';
 import 'package:hawker_buddy/utils/mocklist.dart';
 import 'package:hawker_buddy/widgets/app_column.dart';
 
+import '../../data/IDdetails.dart';
 import '../../data/stallDetails.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
@@ -121,6 +124,8 @@ class stallsPageState extends State<stallsPage> {
             return GestureDetector(
               onTap: () {
                 //Get.toNamed(RouterHelper.getfooddetails());
+                Orders order = Orders(totalPrice: 10, stallName: 'Macdonlad', orderID: IDdetails.orderID.toString(), cartID: AuthController.userId, stallID: '22', orderTime: IDdetails.timeStamp(), status: 'orders Made');
+                order.addtoCart(order, "hello");
               },
               child: Container(
                 margin: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20, bottom: Dimensions.height10),

@@ -1,23 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hawker_buddy/SignIn/auth_controller.dart';
+
+import '../data_controller.dart';
 
 class Orders {
-  final String? cartID;
-  final String? discountCode;
-  final String? orderID;
-  final String? orderTime;
-  final String? restaurantID;
-  final String? userID;
-  final bool? status;
-  final double? totalPrice;
+   String? cartID; //userID
+   String? orderID;
+   String? orderTime;
+   String? stallName;
+   String? stallID;
+   String? status; //update user
+   double? totalPrice;
 
-  Orders({this.cartID,
-         this.discountCode,
-         this.orderID,
-         this.orderTime,
-         this.restaurantID,
-         this.userID,
-         this.status,
-         this.totalPrice});
+  Orders({required this.cartID,
+          required this.orderID,
+          required this.orderTime,
+          required this.stallName,
+          required this.stallID,
+          required this.status,
+          required this.totalPrice});
 
   factory Orders.fromFireStore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
@@ -25,11 +26,10 @@ class Orders {
     final data = snapshot.data();
     return Orders(
       cartID: data?["cartID"],
-      discountCode:data?["discountCode"],
       orderID: data?["orderID"],
       orderTime: data?["orderTime"],
-      restaurantID: data?["restaurantID"],
-      userID: data?["userID"],
+      stallName: data?["stallName"],
+      stallID: data?["stallID"],
       status: data?["status"],
       totalPrice: data?["totalPrice"],
     );
@@ -38,13 +38,25 @@ class Orders {
   Map<String, dynamic> toFireStore() {
     return {
       if(cartID != null) "cartID":cartID,
-      if(discountCode != null) "discountCode":discountCode,
       if(orderID != null) "orderID":orderID,
       if(orderTime != null) "orderTime":orderTime,
-      if(restaurantID != null) "restaurantID":restaurantID,
-      if(userID != null) "userID":userID,
+      if(stallName != null) "stallName":stallName,
+      if(stallID != null) "stallID":stallID,
       if(status != null) "status":status,
+      if(totalPrice != null) "totalPrice": totalPrice,
     };
   }
-
+   addtoCart(Orders orders, String stallImg) {
+     final docRef = DataController.db
+         .collection("orders")
+         .doc(AuthController.userId!)
+         .collection('OrderHistory')
+         .doc(stallID)
+         .collection('Order')
+         .withConverter(
+         fromFirestore: Orders.fromFireStore,
+         toFirestore: (Orders order, options) => order.toFireStore())
+         .doc(orderID)
+         .set(orders);
+   }
 }

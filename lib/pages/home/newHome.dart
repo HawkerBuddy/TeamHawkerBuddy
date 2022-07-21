@@ -46,7 +46,6 @@ class _homepageState extends State<homepage> {
                       hintText: "Search for Foods/Stalls/Canteens",
                       prefixIcon: GestureDetector(
                           onTap: () {
-                            
                             showSearch(context: context, delegate: SearchBar());
                           },
                           child: Icon(Icons.search, color: Colors.orange,)),

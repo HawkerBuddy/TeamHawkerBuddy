@@ -275,7 +275,7 @@ class textStallYIH {
 
   Future<List<List<String>>> orderfoodName(List<String> stallID) async {
 
-    var food  = List.generate(3, (i) => List.filled(3, "", growable: true), growable: true);
+    var food  = List.generate(10, (i) => List.filled(10, "", growable: true), growable: true);
 
     for (int i = 0; i < stallID.length; i++) {
       List<String> noOfFood = await _path(stallID[i], "foodName");
@@ -290,26 +290,69 @@ class textStallYIH {
     return food;
   }
 
+  Future<List<List<String>>> orderfoodUrl(List<String> stallID) async {
 
+    var food  = List.generate(10, (i) => List.filled(10, "", growable: true), growable: true);
 
+    for (int i = 0; i < stallID.length; i++) {
+      List<String> noOfFood = await _path(stallID[i], "foodImgUrl");
+      //print(noOfFood.length);
+      for (int j = 0; j < noOfFood.length; j++) {
+        //print(j+10000);
+        print(noOfFood[j]);
+        food[i][j] = noOfFood[j];
+        //print(food[i][j]);
+      }
+    }
+    return food;
+  }
 
+  Future<List<List<String>>> orderfoodDes(List<String> stallID) async {
 
-  /*
-  Widget MenuBackgroundImage(BuildContext context) => StreamBuilder<QuerySnapshot>(
-      stream: name,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text('No Image Available');
-        }
-        return  Container(
-          width: double.maxFinite,
-          height: Dimensions.foodImgSize,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: CachedNetworkImageProvider(
-                      snapshot.data?.docs[index]['stallImage'])),
-            ));
-      });
-  */
+    var food  = List.generate(10, (i) => List.filled(10, "", growable: true), growable: true);
+
+    for (int i = 0; i < stallID.length; i++) {
+      List<String> noOfFood = await _path(stallID[i], "foodDetails");
+      //print(noOfFood.length);
+      for (int j = 0; j < noOfFood.length; j++) {
+        //print(j+10000);
+        print(noOfFood[j]);
+        food[i][j] = noOfFood[j];
+        //print(food[i][j]);
+      }
+    }
+    return food;
+  }
+
+  Future<List<List<int>>> orderfoodSize(List<String> stallID) async {
+
+    List<List<int>> food  = List.generate(10, (i) => List.filled(10, 0, growable: true), growable: true);
+
+    for (int i = 0; i < stallID.length; i++) {
+      List<int> noOfFood = await _path2(stallID[i], "quantity");
+      //print(noOfFood.length);
+      for (int j = 0; j < noOfFood.length; j++) {
+        //print(j+10000);
+        print(noOfFood[j]);
+        food[i][j] = noOfFood[j];
+        //print(food[i][j]);
+      }
+    }
+    return food;
+  }
+
+  Future<List<int>> _path2(String stallID, String output) async {
+    List<int> saveName = [];
+    var data = await FirebaseFirestore.instance
+        .collection('Cart')
+        .doc(AuthController.userId)
+        .collection('Stalls')
+        .doc(stallID)
+        .collection('Order')
+        .get();
+    //input take in List<String> then u output List<list<String>>>;
+    saveName = List.from(data.docs.map((doc) => doc.get(output)));
+    return saveName;
+  }
+
 } //class

@@ -22,28 +22,12 @@ class DataController {
   static List<String> OrderStallName = [""];
   static List<String> OrderStallImgUrl = [""];
   static List<List<String>> OrderFoodName = [[""]];
+  static List<List<String>> OrderFoodURl = [[""]];
+  static List<List<String>> OrderFoodDes = [[""]];
+  static List<List<int>> OrderFoodSize = [[0]];
 
 
 
-  static List<String> orders = [''];
-
-
-  static final user = <String, dynamic>{
-    "first": "Ada",
-    "last": "Lovelace",
-    "born": 1815
-  };  
-  
-  static final order =  Orders(
-    cartID: IDdetails.cartId.toString(),
-    discountCode: "699999",
-    orderID: IDdetails.orderID.toString(),
-    orderTime: IDdetails.timeStamp(),
-    restaurantID: "Protein",
-    userID: AuthController.userId,
-    status: true,
-    totalPrice: 200000,
-  );
 
   static void addDoc(String collectionName, Map<String, dynamic> input) {
     db.collection(collectionName).add(input).then((DocumentReference doc) =>
@@ -62,7 +46,4 @@ class DataController {
       .withConverter(fromFirestore: Orders.fromFireStore,
                      toFirestore: (Orders order, options) => order.toFireStore())
       .doc();
-  static create() async {
-    await docRef.set(order);
-  }
 }

@@ -1,7 +1,6 @@
 import 'package:intl/intl.dart';
 
 class IDdetails {
-  //Default Constructor
 
   static DateTime time = DateTime.now();
   static int orderId = 0;
