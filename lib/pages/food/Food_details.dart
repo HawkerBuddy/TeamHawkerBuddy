@@ -193,7 +193,7 @@ class _FoodDetailsState extends State<FoodDetails> {
               },
               child: Container(
                 padding: EdgeInsets.only(top: Dimensions.width10, bottom: Dimensions.width10, right: Dimensions.width10, left: Dimensions.width10),
-                child: uniqueText(text: '\$'+  (double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]) * widget.count).toString() +'| Add to Cart', color: Colors.black54),
+                child: uniqueText(text: '\$'+ double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]).toString()+'| Add to Cart', color: Colors.black54),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
                   color: AppColors.mainColor,
