@@ -36,7 +36,6 @@ class _FoodDetailsState extends State<FoodDetails> {
     setState(()
     { widget.count++;
         });
-
   }
 
   void _decrease() {
@@ -88,7 +87,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                   GestureDetector(
                       onTap: (){
                         Get.back();
-                        //Get.toNamed(RouterHelper.getCartPage());
+                        //Get.toNamed(RouterHelper.initial);
                       },
                       child: AppIcons(icon: Icons.home,size:50)),
                 ],
@@ -169,13 +168,7 @@ class _FoodDetailsState extends State<FoodDetails> {
             ),
             GestureDetector(
               onTap: () async {
-                /*
-                CartData c1 = CartData(count,double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]),
-                (count * double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID])),"foodID","userID");
-                c1.addtoCartindex();
-                //c1.addtoCart(c1);
-                //c1.addCollection(count.toString());
-                */
+
                 CartData c1 = CartData(widget.count,double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID])
                     , (widget.count * double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]))
                     ,DataController.PGPFoodID[widget.pageId][widget.foodID]
@@ -186,10 +179,8 @@ class _FoodDetailsState extends State<FoodDetails> {
 
                 RouterHelper.cart = c1;
                 c1.addtoCart(c1,DataController.StallsUrl[widget.pageId]);
-                //Data is working
-                //c1.deleteCartDocument(DataController.StallsID[widget.pageId]);
-                //dele docs
-                final textStallYIH reading = textStallYIH(index: 0);
+
+                LinktoBackends reading = LinktoBackends(index: 0);
                 DataController.OrderStallID = await reading.orderGetStallID();
                 DataController.OrderStallName = await reading.orderGetStallName();
                 DataController.OrderStallImgUrl = await reading.orderGetStallUrl();
@@ -198,11 +189,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                 DataController.OrderFoodDes = await reading.orderfoodDes(DataController.OrderStallID);
                 DataController.OrderFoodSize = await reading.orderfoodSize(DataController.OrderStallID);
                 Get.back();
-                //DataController.OrderFoodName[widget.pageId].removeWhere((item) =>["", null].contains(item));
 
-                //c1.addtoCartindex();
-
-                //one more function to send the order to the backend
               },
               child: Container(
                 padding: EdgeInsets.only(top: Dimensions.width10, bottom: Dimensions.width10, right: Dimensions.width10, left: Dimensions.width10),

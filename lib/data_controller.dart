@@ -26,24 +26,8 @@ class DataController {
   static List<List<String>> OrderFoodDes = [[""]];
   static List<List<int>> OrderFoodSize = [[0]];
 
+  static List<String> HistoryStallName = [""];
+  static List<String> HistoryOrderTime = [""];
 
 
-
-  static void addDoc(String collectionName, Map<String, dynamic> input) {
-    db.collection(collectionName).add(input).then((DocumentReference doc) =>
-        print('DocumentSnapshot added with ID: ${doc.id}'));
-  }
-
-  static Future<void> read(String collectionName) async {
-    await db.collection(collectionName).get().then((event) {
-      for (var doc in event.docs) {
-        print("${doc.id} => ${doc.data()}");
-      }
-    });
-  }
-  
-  static final docRef = db.collection("Cart").doc("user1").collection("cartOrder")
-      .withConverter(fromFirestore: Orders.fromFireStore,
-                     toFirestore: (Orders order, options) => order.toFireStore())
-      .doc();
 }

@@ -135,8 +135,8 @@ class _HomePageState extends State<HomePage> {
               BottomNavigationBarItem(icon:Icon(Icons.home),
                   label: 'Home',
                   backgroundColor: Color(0xFFFF9500)),
-              BottomNavigationBarItem(icon: Icon(Icons.message_outlined),
-                  label: 'Message',backgroundColor: Color(0xFFFF9500)
+              BottomNavigationBarItem(icon: Icon(Icons.history),
+                  label: 'Order History',backgroundColor: Color(0xFFFF9500)
               ),
               BottomNavigationBarItem(icon: Icon(Icons.shopping_cart),
                 label: 'Cart',

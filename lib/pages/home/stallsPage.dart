@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,7 +21,6 @@ import '../../widgets/unique_text.dart';
 
 class stallsPage extends StatefulWidget {
   const stallsPage({Key? key}) : super(key: key);
-
   @override
   State<stallsPage> createState() => stallsPageState();
 }
@@ -28,7 +28,6 @@ class stallsPage extends StatefulWidget {
 class stallsPageState extends State<stallsPage> {
   //PageController Object to control page
   PageController pageController = PageController(viewportFraction: 0.85);
-
   //factors for animation
   var currentPageValue = 0.0;
   double scaleFactor = 0.8;
@@ -59,6 +58,7 @@ class stallsPageState extends State<stallsPage> {
 
   @override
   Widget build(BuildContext context) {
+    //DataController.PGPStallNames.removeWhere((item) =>["",null].contains(item));
     //Column widget with all Ui of food page body
     return Column(
       children: [
@@ -70,7 +70,7 @@ class stallsPageState extends State<stallsPage> {
           child:
           PageView.builder(
             controller: pageController,
-            itemCount: 5, //default value
+            itemCount: DataController.PGPStallNames.length, //default value
             itemBuilder: (context, position) {
               /*each loop create a custom buildPageItem which returns a transform widget  (picture + text) + AppColumn Object*/
               return buildPageItem(position);
@@ -80,7 +80,7 @@ class stallsPageState extends State<stallsPage> {
 
         //dots slide bar with preset of 5 dots
         new DotsIndicator(
-          dotsCount: 5,
+          dotsCount: DataController.PGPStallNames.length,
           position: currentPageValue,
           decorator: DotsDecorator(
             size: const Size.square(9.0),
@@ -100,13 +100,13 @@ class stallsPageState extends State<stallsPage> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children:[
-              uniqueText(text: 'Popular Stalls'),
+              uniqueText(text: 'Featured Stalls'),
               Container(
                 child:Icon(Icons.food_bank, color: AppColors.icon1),
               ),
               //SizedBox(width: Dimensions.width10,),
               Container(
-                child: miniText(text:"nearby"),
+                child: miniText(text:"Promotions"),
               ),
             ]
 
@@ -118,14 +118,11 @@ class stallsPageState extends State<stallsPage> {
         ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              //10 dummy datas;
-              itemCount: 10,
+              itemCount: DataController.PGPStallNames.length,
               itemBuilder: (context,index){
             return GestureDetector(
               onTap: () {
-                //Get.toNamed(RouterHelper.getfooddetails());
-                Orders order = Orders(totalPrice: 10, stallName: 'Macdonlad', orderID: IDdetails.orderID.toString(), cartID: AuthController.userId, stallID: '22', orderTime: IDdetails.timeStamp(), status: 'orders Made');
-                order.addtoCart(order, "hello");
+                Get.toNamed(RouterHelper.getMenu(index));
               },
               child: Container(
                 margin: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20, bottom: Dimensions.height10),
@@ -140,9 +137,7 @@ class stallsPageState extends State<stallsPage> {
                         color: Colors.white,
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage(
-                            "assets/images/" + mocklist.slider_images[index]
-                          )
+                          image: CachedNetworkImageProvider(DataController.StallsUrl[index]),
                         )
                       ),
                     ),
@@ -164,9 +159,12 @@ class stallsPageState extends State<stallsPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              uniqueText(text: "Blk 85 Market"),
+                              uniqueText(text:DataController.PGPStallNames[index]),
                               SizedBox(height: Dimensions.height10),
-                              miniText(text:"Founded since 1000BC"),
+                              Expanded(child:Text(DataController.PGPStallDes[index],
+                                  overflow: TextOverflow.fade,
+                                  maxLines: 2,
+                                  softWrap: false)),
                               SizedBox(height: Dimensions.height10),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -210,7 +208,7 @@ class stallsPageState extends State<stallsPage> {
     //scaling function
     Matrix4 matrix = new Matrix4.identity();
 
-    textStallYIH img = textStallYIH(index: index);
+    LinktoBackends img = LinktoBackends(index: index);
 
     var trans = 0.0;
     var scale = 0.0;

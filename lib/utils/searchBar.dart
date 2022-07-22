@@ -2,18 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hawker_buddy/pages/food/Food_details.dart';
 
 import '../data_controller.dart';
+import 'colors.dart';
 
 class SearchBar extends SearchDelegate {
-  List<String> searchResults = [
-    'Mala',
-    'Chicken Rice',
-    'Hotpot',
-    'Nasi lemak' ,
-    'Briyani' ,
-  ];
-
-  static var foodName = converter(DataController.PGPFoodName);
-  var data = [DataController.CanteenName, DataController.PGPStallNames, foodName].expand((x) => x).toList();
+  static List<String> foodName = converter(DataController.PGPFoodName);
 
   @override
   List<Widget>? buildActions(BuildContext context)  => [IconButton(onPressed: () {
@@ -24,17 +16,25 @@ class SearchBar extends SearchDelegate {
     } }, icon: Icon(Icons.clear))];
 
   @override
-  Widget? buildLeading(BuildContext context) => IconButton(onPressed: () {
-    //close search bar
-    close(context, null);
-  }, icon: Icon(Icons.arrow_back));
+  Widget buildLeading(BuildContext context) => IconButton(
+    icon: Icon(Icons.arrow_back),
+    onPressed: () => close(context, ''),
+  );
 
   @override
-  Widget buildResults(BuildContext context) => FoodDetails(foodID:0, pageId:0, count: 0,);
+  Widget buildResults(BuildContext context) {
+    List<int> data = indexs(foodName, DataController.PGPFoodName, query);
+
+    return FoodDetails(
+      pageId: data[0],
+      foodID: data[1],
+      count: 0,
+    );
+  }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<String> suggestions = data.where((data){
+    List<String> suggestions = foodName.where((data) {
       final result = data.toLowerCase();
       final input = query.toLowerCase();
       return result.contains(input);
@@ -55,11 +55,41 @@ class SearchBar extends SearchDelegate {
   }
 
   static List<String> converter(List<List<String>> data) {
+    data.removeWhere((item) => ["", null].contains(item));
+    for(int x = 0; x<data.length; x++)
+      {
+        data[x].removeWhere((item) => ["", null].contains(item));
+      }
+
     List<String> save = [];
-    for(int i=0; i < data.length; i++ ) {
-      for(int j=0; j<data[i].length; j++) {
+    for (int i = 0; i < data.length; i++) {
+      for (int j = 0; j < data[i].length; j++) {
         save.add(data[i][j]);
       }
+    }
+    return save;
+  }
+
+  static List<int> indexs(
+      List<String> data, List<List<String>> unfiltered, String query) {
+    int counter = 0;
+    int i = data.indexOf(query);
+    int control = unfiltered.length;
+    List<int> save = [];
+    while(control > 0) {
+      control--;
+      i = i - unfiltered[counter].length;
+      if(i == 0) {
+        counter++;
+        return save = [counter, i];
+      }
+      else if(i <0) {
+        i = i + unfiltered[counter].length;
+        return save = [counter, i];
+      } else {
+        counter++;
+      }
+
     }
     return save;
   }

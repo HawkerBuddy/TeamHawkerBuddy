@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:hawker_buddy/pages/cart/cart_page.dart';
-import 'package:hawker_buddy/pages/cart/order_page.dart';
+import 'package:hawker_buddy/pages/orders/order_page.dart';
 import 'package:hawker_buddy/pages/food/Food_details.dart';
 import 'package:hawker_buddy/pages/food/menu_details.dart';
 import 'package:hawker_buddy/pages/home/home_Page.dart';

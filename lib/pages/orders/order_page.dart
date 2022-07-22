@@ -11,6 +11,8 @@ import 'package:hawker_buddy/pages/home/newHome.dart';
 import 'package:hawker_buddy/widgets/small_text.dart';
 import 'package:hawker_buddy/widgets/unique_text.dart';
 
+import '../../SignIn/auth_controller.dart';
+import '../../data/IDdetails.dart';
 import '../../data/cart_data.dart';
 import '../../data/stallDetails.dart';
 import '../../data_controller.dart';
@@ -179,12 +181,23 @@ class _OrderPageState extends State<OrderPage> {
                       GestureDetector(
                         onTap: (){
                           setState() async {
-                            RouterHelper.cart.deleteCartDocument(DataController.OrderStallID[0]);
-                            final textStallYIH reading = textStallYIH(index: 0);
+
+                            IDdetails.time = DateTime.now();
+                            //DataController.PGPFoodPrice[widget.orderpageID].removeWhere((item) =>["",null].contains(item));
+                            //DataController.PGPFoodName[widget.orderpageID].removeWhere((item) =>["",null].contains(item));
+                            Orders order = Orders(orderID: IDdetails.orderNumberID(),
+                                cartID: AuthController.userId, stallID: DataController.StallsID[widget.orderpageID],
+                                orderTime: IDdetails.timeStamp(),
+                                status: 'orders Made', foodPrice: DataController.PGPFoodPrice[widget.orderpageID], stallName: DataController.PGPStallNames[widget.orderpageID], totalPrice: 100, foodNames: DataController.PGPFoodName[0]);
+                            order.addtoCart(order, "hello");
+
+                            RouterHelper.cart.deleteCartDocument(DataController.OrderStallID[widget.orderpageID]);
+                            final LinktoBackends reading = LinktoBackends(index: 0);
                             DataController.OrderStallID = await reading.orderGetStallID();
                             DataController.OrderStallName = await reading.orderGetStallName();
                             DataController.OrderStallImgUrl = await reading.orderGetStallUrl();
                             DataController.OrderFoodName = await reading.orderfoodName(DataController.OrderStallID);
+                            DataController.HistoryStallName = await reading.historyStallName();
                           }
                           setState();
                           Get.toNamed(RouterHelper.getinitial());

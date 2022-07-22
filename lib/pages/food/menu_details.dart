@@ -21,8 +21,6 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
-
-  //textStallYIH img = textStallYIH(index: pageID);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,8 +58,7 @@ class _MenuPageState extends State<MenuPage> {
                   //View Digital Menu
                   GestureDetector(
                       onTap: (){
-                        Get.back();
-                        //Get.toNamed(RouterHelper.getCartPage());
+                        Get.toNamed(RouterHelper.initial);
                       },
                       child: AppIcons(icon: Icons.home,size:50)),
                 ],

@@ -14,22 +14,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //await base.init();
   await Firebase.initializeApp().then((value) => Get.put(AuthController()));
-  textStallYIH stallYIH = textStallYIH(index: 0);
-  DataController.SliderText = await stallYIH.getStallName();
-  DataController.CanteenName = await stallYIH.getCanteenName();
-
-
-  DataController.StallsID = await stallYIH.getStallID();
-  DataController.StallsUrl = await stallYIH.getStallUrl();
-  DataController.PGPStallNames = await stallYIH.getStallName();
-  DataController.PGPStallDes = await stallYIH.getStallDescription();
-
-  //give a List<String> for stall at index 0
-  DataController.PGPFoodName = await stallYIH.foodName(DataController.StallsID);
-  DataController.PGPFoodImgUrl = await stallYIH.foodImgUrl(DataController.StallsID);
-  DataController.PGPFoodDes = await stallYIH.foodDes(DataController.StallsID);
-  DataController.PGPFoodPrice = await stallYIH.foodPrice(DataController.StallsID);
-  DataController.PGPFoodID = await stallYIH.foodID(DataController.StallsID);
+  loadData();
   //linking app to database before running app
   runApp(const MyApp());
 }
@@ -57,4 +42,25 @@ class MyApp extends StatelessWidget {
       //WelcomePage(),
     );
   }
+}
+
+Future<void> loadData() async {
+  LinktoBackends data = LinktoBackends(index: 0);
+  DataController.SliderText = await data.getStallName();
+  DataController.CanteenName = await data.getCanteenName();
+
+
+  DataController.StallsID = await data.getStallID();
+  DataController.StallsUrl = await data.getStallUrl();
+  DataController.PGPStallNames = await data.getStallName();
+  DataController.PGPStallDes = await data.getStallDescription();
+
+  //give a List<String> for stall at index 0
+  DataController.PGPFoodName = await data.foodName(DataController.StallsID);
+  DataController.PGPFoodImgUrl = await data.foodImgUrl(DataController.StallsID);
+  DataController.PGPFoodDes = await data.foodDes(DataController.StallsID);
+  DataController.PGPFoodPrice = await data.foodPrice(DataController.StallsID);
+  DataController.PGPFoodID = await data.foodID(DataController.StallsID);
+  DataController.HistoryStallName = await data.historyStallName();
+  DataController.HistoryOrderTime = await data.historyOrderTime();
 }

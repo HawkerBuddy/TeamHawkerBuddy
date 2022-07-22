@@ -7,6 +7,7 @@ import 'package:hawker_buddy/data/stallDetails.dart';
 import 'package:hawker_buddy/data_controller.dart';
 import 'package:hawker_buddy/pages/home/newHome.dart';
 import 'package:hawker_buddy/pages/home/stallsPage.dart';
+import 'package:hawker_buddy/pages/orders/order_history.dart';
 import 'package:hawker_buddy/pages/user/welcome_page.dart';
 import '../pages/cart/cart_page.dart';
 import '../pages/home/home_Page.dart';
@@ -32,7 +33,7 @@ class _tabNaviState extends State<tabNavi> {
     if(widget.tabItem == "Page1")
       child = homepage();
     else if(widget.tabItem == "Page2")
-      child = MessageApp();
+      child = OrderHistory();
 
     else if(widget.tabItem == "Page3") {
       getData();
@@ -50,7 +51,7 @@ class _tabNaviState extends State<tabNavi> {
     }
 
     Future<void> getData() async {
-    textStallYIH ab = textStallYIH(index: 0);
+    LinktoBackends ab = LinktoBackends(index: 0);
     DataController.OrderStallID = await ab.orderGetStallID();
     DataController.OrderStallName = await ab.orderGetStallName();
     DataController.OrderStallImgUrl = await ab.orderGetStallUrl();
@@ -58,6 +59,9 @@ class _tabNaviState extends State<tabNavi> {
     DataController.OrderFoodURl = await ab.orderfoodUrl(DataController.OrderStallID);
     DataController.OrderFoodDes = await ab.orderfoodDes(DataController.OrderStallID);
     DataController.OrderFoodSize = await ab.orderfoodSize(DataController.OrderStallID);
+    DataController.HistoryStallName = await ab.historyStallName();
+    DataController.HistoryOrderTime = await ab.historyOrderTime();
+
     }
 }
 

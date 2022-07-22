@@ -5,11 +5,11 @@ import 'package:hawker_buddy/SignIn/auth_controller.dart';
 
 import '../utils/dimensions.dart';
 
-class textStallYIH {
+class LinktoBackends {
 
   int index;
 
-  textStallYIH({required this.index});
+  LinktoBackends({required this.index});
 
   Stream<QuerySnapshot> name = FirebaseFirestore.instance
       .collection('Canteen')
@@ -93,12 +93,8 @@ class textStallYIH {
 
     for (int i = 0; i < stallID.length; i++) {
       List<String> noOfFood = await _getFoodName(stallID[i], "foodName");
-      //print(noOfFood.length);
       for (int j = 0; j < noOfFood.length; j++) {
-        //print(j+10000);
-        print(noOfFood[j]);
         food[i][j] = noOfFood[j];
-       //print(food[i][j]);
       }
     }
     return food;
@@ -109,12 +105,8 @@ class textStallYIH {
 
     for (int i = 0; i < stallID.length; i++) {
       List<String> noOfFood = await _getFoodName(stallID[i], "image");
-      //print(noOfFood.length);
       for (int j = 0; j < noOfFood.length; j++) {
-        //print(j+10000);
-        print(noOfFood[j]);
         food[i][j] = noOfFood[j];
-        //print(food[i][j]);
       }
     }
     return food;
@@ -125,12 +117,8 @@ class textStallYIH {
 
     for (int i = 0; i < stallID.length; i++) {
       List<String> noOfFood = await _getFoodName(stallID[i], "price");
-      //print(noOfFood.length);
       for (int j = 0; j < noOfFood.length; j++) {
-        //print(j+10000);
-        print(noOfFood[j]);
         food[i][j] = noOfFood[j];
-        //print(food[i][j]);
       }
     }
     return food;
@@ -141,12 +129,8 @@ class textStallYIH {
 
     for (int i = 0; i < stallID.length; i++) {
       List<String> noOfFood = await _getFoodName(stallID[i], "description");
-      //print(noOfFood.length);
       for (int j = 0; j < noOfFood.length; j++) {
-        //print(j+10000);
-        print(noOfFood[j]);
         food[i][j] = noOfFood[j];
-        //print(food[i][j]);
       }
     }
     return food;
@@ -192,7 +176,34 @@ class textStallYIH {
     return saveName;
   }
 
-  //function fixed
+  Future<List<String>> historyStallName() async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance
+        .collection('orders')
+        .doc(AuthController.userId)
+        .collection('OrderHistory')
+        .get();
+
+    saveName = List.from(data.docs.map((doc) => doc.get("stallName")));
+    return saveName;
+  }
+
+  Future<List<String>> historyOrderTime() async {
+    List<String> saveName = [];
+    var data = await FirebaseFirestore.instance
+        .collection('orders')
+        .doc(AuthController.userId)
+        .collection('OrderHistory')
+        .get();
+
+    saveName = List.from(data.docs.map((doc) => doc.get("orderTime")));
+    return saveName;
+  }
+
+
+
+
+
   Widget stallImage(BuildContext context) => StreamBuilder<QuerySnapshot>(
       stream: name,
       builder: (context, snapshot) {
@@ -279,10 +290,7 @@ class textStallYIH {
 
     for (int i = 0; i < stallID.length; i++) {
       List<String> noOfFood = await _path(stallID[i], "foodName");
-      //print(noOfFood.length);
       for (int j = 0; j < noOfFood.length; j++) {
-        //print(j+10000);
-        print(noOfFood[j]);
         food[i][j] = noOfFood[j];
         //print(food[i][j]);
       }
@@ -296,10 +304,8 @@ class textStallYIH {
 
     for (int i = 0; i < stallID.length; i++) {
       List<String> noOfFood = await _path(stallID[i], "foodImgUrl");
-      //print(noOfFood.length);
+
       for (int j = 0; j < noOfFood.length; j++) {
-        //print(j+10000);
-        print(noOfFood[j]);
         food[i][j] = noOfFood[j];
         //print(food[i][j]);
       }
@@ -313,12 +319,9 @@ class textStallYIH {
 
     for (int i = 0; i < stallID.length; i++) {
       List<String> noOfFood = await _path(stallID[i], "foodDetails");
-      //print(noOfFood.length);
+
       for (int j = 0; j < noOfFood.length; j++) {
-        //print(j+10000);
-        print(noOfFood[j]);
         food[i][j] = noOfFood[j];
-        //print(food[i][j]);
       }
     }
     return food;
@@ -330,12 +333,9 @@ class textStallYIH {
 
     for (int i = 0; i < stallID.length; i++) {
       List<int> noOfFood = await _path2(stallID[i], "quantity");
-      //print(noOfFood.length);
+
       for (int j = 0; j < noOfFood.length; j++) {
-        //print(j+10000);
-        print(noOfFood[j]);
         food[i][j] = noOfFood[j];
-        //print(food[i][j]);
       }
     }
     return food;
