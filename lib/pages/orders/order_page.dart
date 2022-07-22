@@ -188,9 +188,11 @@ class _OrderPageState extends State<OrderPage> {
                             Orders order = Orders(orderID: IDdetails.orderNumberID(),
                                 cartID: AuthController.userId, stallID: DataController.StallsID[widget.orderpageID],
                                 orderTime: IDdetails.timeStamp(),
-                                status: 'orders Made', foodPrice: DataController.PGPFoodPrice[widget.orderpageID], stallName: DataController.PGPStallNames[widget.orderpageID], totalPrice: 100, foodNames: DataController.PGPFoodName[0]);
+                                status: 'orders Made', foodPrice: DataController.PGPFoodPrice[widget.orderpageID],
+                                stallName: DataController.PGPStallNames[widget.orderpageID],
+                                totalPrice: 100, foodNames: DataController.PGPFoodName[widget.orderpageID]);
                             order.addtoCart(order, "hello");
-
+                            order.arrangeDocument();
                             RouterHelper.cart.deleteCartDocument(DataController.OrderStallID[widget.orderpageID]);
                             final LinktoBackends reading = LinktoBackends(index: 0);
                             DataController.OrderStallID = await reading.orderGetStallID();

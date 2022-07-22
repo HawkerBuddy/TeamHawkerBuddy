@@ -16,6 +16,7 @@ import 'package:hawker_buddy/widgets/expandable_food.dart';
 
 import '../../data/cart_data.dart';
 import '../../routes/router_helper.dart';
+import '../../widgets/small_text.dart';
 import '../../widgets/unique_text.dart';
 
 class FoodDetails extends StatefulWidget {
@@ -168,32 +169,40 @@ class _FoodDetailsState extends State<FoodDetails> {
             ),
             GestureDetector(
               onTap: () async {
+                showDialog(context: context, builder: (context) => AlertDialog(
+                  title: miniText(text: "Adding to The Cart",),
+                  content: miniText(text: "Adding " + DataController.PGPFoodName[widget.pageId][widget.foodID] + " from " + DataController.PGPStallNames[widget.foodID] + "to Cart"),
+                actions: [
+                  TextButton(onPressed: ()=> Get.back(), child: uniqueText( text: 'Cancel',)),
+                  TextButton(child: uniqueText( text: "Confirm",), onPressed: () async {
+                    CartData c1 = CartData(widget.count,double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID])
+                        , (widget.count * double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]))
+                        ,DataController.PGPFoodID[widget.pageId][widget.foodID]
+                        ,AuthController.userId,DataController.PGPFoodName[widget.pageId][widget.foodID]
+                        ,DataController.StallsID[widget.pageId], DataController.PGPStallNames[widget.pageId]
+                        ,DataController.PGPFoodImgUrl[widget.pageId][widget.foodID]
+                        ,DataController.PGPFoodDes[widget.pageId][widget.foodID]);
+                    RouterHelper.cart = c1;
+                    c1.addtoCart(c1,DataController.StallsUrl[widget.pageId]);
+                    LinktoBackends reading = LinktoBackends(index: 0);
+                    DataController.OrderStallID = await reading.orderGetStallID();
+                    DataController.OrderStallName = await reading.orderGetStallName();
+                    DataController.OrderStallImgUrl = await reading.orderGetStallUrl();
+                    DataController.OrderFoodName = await reading.orderfoodName(DataController.OrderStallID);
+                    DataController.OrderFoodURl = await reading.orderfoodUrl(DataController.OrderStallID);
+                    DataController.OrderFoodDes = await reading.orderfoodDes(DataController.OrderStallID);
+                    DataController.OrderFoodSize = await reading.orderfoodSize(DataController.OrderStallID);
 
-                CartData c1 = CartData(widget.count,double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID])
-                    , (widget.count * double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]))
-                    ,DataController.PGPFoodID[widget.pageId][widget.foodID]
-                    ,AuthController.userId,DataController.PGPFoodName[widget.pageId][widget.foodID]
-                    ,DataController.StallsID[widget.pageId], DataController.PGPStallNames[widget.pageId]
-                    ,DataController.PGPFoodImgUrl[widget.pageId][widget.foodID]
-                    ,DataController.PGPFoodDes[widget.pageId][widget.foodID]);
+                    Get.toNamed(RouterHelper.getMenu(widget.pageId));
+                  }),
+                ],),
+                );
 
-                RouterHelper.cart = c1;
-                c1.addtoCart(c1,DataController.StallsUrl[widget.pageId]);
-
-                LinktoBackends reading = LinktoBackends(index: 0);
-                DataController.OrderStallID = await reading.orderGetStallID();
-                DataController.OrderStallName = await reading.orderGetStallName();
-                DataController.OrderStallImgUrl = await reading.orderGetStallUrl();
-                DataController.OrderFoodName = await reading.orderfoodName(DataController.OrderStallID);
-                DataController.OrderFoodURl = await reading.orderfoodUrl(DataController.OrderStallID);
-                DataController.OrderFoodDes = await reading.orderfoodDes(DataController.OrderStallID);
-                DataController.OrderFoodSize = await reading.orderfoodSize(DataController.OrderStallID);
-                Get.back();
 
               },
               child: Container(
                 padding: EdgeInsets.only(top: Dimensions.width10, bottom: Dimensions.width10, right: Dimensions.width10, left: Dimensions.width10),
-                child: uniqueText(text: '\$'+ double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]).toString()+'| Add to Cart', color: Colors.black54),
+                child: uniqueText(text: '\$'+ (double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]) * widget.count).toStringAsFixed(2)+'| Add to Cart', color: Colors.black54),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
                   color: AppColors.mainColor,

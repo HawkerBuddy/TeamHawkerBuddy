@@ -97,6 +97,7 @@ class LinktoBackends {
         food[i][j] = noOfFood[j];
       }
     }
+    food.removeWhere((item) => ["", null].contains(item));
     return food;
   }
   Future<List<List<String>>> foodImgUrl(List<String> stallID) async {
@@ -109,6 +110,7 @@ class LinktoBackends {
         food[i][j] = noOfFood[j];
       }
     }
+    food.removeWhere((item) => ["", null].contains(item));
     return food;
   }
   Future<List<List<String>>> foodPrice(List<String> stallID) async {
@@ -121,6 +123,7 @@ class LinktoBackends {
         food[i][j] = noOfFood[j];
       }
     }
+    food.removeWhere((item) => ["", null].contains(item));
     return food;
   }
   Future<List<List<String>>> foodDes(List<String> stallID) async {
@@ -133,6 +136,7 @@ class LinktoBackends {
         food[i][j] = noOfFood[j];
       }
     }
+    food.removeWhere((item) => ["", null].contains(item));
     return food;
   }
   Future<List<List<String>>> foodID(List<String> stallID) async {
@@ -149,6 +153,7 @@ class LinktoBackends {
         //print(food[i][j]);
       }
     }
+    food.removeWhere((item) => ["", null].contains(item));
     return food;
   }
 
@@ -295,6 +300,7 @@ class LinktoBackends {
         //print(food[i][j]);
       }
     }
+    food.removeWhere((item) => ["", null].contains(item));
     return food;
   }
 
@@ -310,6 +316,7 @@ class LinktoBackends {
         //print(food[i][j]);
       }
     }
+    food.removeWhere((item) => ["", null].contains(item));
     return food;
   }
 
@@ -324,6 +331,7 @@ class LinktoBackends {
         food[i][j] = noOfFood[j];
       }
     }
+    food.removeWhere((item) => ["", null].contains(item));
     return food;
   }
 
@@ -338,6 +346,21 @@ class LinktoBackends {
         food[i][j] = noOfFood[j];
       }
     }
+    food.removeWhere((item) => ["", null].contains(item));
+    return food;
+  }
+  Future<List<List<int>>> orderfoodPrice(List<String> stallID) async {
+
+    List<List<int>> food  = List.generate(10, (i) => List.filled(10, 0, growable: true), growable: true);
+
+    for (int i = 0; i < stallID.length; i++) {
+      List<int> noOfFood = await _path2(stallID[i], "totalPrice");
+
+      for (int j = 0; j < noOfFood.length; j++) {
+        food[i][j] = noOfFood[j];
+      }
+    }
+    food.removeWhere((item) => ["", null].contains(item));
     return food;
   }
 

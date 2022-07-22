@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../SignIn/auth_controller.dart';
@@ -35,9 +36,9 @@ class WelcomePage extends StatelessWidget {
                   CircleAvatar(
                     //backgroundColor: Colors.pinkAccent,
                     radius: 40,
-                    backgroundImage: AssetImage(
-                        "assets/images/profile.png"
-                    ) ,
+                    backgroundImage: CachedNetworkImageProvider(
+                      AuthController.img!
+                    )
                   ),
                 ],
               ),
@@ -70,7 +71,8 @@ class WelcomePage extends StatelessWidget {
             //sign out button
             GestureDetector(
               onTap: () {
-                AuthController.instance.logout();
+                AuthController().signOut();
+                //AuthController.instance.logout();
               },
               child: Container(
                 width: w*0.5,

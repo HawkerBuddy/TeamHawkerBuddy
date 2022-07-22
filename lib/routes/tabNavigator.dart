@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hawker_buddy/SignIn/auth_controller.dart';
 import 'package:hawker_buddy/data/stallDetails.dart';
 import 'package:hawker_buddy/data_controller.dart';
 import 'package:hawker_buddy/pages/home/newHome.dart';
@@ -44,7 +45,7 @@ class _tabNaviState extends State<tabNavi> {
       child = CartPage();
     }
     else if(widget.tabItem == "Page4")
-      child = WelcomePage(email: "SF1234@gmail.com");
+      child = WelcomePage(email: AuthController.userName!);
       return Container(
         child: child,
       );

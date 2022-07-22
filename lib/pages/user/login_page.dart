@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hawker_buddy/SignIn/auth_controller.dart';
+import 'package:hawker_buddy/SignIn/googleSignIn.dart';
 import 'package:hawker_buddy/pages/user/signup_page.dart';
 import 'package:hawker_buddy/utils/dimensions.dart';
 
@@ -168,7 +169,8 @@ class _LoginPageState extends State<LoginPage> {
             //sign in button
             GestureDetector(
               onTap: (){
-                AuthController.instance.login(emailController.text.trim(), passwordController.text.trim());
+                //AuthController.instance.login(emailController.text.trim(), passwordController.text.trim());
+                AuthService().signInWithGoogle();
               },
               child: Container(
                 width: w*0.5,

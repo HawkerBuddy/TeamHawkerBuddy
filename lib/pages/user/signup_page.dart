@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hawker_buddy/SignIn/auth_controller.dart';
+import 'package:hawker_buddy/SignIn/googleSignIn.dart';
 import 'package:hawker_buddy/pages/user/login_page.dart';
 import 'package:hawker_buddy/utils/mocklist.dart';
 
@@ -159,7 +160,7 @@ class SignUpPage extends StatelessWidget {
               //sign in button wraped with gesture detecotr
               GestureDetector(
                 onTap: () {
-                  AuthController.instance.register(emailController.text.trim(),passwordController.text.trim());
+                  //AuthController.instance.register(emailController.text.trim(),passwordController.text.trim());
                 },
                 child: Container(
                   width: w*0.5,
@@ -203,8 +204,7 @@ class SignUpPage extends StatelessWidget {
               )),
               GestureDetector(
                 onTap: () {
-                  GoogleSignInProvider c1 = GoogleSignInProvider();
-                  c1.googleLogin();
+                 //AuthService().handleAuthState();
                 },
                 child: Wrap(
 
