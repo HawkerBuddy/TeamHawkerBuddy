@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -61,7 +60,7 @@ class stallsPageState extends State<stallsPage> {
         SizedBox(
           //color: Colors.redAccent,
           //change to dynamic dimensions
-          height: 250,
+          height: Dimensions.height250,
           child:
           PageView.builder(
             controller: pageController,
@@ -78,17 +77,16 @@ class stallsPageState extends State<stallsPage> {
           dotsCount: DataController.PGPStallNames.length,
           position: currentPageValue,
           decorator: DotsDecorator(
-            size: const Size.square(9.0),
+            size: Size.square(Dimensions.width10),
             activeColor: AppColors.mainColor,
-            activeSize: const Size(18.0, 9.0),
-            activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+            activeSize: Size(Dimensions.width10 * 2, Dimensions.width10),
+            activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radius10/2)),
           ),),
 
         //SizedBox widget creates an empty space of 20
         SizedBox(height: Dimensions.height20,),
 
         //Container contain Popular Hawker Centre + food icon + smaller text nearby
-
         Container(
           margin: EdgeInsets.only(left: Dimensions.width30),
           //Row Widget contains text +  icon + smaller text
@@ -96,7 +94,7 @@ class stallsPageState extends State<stallsPage> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children:[
               uniqueText(text: 'Featured Stalls'),
-              Icon(Icons.food_bank, color: AppColors.icon1),
+              const Icon(Icons.food_bank, color: AppColors.icon1),
               //SizedBox(width: Dimensions.width10,),
               miniText(text:"Promotions"),
             ]
@@ -126,7 +124,7 @@ class stallsPageState extends State<stallsPage> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(Dimensions.radius20),
                         color: Colors.white,
-                        image: DecorationImage(
+                        image: const DecorationImage(
                           fit: BoxFit.cover,
                           image: AssetImage("assets/images/XINLI4.png")
                          //image: NetworkImage(DataController.StallsUrl[0]),
@@ -160,7 +158,7 @@ class stallsPageState extends State<stallsPage> {
                               SizedBox(height: Dimensions.height10),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
+                                children: const [
                                   IconsAndText(
                                     icon: Icons.circle_sharp,
                                     text: "Open",
@@ -237,7 +235,7 @@ class stallsPageState extends State<stallsPage> {
           children: [
             //Container containing sliding images animations
             SizedBox(
-              height: 180,
+              height: Dimensions.height10 * 18,
               child: GestureDetector(
                 onTap: () {
                   Get.toNamed(RouterHelper.getMenu(index));
@@ -247,7 +245,7 @@ class stallsPageState extends State<stallsPage> {
             ),
             //Align Widget containing the details about sliding images
             SizedBox(
-              height: 500,
+              height: Dimensions.height250*2,
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
@@ -256,22 +254,22 @@ class stallsPageState extends State<stallsPage> {
                   margin: EdgeInsets.only(left: Dimensions.width30, right: Dimensions.width30,bottom: Dimensions.height10),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(Dimensions.radius20),
-                      color: Colors.white,
-                      boxShadow: const [
+                      color: AppColors.white,
+                      boxShadow:  [
                         //shadow effects for container
                         BoxShadow(
-                            color: Color(0xFFe8e8e8),
+                            color: AppColors.shadow,
                             //adjusting the how blur it will be
-                            blurRadius: 5.0,
+                            blurRadius: Dimensions.radius10/2,
                             //offset pixels
-                            offset: Offset(0,5)
+                            offset: const Offset(0,5)
                         ),
-                        BoxShadow(
-                            color: Colors.white,
+                        const BoxShadow(
+                            color: AppColors.white,
                             offset: Offset(-5, 0)
                         ),
-                        BoxShadow(
-                            color: Colors.white,
+                        const BoxShadow(
+                            color: AppColors.white,
                             offset: Offset(5, 0)
                         )
                       ]

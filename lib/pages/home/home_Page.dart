@@ -1,4 +1,3 @@
-
 /*   Hawker Buddy Orbital
  *   Main page with navigation bar
  */
@@ -11,10 +10,94 @@ class HomePage extends StatefulWidget {
 
   @override
   State<HomePage> createState() => _HomePageState();
-
-
-
 }
+
+class _HomePageState extends State<HomePage> {
+  int currentIndex = 0;
+  String currentPage = "Page1";
+  List<String> pageKeys = ["Page1", "Page2", "Page3", "Page4"];
+  final Map<String, GlobalKey<NavigatorState>> _navigatorKeys = {
+    "Page1": GlobalKey<NavigatorState>(),
+    "Page2": GlobalKey<NavigatorState>(),
+    "Page3": GlobalKey<NavigatorState>(),
+    "Page4": GlobalKey<NavigatorState>(),
+  };
+
+  void _selectTab(String tabItem, int index) {
+    if (tabItem == currentPage) {
+      _navigatorKeys[tabItem]?.currentState?.popUntil((route) => route.isFirst);
+    } else {
+      setState(() {
+        currentPage = pageKeys[index];
+        currentIndex = index;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () async {
+        final isFirstRouteInCurrentTab =
+            await _navigatorKeys[currentPage]!.currentState!.maybePop();
+        if (isFirstRouteInCurrentTab) {
+          if (currentPage != "Page1") {
+            _selectTab("Page1", 1);
+            return false;
+          }
+        }
+        return isFirstRouteInCurrentTab;
+      },
+      child: Scaffold(
+          body: Stack(
+            children: <Widget>[
+              _buildOffstageNavigator("Page1"),
+              _buildOffstageNavigator("Page2"),
+              _buildOffstageNavigator("Page3"),
+              _buildOffstageNavigator("Page4"),
+            ],
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            onTap: (int index) {
+              _selectTab(pageKeys[index], index);
+            },
+            currentIndex: currentIndex,
+            //onTap: (index) => setState(()=> currentIndex = index),
+            elevation: 0,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                  backgroundColor: Color(0xFFFF9500)),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.history),
+                  label: 'Order History',
+                  backgroundColor: Color(0xFFFF9500)),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart),
+                label: 'Cart',
+                backgroundColor: Color(0xFFFF9500),
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.account_circle_outlined),
+                  label: 'Account',
+                  backgroundColor: Color(0xFFFF9500)),
+            ],
+          )),
+    );
+  }
+
+  Widget _buildOffstageNavigator(String tabItem) {
+    return Offstage(
+      offstage: currentPage != tabItem,
+      child: tabNavi(
+        navigatorKey: _navigatorKeys[tabItem]!,
+        tabItem: tabItem,
+      ),
+    );
+  }
+
+//Navigation buttons with no State
 /*
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
@@ -63,92 +146,4 @@ class _HomePageState extends State<HomePage> {
 
 }
 */
-
-class _HomePageState extends State<HomePage> {
-
-
-  int currentIndex = 0;
-  String currentPage = "Page1";
-  List<String> pageKeys = ["Page1", "Page2", "Page3", "Page4"];
-  final Map<String, GlobalKey<NavigatorState>> _navigatorKeys = {
-    "Page1": GlobalKey<NavigatorState>(),
-    "Page2": GlobalKey<NavigatorState>(),
-    "Page3": GlobalKey<NavigatorState>(),
-    "Page4": GlobalKey<NavigatorState>(),
-  };
-
-
-
-
-  void _selectTab(String tabItem, int index) {
-    if(tabItem == currentPage){
-      _navigatorKeys[tabItem]?.currentState?.popUntil((route) => route.isFirst);
-    }
-    else {
-      setState(
-              () {
-            currentPage = pageKeys[index];
-            currentIndex = index;
-          });
-    }
-  }
-  @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        final isFirstRouteInCurrentTab =
-            await _navigatorKeys[currentPage]!.currentState!.maybePop();
-        if(isFirstRouteInCurrentTab) {
-          if(currentPage != "Page1"){
-            _selectTab("Page1", 1);
-            return false;
-          }
-        }
-        return isFirstRouteInCurrentTab;
-      },
-      child: Scaffold(
-          body: Stack(
-            children: <Widget>[
-              _buildOffstageNavigator("Page1"),
-              _buildOffstageNavigator("Page2"),
-              _buildOffstageNavigator("Page3"),
-              _buildOffstageNavigator("Page4"),
-            ],
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            onTap: (int index) {_selectTab(pageKeys[index], index); },
-            currentIndex:currentIndex,
-            //onTap: (index) => setState(()=> currentIndex = index),
-            elevation: 0,
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(icon:Icon(Icons.home),
-                  label: 'Home',
-                  backgroundColor: Color(0xFFFF9500)),
-              BottomNavigationBarItem(icon: Icon(Icons.history),
-                  label: 'Order History',backgroundColor: Color(0xFFFF9500)
-              ),
-              BottomNavigationBarItem(icon: Icon(Icons.shopping_cart),
-                label: 'Cart',
-                backgroundColor: Color(0xFFFF9500),
-              ),
-              BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined),
-                  label: 'Account', backgroundColor: Color(0xFFFF9500)
-              ),
-
-
-            ],
-          )
-      ),
-    );
-  }
-
-  Widget _buildOffstageNavigator(String tabItem){
-    return Offstage(
-      offstage: currentPage != tabItem,
-      child: tabNavi(
-        navigatorKey: _navigatorKeys[tabItem]!,
-        tabItem: tabItem,
-      ),
-    );
-  }
 }

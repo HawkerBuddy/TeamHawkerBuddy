@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hawker_buddy/utils/dimensions.dart';
 import 'package:hawker_buddy/widgets/small_text.dart';
@@ -36,7 +35,7 @@ class _ExpandableFoodState extends State<ExpandableFood> {
       child: secondHalf.isEmpty ? miniText(size: Dimensions.font15, color: Colors.grey, text: firstHalf)
           :Column(
            children: [
-             miniText(size: Dimensions.font15, color: Colors.grey,text: hiddenText ? (firstHalf +"..."): (firstHalf + secondHalf)),
+             miniText(size: Dimensions.font15, color: Colors.grey,text: hiddenText ? ("$firstHalf..."): (firstHalf + secondHalf)),
              InkWell(
                onTap: () {
                  setState(() {

@@ -1,20 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:hawker_buddy/data/models/orders_made.dart';
-import 'package:hawker_buddy/pages/home/home_Page.dart';
-import 'package:hawker_buddy/pages/home/newHome.dart';
-import 'package:hawker_buddy/widgets/small_text.dart';
 import 'package:hawker_buddy/widgets/unique_text.dart';
 
-import '../../data/models/cart_data.dart';
 import '../../controllers/data_controller.dart';
 import '../../controllers/router_controller.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
-import '../../widgets/app_icons.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -51,17 +43,14 @@ class _CartPageState extends State<CartPage> {
                       index = 0;
                     }
                     return Container(
-                      height: 100,
+                      height: Dimensions.height50*2,
                       width: double.maxFinite,
 
                       child: Row(
                         children: [
                           GestureDetector(
                             onTap: () {
-                              //DataController.addDoc("user", DataController.user);
-                              //DataController.read("user");
-                              //DataController.create();
-                              //Get.toNamed()
+                              Get.toNamed(RouterHelper.geOrderPage(index));
                             },
                             child: Container(
                               width: Dimensions.height20 * 5,
@@ -75,12 +64,12 @@ class _CartPageState extends State<CartPage> {
                                   ),
                                 ),
                                 borderRadius: BorderRadius.circular(Dimensions.radius20),
-                                color: Colors.white,
+                                color: AppColors.white,
                               ),
                             ),
                           ),
                           SizedBox(width: Dimensions.width10),
-                          Expanded(child: Container(
+                          Expanded(child: SizedBox(
                             height: Dimensions.height20*5,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,7 +79,7 @@ class _CartPageState extends State<CartPage> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                    children: [
-                                   uniqueText(text:"Self Pick Up",color: Colors.redAccent,size: Dimensions.font15,),
+                                   uniqueText(text:"Self Pick Up",color: AppColors.iconque,size: Dimensions.font15,),
                                    GestureDetector(
                                      onTap: (){
                                        Get.toNamed(RouterHelper.geOrderPage(index));
@@ -101,7 +90,6 @@ class _CartPageState extends State<CartPage> {
                                        width: Dimensions.width45*3,
                                        padding: EdgeInsets.only(top: Dimensions.width10, left: Dimensions.width20, bottom: Dimensions.width20, right: Dimensions.width10),
                                        decoration: BoxDecoration(
-                                         //color: AppColors.iconshopopen,
                                            borderRadius: BorderRadius.only(
                                                topLeft: Radius.circular(Dimensions.radius20*2),
                                                topRight: Radius.circular(Dimensions.radius20*2)
@@ -111,11 +99,11 @@ class _CartPageState extends State<CartPage> {
                                        child: Container(
                                          //height: Dimensions.height30,
                                          padding: EdgeInsets.only(right: Dimensions.width10, left: Dimensions.width10,top: Dimensions.height5, bottom: Dimensions.height5),
-                                         child: uniqueText(text:'Place Order', color: Colors.black54,size: Dimensions.font15,),
                                          decoration: BoxDecoration(
                                            borderRadius: BorderRadius.circular(Dimensions.radius20),
                                            color: AppColors.mainColor,
                                          ),
+                                         child: uniqueText(text:'Place Order', color: Colors.black54,size: Dimensions.font15,),
                                        ),
                                      ),
                                    ),

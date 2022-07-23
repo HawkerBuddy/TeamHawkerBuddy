@@ -8,18 +8,23 @@ class SearchBar extends SearchDelegate {
   static List<String> foodName = converter(DataController.PGPFoodName);
 
   @override
-  List<Widget>? buildActions(BuildContext context)  => [IconButton(onPressed: () {
-    if(query.isEmpty){
-      close(context,null);
-    } else {
-      query = '';
-    } }, icon: Icon(Icons.clear))];
+  List<Widget>? buildActions(BuildContext context) => [
+        IconButton(
+            onPressed: () {
+              if (query.isEmpty) {
+                close(context, null);
+              } else {
+                query = '';
+              }
+            },
+            icon: Icon(Icons.clear))
+      ];
 
   @override
   Widget buildLeading(BuildContext context) => IconButton(
-    icon: Icon(Icons.arrow_back),
-    onPressed: () => close(context, ''),
-  );
+        icon: Icon(Icons.arrow_back),
+        onPressed: () => close(context, ''),
+      );
 
   @override
   Widget buildResults(BuildContext context) {
@@ -51,16 +56,16 @@ class SearchBar extends SearchDelegate {
             showResults(context);
           },
         );
-      },);
+      },
+    );
   }
 
   static List<String> converter(List<List<String>> data) {
     data.removeWhere((item) => ["", null].contains(item));
-    for(int x = 0; x<data.length; x++)
-      {
-        data[x].removeWhere((item) => ["", null].contains(item));
-      }
 
+    for (int x = 0; x < data.length; x++) {
+      data[x].removeWhere((item) => ["", null].contains(item));
+    }
     List<String> save = [];
     for (int i = 0; i < data.length; i++) {
       for (int j = 0; j < data[i].length; j++) {
@@ -76,20 +81,18 @@ class SearchBar extends SearchDelegate {
     int i = data.indexOf(query);
     int control = unfiltered.length;
     List<int> save = [];
-    while(control > 0) {
+    while (control > 0) {
       control--;
       i = i - unfiltered[counter].length;
-      if(i == 0) {
+      if (i == 0) {
         counter++;
         return save = [counter, i];
-      }
-      else if(i <0) {
+      } else if (i < 0) {
         i = i + unfiltered[counter].length;
         return save = [counter, i];
       } else {
         counter++;
       }
-
     }
     return save;
   }

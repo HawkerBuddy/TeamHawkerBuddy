@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hawker_buddy/controllers/data_controller.dart';
 import 'package:hawker_buddy/pages/home/stallsPage.dart';
@@ -23,23 +22,22 @@ class _homepageState extends State<homepage> {
         children: [
           Container(
             color: AppColors.mainColor,
-            height:MediaQuery.of(context).size.height/6,
+            height: MediaQuery.of(context).size.height / 6,
             width: MediaQuery.of(context).size.width,
             child: Center(
               //hello
               child: Container(
-                width:350,
+                width: Dimensions.width350,
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(30),
-                    boxShadow:[
+                    borderRadius: BorderRadius.circular(Dimensions.radius30),
+                    boxShadow: [
                       BoxShadow(
-                          blurRadius: 10,
-                          spreadRadius: 7,
-                          offset: Offset(1,1),
-                          color: Colors.grey.withOpacity(0.3)
-                      )]
-                ),
+                          blurRadius: Dimensions.radius10,
+                          spreadRadius: Dimensions.radius10*0.7,
+                          offset: const Offset(1, 1),
+                          color: Colors.grey.withOpacity(0.3))
+                    ]),
                 child: TextField(
                   //obscureText: true,
                   decoration: InputDecoration(
@@ -48,57 +46,37 @@ class _homepageState extends State<homepage> {
                           onTap: () {
                             showSearch(context: context, delegate: SearchBar());
                           },
-                          child: Icon(Icons.search, color: Colors.orange,)),
+                          child: Icon(
+                            Icons.search,
+                            color: AppColors.mainColor,
+                          )),
                       focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(
-                              color: Colors.white,
-                              width: 1.0
-                          )
-                      ),
+                          borderRadius: BorderRadius.circular(Dimensions.radius30),
+                          borderSide:
+                              BorderSide(color: Colors.white, width: Dimensions.width10/10)),
                       enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(
-                              color: Colors.white,
-                              width: 1.0
-                          )
-                      ),
+                          borderRadius: BorderRadius.circular(Dimensions.radius30),
+                          borderSide:
+                              BorderSide(color: Colors.white, width: Dimensions.width10/10)),
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30)
-                      )
-                  ),
+                          borderRadius: BorderRadius.circular(Dimensions.radius30))),
                 ),
               ),
             ),
           ),
-          SizedBox(height: Dimensions.height10,),
-          Container(
-            /*
-            decoration: BoxDecoration(
-                color: AppColors.mainColor,
-                borderRadius: BorderRadius.circular(25),
-                /*boxShadow:[BoxShadow(
-                      blurRadius: 10,
-                      spreadRadius: 7,
-                      offset: Offset(1,1),
-                      color: Colors.grey.withOpacity(0.3)
-                  )
-              ]*/
-            ),
-
-            */
-              child: uniqueText(text: DataController.CanteenName[0]),
+          SizedBox(
+            height: Dimensions.height10,
           ),
-          SizedBox(height: Dimensions.height10,),
-          Expanded(child: SingleChildScrollView(
+          uniqueText(text: DataController.CanteenName[0]),
+          SizedBox(
+            height: Dimensions.height10,
+          ),
+          const Expanded(
+              child: SingleChildScrollView(
             child: stallsPage(),
           )),
-
-
         ],
       ),
     );
   }
-
-
 }

@@ -1,8 +1,5 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hawker_buddy/controllers/auth_controller.dart';
-import 'package:hawker_buddy/data/models/IDdetails.dart';
-import 'package:hawker_buddy/data/models/orders_made.dart';
 
 class DataController {
   static FirebaseFirestore db = FirebaseFirestore.instance;

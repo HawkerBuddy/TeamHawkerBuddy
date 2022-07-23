@@ -1,15 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hawker_buddy/controllers/auth_controller.dart';
-import 'package:hawker_buddy/unused/googleSignIn.dart';
 import 'package:hawker_buddy/controllers/data_controller.dart';
-import 'package:hawker_buddy/pages/home/home_Page.dart';
 import 'package:get/get.dart';
-import 'package:hawker_buddy/pages/home/newHome.dart';
-import 'package:hawker_buddy/pages/splashes/splash_page.dart';
-import 'package:hawker_buddy/pages/user/login_google_page.dart';
 import 'package:hawker_buddy/controllers/router_controller.dart';
 import 'controllers/backend_controller.dart';
 
@@ -28,30 +22,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false ,
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      //home:LoginGoogle(),
-      home:AuthController().handleAuthState(),
-      //initialRoute: RouterHelper.getLoginPage(),
+      home: AuthController().handleAuthState(),
       getPages: RouterHelper.routes,
-
-      //HomePage()
-      //FoodDetails(),
-      //MainFoodPage(),
-      //LoginPage(),
-      //SignUpPage(),
-      //WelcomePage(),
     );
   }
 }
-
+//Function to load Data from the backends
 Future<void> loadData() async {
   LinktoBackends data = LinktoBackends(index: 0);
   DataController.SliderText = await data.getStallName();
   DataController.CanteenName = await data.getCanteenName();
-
 
   DataController.StallsID = await data.getStallID();
   DataController.StallsUrl = await data.getStallUrl();

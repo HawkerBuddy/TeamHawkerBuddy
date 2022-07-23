@@ -20,6 +20,7 @@ class Dimensions{
   static double height50 = screenHeight/13.34;
   static double height60 = screenHeight/11.11;
   static double height70 = screenHeight/9.52;
+  static double height250 = screenHeight/2.668;
 
 
   static double width10 = screenWidth/37.5;
@@ -27,6 +28,7 @@ class Dimensions{
   static double width20 = screenWidth/18.75;
   static double width30 = screenWidth/12.5;
   static double width45 = screenWidth/8.33;
+  static double width350 = screenWidth/1.07;
 
   static double font10 = screenHeight/66.67;
   static double font15 = screenHeight/44.46;
@@ -34,18 +36,21 @@ class Dimensions{
   static double font26 = screenHeight/25.65;
   static double font70 = screenHeight/9.52;
 
+  static double radius10 = screenHeight/66.7;
   static double radius15 = screenHeight/44.46;
   static double radius20 = screenHeight/33.5;
   static double radius25 = screenHeight/26.68;
+  static double radius30 = screenHeight/22.23;
 
   //list view size
   static double ListViewImgSize = screenWidth/3.125;
   static double ListViewTextContSize = screenWidth/3.75;
 
   //foods
-  static double foodImgSize = screenHeight/2.5;
+  static double foodImgSize = screenHeight/2.702;
 
   //icons size
    static double iconSize24 = screenHeight/27.79;
    static double iconSize16 = screenHeight/41.6875;
+   static double iconSize50 = screenHeight/13.34;
 }

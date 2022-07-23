@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:hawker_buddy/controllers/backend_controller.dart';
 import 'package:hawker_buddy/controllers/data_controller.dart';
 import 'package:hawker_buddy/pages/home/home_Page.dart';
@@ -63,7 +61,7 @@ class _MenuPageState extends State<MenuPage> {
                   //View Digital Menu
                   GestureDetector(
                       onTap: (){
-                        Get.to(HomePage());
+                        Get.to(const HomePage());
                       },
                       child: AppIcons(icon: Icons.home,size:50)),
                 ],
@@ -94,7 +92,7 @@ class _MenuPageState extends State<MenuPage> {
                       ExpandableFood(text: DataController.PGPStallDes[widget.pageID]),
                       ListView.builder(
                           shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           itemCount: DataController.PGPFoodDes[widget.pageID].length,
                           itemBuilder: (context,index){
                             return GestureDetector(
