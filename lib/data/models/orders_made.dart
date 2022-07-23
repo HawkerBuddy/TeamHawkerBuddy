@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hawker_buddy/SignIn/auth_controller.dart';
+import 'package:hawker_buddy/controllers/auth_controller.dart';
 
-import '../data_controller.dart';
+import '../../controllers/data_controller.dart';
 
 class Orders {
   String? cartID; //userID

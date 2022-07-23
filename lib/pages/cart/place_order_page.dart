@@ -5,18 +5,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:hawker_buddy/data/orders_made.dart';
+import 'package:hawker_buddy/data/models/orders_made.dart';
 import 'package:hawker_buddy/pages/home/home_Page.dart';
 import 'package:hawker_buddy/pages/home/newHome.dart';
 import 'package:hawker_buddy/widgets/small_text.dart';
 import 'package:hawker_buddy/widgets/unique_text.dart';
 
-import '../../SignIn/auth_controller.dart';
-import '../../data/IDdetails.dart';
-import '../../data/cart_data.dart';
-import '../../data/stallDetails.dart';
-import '../../data_controller.dart';
-import '../../routes/router_helper.dart';
+import '../../controllers/auth_controller.dart';
+import '../../data/models/IDdetails.dart';
+import '../../data/models/cart_data.dart';
+import '../../controllers/backend_controller.dart';
+import '../../controllers/data_controller.dart';
+import '../../controllers/router_controller.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/app_icons.dart';
@@ -117,6 +117,7 @@ class _OrderPageState extends State<OrderPage> {
                                               RouterHelper.pageID = widget.orderpageID;
                                               RouterHelper.initialQuantity = DataController.OrderFoodSize[widget.orderpageID][index];
                                               //RouterHelper.initialQuantity
+                                              RouterHelper.fromCart = true;
                                               Get.toNamed(RouterHelper.getfooddetails(index));
                                             },
                                             child: Container(
@@ -202,7 +203,7 @@ class _OrderPageState extends State<OrderPage> {
                             DataController.HistoryStallName = await reading.historyStallName();
                           }
                           setState();
-                          Get.toNamed(RouterHelper.getinitial());
+                          Get.to(()=>HomePage());
                           sleep(Duration(seconds: 2));
                         },
                         child: Container(

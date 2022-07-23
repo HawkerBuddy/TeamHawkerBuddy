@@ -1,12 +1,13 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:hawker_buddy/SignIn/auth_controller.dart';
-import 'package:hawker_buddy/data/cart_data2.dart';
-import 'package:hawker_buddy/data/stallDetails.dart';
-import 'package:hawker_buddy/data_controller.dart';
+import 'package:hawker_buddy/controllers/auth_controller.dart';
+import 'package:hawker_buddy/controllers/backend_controller.dart';
+import 'package:hawker_buddy/controllers/data_controller.dart';
 import 'package:hawker_buddy/utils/colors.dart';
 import 'package:hawker_buddy/utils/dimensions.dart';
 import 'package:hawker_buddy/widgets/app_column.dart';
@@ -14,8 +15,8 @@ import 'package:hawker_buddy/widgets/app_icons.dart';
 import 'package:hawker_buddy/widgets/expandable_food.dart';
 
 
-import '../../data/cart_data.dart';
-import '../../routes/router_helper.dart';
+import '../../data/models/cart_data.dart';
+import '../../controllers/router_controller.dart';
 import '../../widgets/small_text.dart';
 import '../../widgets/unique_text.dart';
 
@@ -88,9 +89,10 @@ class _FoodDetailsState extends State<FoodDetails> {
                   GestureDetector(
                       onTap: (){
                         Get.back();
-                        //Get.toNamed(RouterHelper.initial);
+                        Get.back();
                       },
-                      child: AppIcons(icon: Icons.home,size:50)),
+
+                      child: RouterHelper.fromCart? AppIcons(icon: Icons.shopping_cart):AppIcons(icon: Icons.menu_book,size:50)),
                 ],
           )),
           Positioned(
@@ -171,9 +173,9 @@ class _FoodDetailsState extends State<FoodDetails> {
               onTap: () async {
                 showDialog(context: context, builder: (context) => AlertDialog(
                   title: miniText(text: "Adding to The Cart",),
-                  content: miniText(text: "Adding " + DataController.PGPFoodName[widget.pageId][widget.foodID] + " from " + DataController.PGPStallNames[widget.foodID] + "to Cart"),
+                  content: miniText(text: "Adding " + DataController.PGPFoodName[widget.pageId][widget.foodID] + " from " + DataController.PGPStallNames[widget.foodID] + " to Cart"),
                 actions: [
-                  TextButton(onPressed: ()=> Get.back(), child: uniqueText( text: 'Cancel',)),
+                  TextButton(onPressed: () => Get.back(), child: uniqueText( text: 'Cancel',)),
                   TextButton(child: uniqueText( text: "Confirm",), onPressed: () async {
                     CartData c1 = CartData(widget.count,double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID])
                         , (widget.count * double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]))
@@ -193,6 +195,9 @@ class _FoodDetailsState extends State<FoodDetails> {
                     DataController.OrderFoodDes = await reading.orderfoodDes(DataController.OrderStallID);
                     DataController.OrderFoodSize = await reading.orderfoodSize(DataController.OrderStallID);
 
+                    if(RouterHelper.fromCart){
+                      Get.back();
+                    }
                     Get.toNamed(RouterHelper.getMenu(widget.pageId));
                   }),
                 ],),

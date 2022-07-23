@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hawker_buddy/widgets/small_text.dart';
 
-import '../../data_controller.dart';
-import '../../routes/router_helper.dart';
+import '../../controllers/data_controller.dart';
+import '../../controllers/router_controller.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/unique_text.dart';
@@ -39,6 +39,9 @@ class _OrderHistoryState extends State<OrderHistory> {
                 child: ListView.builder(
                     itemCount: DataController.HistoryStallName.length,
                     itemBuilder: (context, index){
+                      if(index >= DataController.HistoryOrderTime.length) {
+                        index = 0;
+                      }
                       return Container(
                         height: 100,
                         width: double.maxFinite,

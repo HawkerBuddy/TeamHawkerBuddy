@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hawker_buddy/pages/food/Food_details.dart';
+import 'package:hawker_buddy/pages/food/Food_details_page.dart';
 
-import '../data_controller.dart';
-import 'colors.dart';
+import 'data_controller.dart';
+import '../utils/colors.dart';
 
 class SearchBar extends SearchDelegate {
   static List<String> foodName = converter(DataController.PGPFoodName);

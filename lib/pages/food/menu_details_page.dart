@@ -3,10 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:hawker_buddy/data_controller.dart';
+import 'package:hawker_buddy/controllers/backend_controller.dart';
+import 'package:hawker_buddy/controllers/data_controller.dart';
+import 'package:hawker_buddy/pages/home/home_Page.dart';
 import 'package:hawker_buddy/widgets/expandable_food.dart';
 
-import '../../routes/router_helper.dart';
+import '../../controllers/router_controller.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/app_column.dart';
 import '../../widgets/app_icons.dart';
@@ -21,8 +23,11 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+
   @override
   Widget build(BuildContext context) {
+    LinktoBackends.stallID = DataController.StallsID[widget.pageID];
+    DataController.PGPFoodDes[widget.pageID].removeWhere((item) => ["", null].contains(item));
     return Scaffold(
       body: Stack(
         children: [
@@ -58,7 +63,7 @@ class _MenuPageState extends State<MenuPage> {
                   //View Digital Menu
                   GestureDetector(
                       onTap: (){
-                        Get.toNamed(RouterHelper.initial);
+                        Get.to(HomePage());
                       },
                       child: AppIcons(icon: Icons.home,size:50)),
                 ],
@@ -72,7 +77,6 @@ class _MenuPageState extends State<MenuPage> {
               child: Container(
                 padding: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20, top:Dimensions.height20),
                 decoration: BoxDecoration(
-
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(Dimensions.radius20),
                         topLeft: Radius.circular(Dimensions.radius20)
@@ -95,6 +99,7 @@ class _MenuPageState extends State<MenuPage> {
                           itemBuilder: (context,index){
                             return GestureDetector(
                               onTap: () {
+                                RouterHelper.fromCart = false;
                                 RouterHelper.gettest(widget.pageID);
                                 RouterHelper.initialQuantity = 0;
                                 Get.toNamed(RouterHelper.getfooddetails(index));
@@ -103,22 +108,7 @@ class _MenuPageState extends State<MenuPage> {
                                 margin: EdgeInsets.only(right: Dimensions.width20, bottom: Dimensions.height10),
                                 child: Row(
                                   children: [
-                                    //image section
-                                    Container(
-                                      width:Dimensions.ListViewImgSize,
-                                      height:Dimensions.ListViewImgSize,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(Dimensions.radius20),
-                                          color: Colors.white,
-                                          image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: CachedNetworkImageProvider(
-                                                DataController.PGPFoodImgUrl[widget.pageID][index],
-                                              ),
-                                          )
-                                      ),
-                                    ),
-
+                                    LinktoBackends(index: 0).foodImage(context),
                                     //text container
                                     Expanded(
                                       child: Container(

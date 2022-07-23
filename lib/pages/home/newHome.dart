@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hawker_buddy/data_controller.dart';
+import 'package:hawker_buddy/controllers/data_controller.dart';
 import 'package:hawker_buddy/pages/home/stallsPage.dart';
-import 'package:hawker_buddy/utils/searchBar.dart';
+import 'package:hawker_buddy/controllers/search_controller.dart';
 
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';

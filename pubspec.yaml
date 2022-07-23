@@ -45,6 +45,7 @@ dependencies:
   cloud_firestore: ^3.1.17
   auto_reload: ^1.1.0
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

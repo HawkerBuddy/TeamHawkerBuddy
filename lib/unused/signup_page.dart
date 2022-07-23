@@ -1,15 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:hawker_buddy/SignIn/auth_controller.dart';
-import 'package:hawker_buddy/SignIn/googleSignIn.dart';
-import 'package:hawker_buddy/pages/user/login_page.dart';
-import 'package:hawker_buddy/utils/mocklist.dart';
-
-import '../../SignIn/google_sign_in.dart';
-import '../../utils/dimensions.dart';
+import 'package:hawker_buddy/controllers/auth_controller.dart';
+import 'package:hawker_buddy/unused/googleSignIn.dart';
+import 'package:hawker_buddy/unused/login_page.dart';
+import '../utils/dimensions.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -30,7 +25,7 @@ class SignUpPage extends StatelessWidget {
               Container(
                 width: w,
                 height: 0.3 * h,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
                         "assets/images/XINLI4.png"
@@ -41,7 +36,7 @@ class SignUpPage extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(height: h*0.18),
-                    CircleAvatar(
+                    const CircleAvatar(
                       //backgroundColor: Colors.pinkAccent,
                       radius: 40,
                       backgroundImage: AssetImage(
@@ -79,14 +74,14 @@ class SignUpPage extends StatelessWidget {
                             prefixIcon: Icon(Icons.email_outlined, color: Colors.orange,),
                             focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(25),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     color: Colors.white,
                                     width: 1.0
                                 )
                             ),
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(25),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     color: Colors.white,
                                     width: 1.0
                                 )
@@ -118,14 +113,14 @@ class SignUpPage extends StatelessWidget {
                             prefixIcon: Icon(Icons.password, color: Colors.orange,),
                             focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(25),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     color: Colors.white,
                                     width: 1.0
                                 )
                             ),
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(25),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     color: Colors.white,
                                     width: 1.0
                                 )
@@ -167,14 +162,14 @@ class SignUpPage extends StatelessWidget {
                   height: 0.09 * h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage(
                           "assets/images/yellow.png"
                       ),
                       fit: BoxFit.cover,
                     ),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "Sign up",
                       style: TextStyle(
@@ -216,10 +211,10 @@ class SignUpPage extends StatelessWidget {
                             radius: 30,
                             backgroundColor: Colors.white,
                             child: CircleAvatar(
-                              backgroundColor: Color(0),
+                              backgroundColor: const Color(0x00000000),
                               radius: Dimensions.width20,
-                              backgroundImage: AssetImage(
-                                "assets/images/" + mocklist.signup_images[index]
+                              backgroundImage: const AssetImage(
+                                "assets/images/log.png"
                               ),
                   ),
                           ),

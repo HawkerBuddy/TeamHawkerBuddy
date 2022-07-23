@@ -3,15 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:hawker_buddy/data/orders_made.dart';
+import 'package:hawker_buddy/data/models/orders_made.dart';
 import 'package:hawker_buddy/pages/home/home_Page.dart';
 import 'package:hawker_buddy/pages/home/newHome.dart';
 import 'package:hawker_buddy/widgets/small_text.dart';
 import 'package:hawker_buddy/widgets/unique_text.dart';
 
-import '../../data/cart_data.dart';
-import '../../data_controller.dart';
-import '../../routes/router_helper.dart';
+import '../../data/models/cart_data.dart';
+import '../../controllers/data_controller.dart';
+import '../../controllers/router_controller.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/app_icons.dart';
@@ -47,6 +47,9 @@ class _CartPageState extends State<CartPage> {
               child: ListView.builder(
                   itemCount: DataController.OrderStallName.length,
                   itemBuilder: (context, index){
+                    if(index >= DataController.OrderStallImgUrl.length) {
+                      index = 0;
+                    }
                     return Container(
                       height: 100,
                       width: double.maxFinite,

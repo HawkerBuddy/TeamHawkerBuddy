@@ -1,15 +1,17 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:hawker_buddy/SignIn/auth_controller.dart';
-import 'package:hawker_buddy/SignIn/googleSignIn.dart';
-import 'package:hawker_buddy/data_controller.dart';
+import 'package:hawker_buddy/controllers/auth_controller.dart';
+import 'package:hawker_buddy/unused/googleSignIn.dart';
+import 'package:hawker_buddy/controllers/data_controller.dart';
 import 'package:hawker_buddy/pages/home/home_Page.dart';
 import 'package:get/get.dart';
 import 'package:hawker_buddy/pages/home/newHome.dart';
-import 'package:hawker_buddy/routes/router_helper.dart';
-import 'data/stallDetails.dart';
-import 'helper/dependencies.dart' as base;
+import 'package:hawker_buddy/pages/splashes/splash_page.dart';
+import 'package:hawker_buddy/pages/user/login_google_page.dart';
+import 'package:hawker_buddy/controllers/router_controller.dart';
+import 'controllers/backend_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,10 +30,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false ,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: AuthController().handleAuthState(),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      //home:LoginGoogle(),
+      home:AuthController().handleAuthState(),
       //initialRoute: RouterHelper.getLoginPage(),
       getPages: RouterHelper.routes,
 

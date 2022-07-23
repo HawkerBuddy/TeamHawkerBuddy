@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hawker_buddy/data_controller.dart';
+import 'package:hawker_buddy/controllers/data_controller.dart';
 
-import '../SignIn/auth_controller.dart';
+import '../../controllers/auth_controller.dart';
 
 class CartData {
   int quantity = 0;

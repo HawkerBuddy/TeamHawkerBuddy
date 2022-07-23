@@ -8,7 +8,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:hawker_buddy/routes/router_helper.dart';
+import 'package:hawker_buddy/controllers/auth_controller.dart';
+import 'package:hawker_buddy/controllers/router_controller.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -33,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     //delay function
     Timer(
       Duration(seconds: 3),
-        ()=>Get.offNamed(RouterHelper.getinitial())
+        ()=>AuthController().handleAuthState()
     );
   }
 

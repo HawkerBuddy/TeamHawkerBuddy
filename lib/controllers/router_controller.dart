@@ -5,17 +5,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:hawker_buddy/pages/cart/cart_page.dart';
-import 'package:hawker_buddy/pages/orders/order_page.dart';
-import 'package:hawker_buddy/pages/food/Food_details.dart';
-import 'package:hawker_buddy/pages/food/menu_details.dart';
+import 'package:hawker_buddy/pages/cart/place_order_page.dart';
+import 'package:hawker_buddy/pages/food/Food_details_page.dart';
+import 'package:hawker_buddy/pages/food/menu_details_page.dart';
 import 'package:hawker_buddy/pages/home/home_Page.dart';
 import 'package:hawker_buddy/pages/home/newHome.dart';
-import 'package:hawker_buddy/pages/notification/message_page.dart';
 import 'package:hawker_buddy/pages/splashes/splash_page.dart';
-import 'package:hawker_buddy/pages/user/login_page.dart';
+import 'package:hawker_buddy/unused/login_page.dart';
 
-import '../data/cart_data.dart';
-import '../pages/user/signup_page.dart';
+import '../data/models/cart_data.dart';
+import '../unused/signup_page.dart';
 
 class RouterHelper{
   static const String splashPage = "/splash_page";
@@ -28,12 +27,13 @@ class RouterHelper{
   static const String cartPage = "/cart_page";
   static const String loginPage = "/login_page";
   static const String orderPage = "/order_page";
-  static const String messagePage = "/message_page";
   static const String test = "/login_page";
 
   static int pageID = 0;
   static CartData cart = CartData.delete();
   static int initialQuantity = 0;
+
+  static bool fromCart = false;
 //
   //$use to pass variables
   static String getSplashPage() => '$splashPage';
@@ -45,7 +45,6 @@ class RouterHelper{
   static String getLoginPage()=> "$loginPage";
   static String gettest(int test111)=> "$test?test = $test111";
   static String geOrderPage(int pgID) => "$orderPage?pgID=$pgID";
-  static String getMessagePage() => "$messagePage";
 
   static List<GetPage> routes = [
     //splash Page
@@ -85,8 +84,6 @@ class RouterHelper{
       var orderfoodID = Get.parameters['pgID'];
       return OrderPage(orderpageID: int.parse(orderfoodID!));}, transition: Transition.fadeIn),
 
-    //Message page
-    GetPage(name: messagePage, page: () => MessageApp()),
   ];
 
 

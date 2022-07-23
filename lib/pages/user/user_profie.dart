@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../SignIn/auth_controller.dart';
+import '../../controllers/auth_controller.dart';
 import '../../utils/dimensions.dart';
 
 
@@ -22,7 +22,7 @@ class WelcomePage extends StatelessWidget {
             Container(
               width: w,
               height: 0.3 * h,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
                       "assets/images/XINLI4.png"
@@ -71,22 +71,22 @@ class WelcomePage extends StatelessWidget {
             //sign out button
             GestureDetector(
               onTap: () {
-                AuthController().signOut();
-                //AuthController.instance.logout();
+                AuthController().signOut();//AuthController.instance.logout();
+                AuthController().handleAuthState();
               },
               child: Container(
                 width: w*0.5,
                 height: 0.09 * h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: AssetImage(
                         "assets/images/yellow.png"
                     ),
                     fit: BoxFit.cover,
                   ),
                 ),
-                child: Center(
+                child: const Center(
 
                   child: Text(
                     "Sign out",

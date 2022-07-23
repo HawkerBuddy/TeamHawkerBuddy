@@ -1,19 +1,10 @@
+
 /*   Hawker Buddy Orbital
  *   Main page with navigation bar
  */
 
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hawker_buddy/SignIn/auth_controller.dart';
-import 'package:hawker_buddy/pages/cart/cart_page.dart';
-import 'package:hawker_buddy/pages/notification/message_page.dart';
-import 'package:hawker_buddy/pages/splashes/splash_page.dart';
-import 'package:hawker_buddy/pages/user/welcome_page.dart';
 import 'package:hawker_buddy/routes/tabNavigator.dart';
-
-import '../user/login_page.dart';
-import 'newHome.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -73,15 +64,13 @@ class _HomePageState extends State<HomePage> {
 }
 */
 
-
-
 class _HomePageState extends State<HomePage> {
 
 
   int currentIndex = 0;
   String currentPage = "Page1";
   List<String> pageKeys = ["Page1", "Page2", "Page3", "Page4"];
-  Map<String, GlobalKey<NavigatorState>> _navigatorKeys = {
+  final Map<String, GlobalKey<NavigatorState>> _navigatorKeys = {
     "Page1": GlobalKey<NavigatorState>(),
     "Page2": GlobalKey<NavigatorState>(),
     "Page3": GlobalKey<NavigatorState>(),

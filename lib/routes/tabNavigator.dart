@@ -3,17 +3,16 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hawker_buddy/SignIn/auth_controller.dart';
-import 'package:hawker_buddy/data/stallDetails.dart';
-import 'package:hawker_buddy/data_controller.dart';
+import 'package:hawker_buddy/controllers/auth_controller.dart';
+import 'package:hawker_buddy/controllers/backend_controller.dart';
+import 'package:hawker_buddy/controllers/data_controller.dart';
 import 'package:hawker_buddy/pages/home/newHome.dart';
 import 'package:hawker_buddy/pages/home/stallsPage.dart';
 import 'package:hawker_buddy/pages/orders/order_history.dart';
-import 'package:hawker_buddy/pages/user/welcome_page.dart';
+import 'package:hawker_buddy/pages/user/user_profie.dart';
 import '../pages/cart/cart_page.dart';
 import '../pages/home/home_Page.dart';
-import '../pages/notification/message_page.dart';
-import '../pages/user/login_page.dart';
+import '../unused/login_page.dart';
 
 class tabNavi extends StatefulWidget {
   final GlobalKey<NavigatorState> navigatorKey;
@@ -30,14 +29,14 @@ class _tabNaviState extends State<tabNavi> {
   @override
   Widget build(BuildContext context) {
     Widget child = stallsPage();
-
+    getData();
     if(widget.tabItem == "Page1")
       child = homepage();
-    else if(widget.tabItem == "Page2")
-      child = OrderHistory();
 
+    else if(widget.tabItem == "Page2") {
+      child = OrderHistory();
+    }
     else if(widget.tabItem == "Page3") {
-      getData();
       for(int x = 0; x< DataController.OrderStallName.length; x++){
         print(DataController.OrderStallName[x]);
       }

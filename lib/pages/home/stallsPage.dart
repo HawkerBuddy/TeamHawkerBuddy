@@ -2,16 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:hawker_buddy/SignIn/auth_controller.dart';
-import 'package:hawker_buddy/data/orders_made.dart';
-import 'package:hawker_buddy/data_controller.dart';
-import 'package:hawker_buddy/routes/router_helper.dart';
-import 'package:hawker_buddy/utils/mocklist.dart';
+import 'package:hawker_buddy/controllers/data_controller.dart';
+import 'package:hawker_buddy/controllers/router_controller.dart';
 import 'package:hawker_buddy/widgets/app_column.dart';
 
-import '../../data/IDdetails.dart';
-import '../../data/stallDetails.dart';
+import '../../controllers/backend_controller.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/icon_and_text.dart';
@@ -63,7 +58,7 @@ class stallsPageState extends State<stallsPage> {
     return Column(
       children: [
         //Container Widget with Slider of 5 items
-        Container(
+        SizedBox(
           //color: Colors.redAccent,
           //change to dynamic dimensions
           height: 250,
@@ -79,7 +74,7 @@ class stallsPageState extends State<stallsPage> {
         ),
 
         //dots slide bar with preset of 5 dots
-        new DotsIndicator(
+        DotsIndicator(
           dotsCount: DataController.PGPStallNames.length,
           position: currentPageValue,
           decorator: DotsDecorator(
@@ -101,13 +96,9 @@ class stallsPageState extends State<stallsPage> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children:[
               uniqueText(text: 'Featured Stalls'),
-              Container(
-                child:Icon(Icons.food_bank, color: AppColors.icon1),
-              ),
+              Icon(Icons.food_bank, color: AppColors.icon1),
               //SizedBox(width: Dimensions.width10,),
-              Container(
-                child: miniText(text:"Promotions"),
-              ),
+              miniText(text:"Promotions"),
             ]
 
           ),
@@ -117,7 +108,7 @@ class stallsPageState extends State<stallsPage> {
         //use Container( height: xxxx for debugging)
         ListView.builder(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: DataController.PGPStallNames.length,
               itemBuilder: (context,index){
             return GestureDetector(
@@ -137,7 +128,8 @@ class stallsPageState extends State<stallsPage> {
                         color: Colors.white,
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: CachedNetworkImageProvider(DataController.StallsUrl[index]),
+                          image: AssetImage("assets/images/XINLI4.png")
+                         //image: NetworkImage(DataController.StallsUrl[0]),
                         )
                       ),
                     ),
@@ -206,7 +198,7 @@ class stallsPageState extends State<stallsPage> {
   Widget buildPageItem(int index){
 
     //scaling function
-    Matrix4 matrix = new Matrix4.identity();
+    Matrix4 matrix = Matrix4.identity();
 
     LinktoBackends img = LinktoBackends(index: index);
 
@@ -243,9 +235,8 @@ class stallsPageState extends State<stallsPage> {
       transform: matrix,
       child: Stack(
           children: [
-
             //Container containing sliding images animations
-            Container(
+            SizedBox(
               height: 180,
               child: GestureDetector(
                 onTap: () {
@@ -255,7 +246,7 @@ class stallsPageState extends State<stallsPage> {
               ),
             ),
             //Align Widget containing the details about sliding images
-            Container(
+            SizedBox(
               height: 500,
               child: Align(
                 alignment: Alignment.bottomCenter,
@@ -266,13 +257,13 @@ class stallsPageState extends State<stallsPage> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(Dimensions.radius20),
                       color: Colors.white,
-                      boxShadow: [
+                      boxShadow: const [
                         //shadow effects for container
                         BoxShadow(
                             color: Color(0xFFe8e8e8),
                             //adjusting the how blur it will be
                             blurRadius: 5.0,
-                            //offset pixles
+                            //offset pixels
                             offset: Offset(0,5)
                         ),
                         BoxShadow(
@@ -285,7 +276,7 @@ class stallsPageState extends State<stallsPage> {
                         )
                       ]
                   ),
-                  //Container Widget including the text xxxx
+                  //Container Widget including the text
                   child: Container(
                     padding: EdgeInsets.only(top:Dimensions.height5, left: Dimensions.width15, right: Dimensions.width15),
                     child: AppColumn(text:DataController.SliderText[index]),
