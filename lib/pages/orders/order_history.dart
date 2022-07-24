@@ -60,7 +60,7 @@ class _OrderHistoryState extends State<OrderHistory> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: Dimensions.width10/2),
+                            SizedBox(width: Dimensions.width10 / 2),
                             Expanded(
                                 child: SizedBox(
                               height: Dimensions.height20 * 5,
@@ -70,8 +70,10 @@ class _OrderHistoryState extends State<OrderHistory> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   uniqueText(
-                                      text: DataController
-                                          .HistoryStallName[index],size: Dimensions.font15,),
+                                    text:
+                                        DataController.HistoryStallName[index],
+                                    size: Dimensions.font15,
+                                  ),
                                   //miniText(text: "Order History on"),
                                   SingleChildScrollView(
                                     child: Row(
@@ -82,24 +84,22 @@ class _OrderHistoryState extends State<OrderHistory> {
                                           text: DataController
                                               .HistoryOrderTime[index],
                                           color: AppColors.blue,
-                                          size: Dimensions.font15/1.5,
+                                          size: Dimensions.font15 / 1.5,
                                         ),
                                         GestureDetector(
                                           onTap: () {
                                             for (int x = 0;
                                                 x <
                                                     DataController
-                                                            .HistoryOrderTime
-                                                            .length -
-                                                        DataController
-                                                            .PGPStallNames.length;
+                                                        .PGPStallNames.length;
                                                 x++) {
                                               if (DataController
-                                                      .HistoryStallName[index] ==
+                                                      .PGPStallNames[x] ==
                                                   DataController
-                                                      .PGPStallNames[index]) {
+                                                          .HistoryStallName[
+                                                      index]) {
                                                 Get.toNamed(
-                                                    RouterHelper.getMenu(index));
+                                                    RouterHelper.getMenu(x));
                                               }
                                             }
                                           },
@@ -113,7 +113,8 @@ class _OrderHistoryState extends State<OrderHistory> {
                                             decoration: BoxDecoration(
                                                 borderRadius: BorderRadius.only(
                                                     topLeft: Radius.circular(
-                                                        Dimensions.radius20 * 2),
+                                                        Dimensions.radius20 *
+                                                            2),
                                                     topRight: Radius.circular(
                                                         Dimensions.radius20 *
                                                             2))),
