@@ -57,10 +57,30 @@ class _OrderPageState extends State<OrderPage> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  //DataController.addDoc("user", DataController.user);
-                                  //DataController.read("user");
-                                  //DataController.create();
-                                  //Get.toNamed()
+                                  for (int y = 0;
+                                      y <
+                                          DataController
+                                              .PGPFoodName[
+                                                  RouterHelper.stallOrders]
+                                              .length;
+                                      y++) {
+                                    if (DataController.OrderFoodName[
+                                            widget.orderpageID][index] ==
+                                        DataController.PGPFoodName[
+                                            RouterHelper.stallOrders][y]) {
+                                      RouterHelper.foodOrders = y;
+                                    }
+                                  }
+                                  RouterHelper.pageID =
+                                      RouterHelper.stallOrders;
+                                  RouterHelper.initialQuantity = DataController
+                                      .OrderFoodSize[widget.orderpageID][index];
+                                  RouterHelper.fromCart = true;
+                                  Get.toNamed(
+
+                                      //bug faced because different orders wrong page opens when editing items
+                                      RouterHelper.getfooddetails(
+                                          RouterHelper.foodOrders));
                                 },
                                 child: Container(
                                   width: Dimensions.height20 * 5,
@@ -121,18 +141,17 @@ class _OrderPageState extends State<OrderPage> {
                                                           2))),
                                           child: GestureDetector(
                                             onTap: () {
-                                              RouterHelper.pageID =
-                                                  widget.orderpageID;
-                                              RouterHelper.initialQuantity =
-                                                  DataController.OrderFoodSize[
-                                                          widget.orderpageID]
-                                                      [index];
-                                              RouterHelper.fromCart = true;
-                                              Get.toNamed(
-
-                                                //bug faced because different orders wrong page opens when editing items
-                                                  RouterHelper.getfooddetails(
-                                                      index));
+                                              RouterHelper.cart
+                                                  .deleteFoodDocument(
+                                                      DataController.StallsID[
+                                                          RouterHelper
+                                                              .stallOrders],
+                                                      DataController
+                                                                  .OrderFoodID[
+                                                              widget
+                                                                  .orderpageID]
+                                                          [index]);
+                                              Get.to(() => HomePage());
                                             },
                                             child: Container(
                                               //height: Dimensions.height30,
@@ -149,7 +168,7 @@ class _OrderPageState extends State<OrderPage> {
                                               ),
                                               child: Center(
                                                   child: uniqueText(
-                                                text: 'Edit Item',
+                                                text: 'Remove',
                                                 color: AppColors.black,
                                                 size: Dimensions.font15,
                                               )),

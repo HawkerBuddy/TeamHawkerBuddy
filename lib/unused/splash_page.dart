@@ -18,24 +18,23 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin{
-  
+class _SplashScreenState extends State<SplashScreen>
+    with TickerProviderStateMixin {
   late Animation<double> animation;
   late AnimationController controller;
-  
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
     //init animation controller and created object and use dot operator calling inner class method
-    controller = AnimationController(vsync: this, duration: Duration(seconds: 2))..forward();
+    controller =
+        AnimationController(vsync: this, duration: Duration(seconds: 2))
+          ..forward();
     //type of animation
     animation = CurvedAnimation(parent: controller, curve: Curves.linear);
 
     //delay function
-    Timer(
-      Duration(seconds: 3),
-        ()=>AuthController().handleAuthState()
-    );
+    Timer(Duration(seconds: 3), () => AuthController().handleAuthState());
   }
 
   @override
@@ -43,19 +42,19 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     controller.dispose(); // you need this
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children:[
-          ScaleTransition(scale: animation,
-          child: Center(child: Image.asset("assets/images/logo.png"))),
-      ],
+        children: [
+          ScaleTransition(
+              scale: animation,
+              child: Center(child: Image.asset("assets/images/logo.png"))),
+        ],
       ),
-      
     );
   }
 }

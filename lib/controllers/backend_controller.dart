@@ -132,6 +132,42 @@ class LinktoBackends {
         });
   }
 
+  Widget featuredStallImage(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection('Canteen')
+            .doc('PGP')
+            .collection('Stalls')
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.radius25),
+                  color: Colors.white),
+            );
+          }
+          return Container(
+            width: Dimensions.ListViewImgSize,
+            height: Dimensions.ListViewImgSize,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
+                color: Colors.white,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: CachedNetworkImageProvider(
+                      snapshot.data?.docs[index]['stallImage']),
+                )),
+            /* child: CachedNetworkImage(
+              imageUrl: snapshot.data?.docs[index]['stallImage'],
+              fit: BoxFit.cover,
+            )
+
+             */
+          );
+        });
+  }
+
   //Helper function to retrieve Menu Details
   Future<List<String>> _menuHelper(String stallID, String output) async {
     List<String> saveName = [];
@@ -380,6 +416,22 @@ class LinktoBackends {
 
     for (int i = 0; i < stallID.length; i++) {
       List<int> noOfFood = await _path2(stallID[i], "totalPrice");
+
+      for (int j = 0; j < noOfFood.length; j++) {
+        food[i][j] = noOfFood[j];
+      }
+    }
+    food.removeWhere((item) => ["", null].contains(item));
+    return food;
+  }
+
+  Future<List<List<String>>> orderfoodID(List<String> stallID) async {
+    List<List<String>> food = List.generate(
+        10, (i) => List.filled(10, "", growable: true),
+        growable: true);
+
+    for (int i = 0; i < stallID.length; i++) {
+      List<String> noOfFood = await _path(stallID[i], "foodID");
 
       for (int j = 0; j < noOfFood.length; j++) {
         food[i][j] = noOfFood[j];

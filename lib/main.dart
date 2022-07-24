@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 //Function to load Data from the backends
 Future<void> loadData() async {
   LinktoBackends data = LinktoBackends(index: 0);
@@ -48,6 +49,21 @@ Future<void> loadData() async {
   DataController.PGPFoodDes = await data.foodDes(DataController.StallsID);
   DataController.PGPFoodPrice = await data.foodPrice(DataController.StallsID);
   DataController.PGPFoodID = await data.foodID(DataController.StallsID);
+
+  DataController.OrderStallID = await data.orderGetStallID();
+  DataController.OrderStallName = await data.orderGetStallName();
+  DataController.OrderStallImgUrl = await data.orderGetStallUrl();
+  DataController.OrderFoodName =
+      await data.orderfoodName(DataController.OrderStallID);
+  DataController.OrderFoodURl =
+      await data.orderfoodUrl(DataController.OrderStallID);
+  DataController.OrderFoodDes =
+      await data.orderfoodDes(DataController.OrderStallID);
+  DataController.OrderFoodSize =
+      await data.orderfoodSize(DataController.OrderStallID);
+  DataController.OrderFoodID =
+      await data.orderfoodID(DataController.OrderStallID);
+
   DataController.HistoryStallName = await data.historyStallName();
   DataController.HistoryOrderTime = await data.historyOrderTime();
 }

@@ -53,7 +53,7 @@ class Orders {
       if (status != null) "status": status,
       if (totalPrice != null) "totalPrice": totalPrice,
       if (foodPrice != null) "foodPrice": foodPrice,
-      if (foodNames !=null) "foodNames" :foodNames,
+      if (foodNames != null) "foodNames": foodNames,
     };
   }
 

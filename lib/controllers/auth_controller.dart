@@ -10,8 +10,7 @@ import 'package:hawker_buddy/pages/home/home_Page.dart';
 import 'package:hawker_buddy/pages/user/login_google_page.dart';
 
 //navigating the user to different pages
-class AuthController extends GetxController{
-
+class AuthController extends GetxController {
   static String? userId;
   static String? userName;
   static String? img;
@@ -20,8 +19,7 @@ class AuthController extends GetxController{
     return StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (BuildContext context, snapshot) {
-
-          if(snapshot.hasData){
+          if (snapshot.hasData) {
             userId = FirebaseAuth.instance.currentUser!.email;
             userName = FirebaseAuth.instance.currentUser!.displayName;
             img = FirebaseAuth.instance.currentUser!.photoURL;
@@ -29,20 +27,18 @@ class AuthController extends GetxController{
           } else {
             return const LoginGoogle();
           }
-
         });
   }
 
-  signInWithGoogle() async{
-
+  signInWithGoogle() async {
     //Trigger Authentic Flow
-    final GoogleSignInAccount? goolgeUser = await GoogleSignIn(
-        scopes: <String>["email"]).signIn();
+    final GoogleSignInAccount? goolgeUser =
+        await GoogleSignIn(scopes: <String>["email"]).signIn();
 
-    if(goolgeUser !=null) {
+    if (goolgeUser != null) {
       //Obtain Auth details
-      final GoogleSignInAuthentication googleAuth = await goolgeUser
-          .authentication;
+      final GoogleSignInAuthentication googleAuth =
+          await goolgeUser.authentication;
 
       //create a new credential
       final credential = GoogleAuthProvider.credential(
@@ -54,8 +50,7 @@ class AuthController extends GetxController{
     }
   }
 
-
-  signOut(){
+  signOut() {
     FirebaseAuth.instance.signOut();
   }
   /*

@@ -10,7 +10,10 @@ import 'icon_and_text.dart';
 
 class AppColumn extends StatelessWidget {
   final String text;
-  const AppColumn({Key? key, required this.text,}) : super(key: key);
+  const AppColumn({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,22 +21,26 @@ class AppColumn extends StatelessWidget {
       //aligning y axis
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        uniqueText(text: text,size: Dimensions.font15),
+        uniqueText(text: text, size: Dimensions.font15),
         //SizedBox(height:10),
         //SizedBox(height: Dimensions.height5),
         Row(
           children: [
             Wrap(
-              //creating a list of children
-                children: List.generate(5,(index)=> Icon(Icons.star, color: AppColors.mainColor,size: Dimensions.font15,))
-            ),
+                //creating a list of children
+                children: List.generate(
+                    5,
+                    (index) => Icon(
+                          Icons.star,
+                          color: AppColors.mainColor,
+                          size: Dimensions.font15,
+                        ))),
             SizedBox(width: Dimensions.width10),
             miniText(text: "5"),
             SizedBox(width: Dimensions.width10),
             miniText(text: "9873"),
             SizedBox(width: Dimensions.width10),
             miniText(text: "reviews")
-
           ],
         ),
         SizedBox(height: Dimensions.height5),
@@ -43,17 +50,17 @@ class AppColumn extends StatelessWidget {
             IconsAndText(
               icon: Icons.circle_sharp,
               text: "Open",
-              iconColor: AppColors.iconshopopen ,
+              iconColor: AppColors.iconshopopen,
             ),
             IconsAndText(
               icon: Icons.location_on,
               text: "100km",
-              iconColor: AppColors.iconlocation ,
+              iconColor: AppColors.iconlocation,
             ),
             IconsAndText(
               icon: Icons.access_time_rounded,
               text: "20min",
-              iconColor: AppColors.iconque ,
+              iconColor: AppColors.iconque,
             )
           ],
         ),

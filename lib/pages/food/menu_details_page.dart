@@ -21,19 +21,18 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
-
   @override
   Widget build(BuildContext context) {
     LinktoBackends.stallID = DataController.StallsID[widget.pageID];
-    DataController.PGPFoodDes[widget.pageID].removeWhere((item) => ["", null].contains(item));
+    DataController.PGPFoodDes[widget.pageID]
+        .removeWhere((item) => ["", null].contains(item));
     return Scaffold(
       body: Stack(
         children: [
           Positioned(
               left: 0,
               right: 0,
-              child:
-              Container(
+              child: Container(
                 width: double.maxFinite,
                 height: Dimensions.foodImgSize,
                 decoration: BoxDecoration(
@@ -41,10 +40,8 @@ class _MenuPageState extends State<MenuPage> {
                         fit: BoxFit.cover,
                         image: CachedNetworkImageProvider(
                           DataController.StallsUrl[widget.pageID],
-                        )
-                    )
-                )
-                ,)),
+                        ))),
+              )),
           //icons
           Positioned(
               top: Dimensions.height45,
@@ -55,15 +52,16 @@ class _MenuPageState extends State<MenuPage> {
                 children: [
                   GestureDetector(
                       onTap: () {
-                       Get.back();
+                        Get.back();
                       },
-                      child: AppIcons(icon: Icons.arrow_back_outlined,size:50)),
+                      child:
+                          AppIcons(icon: Icons.arrow_back_outlined, size: 50)),
                   //View Digital Menu
                   GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Get.to(const HomePage());
                       },
-                      child: AppIcons(icon: Icons.home,size:50)),
+                      child: AppIcons(icon: Icons.home, size: 50)),
                 ],
               )),
 
@@ -71,30 +69,35 @@ class _MenuPageState extends State<MenuPage> {
               left: 0,
               right: 0,
               bottom: 0,
-              top: Dimensions.foodImgSize -20,
+              top: Dimensions.foodImgSize - 20,
               child: Container(
-                padding: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20, top:Dimensions.height20),
+                padding: EdgeInsets.only(
+                    left: Dimensions.width20,
+                    right: Dimensions.width20,
+                    top: Dimensions.height20),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(Dimensions.radius20),
-                        topLeft: Radius.circular(Dimensions.radius20)
-                    ),
-                    color: Colors.white
-                ),
+                        topLeft: Radius.circular(Dimensions.radius20)),
+                    color: Colors.white),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AppColumn(text:DataController.PGPStallNames[widget.pageID],),
-                      SizedBox(height:Dimensions.height10),
-                      uniqueText(text: "About us",size:20),
-                      SizedBox(height:Dimensions.height10),
-                      ExpandableFood(text: DataController.PGPStallDes[widget.pageID]),
+                      AppColumn(
+                        text: DataController.PGPStallNames[widget.pageID],
+                      ),
+                      SizedBox(height: Dimensions.height10),
+                      uniqueText(text: "About us", size: 20),
+                      SizedBox(height: Dimensions.height10),
+                      ExpandableFood(
+                          text: DataController.PGPStallDes[widget.pageID]),
                       ListView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: DataController.PGPFoodDes[widget.pageID].length,
-                          itemBuilder: (context,index){
+                          itemCount:
+                              DataController.PGPFoodDes[widget.pageID].length,
+                          itemBuilder: (context, index) {
                             return GestureDetector(
                               onTap: () {
                                 RouterHelper.fromCart = false;
@@ -103,39 +106,54 @@ class _MenuPageState extends State<MenuPage> {
                                 Get.toNamed(RouterHelper.getfooddetails(index));
                               },
                               child: Container(
-                                margin: EdgeInsets.only(right: Dimensions.width20, bottom: Dimensions.height10),
+                                margin: EdgeInsets.only(
+                                    right: Dimensions.width20,
+                                    bottom: Dimensions.height10),
                                 child: Row(
                                   children: [
-                                    LinktoBackends(index: 0).foodImage(context),
+                                    LinktoBackends(index: index)
+                                        .foodImage(context),
                                     //text container
                                     Expanded(
                                       child: Container(
-                                        height:Dimensions.ListViewTextContSize,
+                                        height: Dimensions.ListViewTextContSize,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.only(
-                                              topRight: Radius.circular(Dimensions.radius20),
-                                              bottomRight: Radius.circular(Dimensions.radius20)
-                                          ),
+                                              topRight: Radius.circular(
+                                                  Dimensions.radius20),
+                                              bottomRight: Radius.circular(
+                                                  Dimensions.radius20)),
                                           color: Colors.white38,
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsets.only(left: Dimensions.width10),
+                                          padding: EdgeInsets.only(
+                                              left: Dimensions.width10),
                                           child: Column(
-
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
-
-                                              uniqueText(text: DataController.PGPFoodName[widget.pageID][index]),
-                                              SizedBox(height: Dimensions.height10),
+                                              uniqueText(
+                                                  text: DataController
+                                                          .PGPFoodName[
+                                                      widget.pageID][index]),
+                                              SizedBox(
+                                                  height: Dimensions.height10),
                                               Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
                                                   Expanded(
-                                                    child: Text(DataController.PGPFoodDes[widget.pageID][index],
-                                                    overflow: TextOverflow.fade,
-                                                    maxLines: 2,
-                                                    softWrap: false,),
+                                                    child: Text(
+                                                      DataController.PGPFoodDes[
+                                                          widget.pageID][index],
+                                                      overflow:
+                                                          TextOverflow.fade,
+                                                      maxLines: 2,
+                                                      softWrap: false,
+                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -143,7 +161,6 @@ class _MenuPageState extends State<MenuPage> {
                                           ),
                                         ),
                                       ),
-
                                     ),
                                   ],
                                 ),
@@ -153,10 +170,7 @@ class _MenuPageState extends State<MenuPage> {
                     ],
                   ),
                 ),
-
               )),
-          
-
         ],
       ),
     );

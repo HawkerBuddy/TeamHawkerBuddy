@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hawker_buddy/utils/colors.dart';
@@ -29,21 +28,24 @@ class _MessageAppState extends State<MessageApp> {
   PreferredSizeWidget appBar() {
     return AppBar(
       backgroundColor: AppColors.mainColor,
-      title: uniqueText( text: 'Notifications',),
+      title: uniqueText(
+        text: 'Notifications',
+      ),
     );
-
   }
 
-  Widget listView(){
-    
-    return ListView.separated(itemBuilder: (context, index) {
-
-      return listViewItem(index);
-      }, separatorBuilder: (context, index) {
-      return Divider(height: 5); }, itemCount: 1);
+  Widget listView() {
+    return ListView.separated(
+        itemBuilder: (context, index) {
+          return listViewItem(index);
+        },
+        separatorBuilder: (context, index) {
+          return Divider(height: 5);
+        },
+        itemCount: 1);
   }
 
-  Widget listViewItem(int index){
+  Widget listViewItem(int index) {
     return Container(
       //color: Colors.blue,
       margin: EdgeInsets.only(left: 10),
@@ -57,7 +59,6 @@ class _MessageAppState extends State<MessageApp> {
           timeAndDate(index),
         ],
       ),
-
     );
   }
 
@@ -66,19 +67,19 @@ class _MessageAppState extends State<MessageApp> {
   }
 
   Widget timeAndDate(int index) {
-
     return Container(
-      margin:EdgeInsets.only(top:5),
-      
+      margin: EdgeInsets.only(top: 5),
       child: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        AppIcons(icon: Icons.circle,size:20, backgroundColor: Colors.red,iconColor: Colors.red),
-        SizedBox(width: Dimensions.width30),
-        uniqueText(text: "27/6 1200pm"),
-
-
-      ],  
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          AppIcons(
+              icon: Icons.circle,
+              size: 20,
+              backgroundColor: Colors.red,
+              iconColor: Colors.red),
+          SizedBox(width: Dimensions.width30),
+          uniqueText(text: "27/6 1200pm"),
+        ],
       ),
     );
   }

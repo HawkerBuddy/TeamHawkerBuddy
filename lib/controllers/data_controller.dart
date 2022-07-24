@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DataController {
@@ -9,22 +8,41 @@ class DataController {
   static List<String> StallsUrl = [""];
   static List<String> PGPStallNames = [""];
   static List<String> PGPStallDes = [""];
-  static List<List<String>> PGPFoodName = [[""]];
-  static List<List<String>> PGPFoodImgUrl = [[""]];
-  static List<List<String>> PGPFoodDes = [[""]];
-  static List<List<String>> PGPFoodPrice = [[""]];
-  static List<List<String>> PGPFoodID = [[""]];
+  static List<List<String>> PGPFoodName = [
+    [""]
+  ];
+  static List<List<String>> PGPFoodImgUrl = [
+    [""]
+  ];
+  static List<List<String>> PGPFoodDes = [
+    [""]
+  ];
+  static List<List<String>> PGPFoodPrice = [
+    [""]
+  ];
+  static List<List<String>> PGPFoodID = [
+    [""]
+  ];
 
   static List<String> OrderStallID = [""];
   static List<String> OrderStallName = [""];
   static List<String> OrderStallImgUrl = [""];
-  static List<List<String>> OrderFoodName = [[""]];
-  static List<List<String>> OrderFoodURl = [[""]];
-  static List<List<String>> OrderFoodDes = [[""]];
-  static List<List<int>> OrderFoodSize = [[0]];
+  static List<List<String>> OrderFoodName = [
+    [""]
+  ];
+  static List<List<String>> OrderFoodURl = [
+    [""]
+  ];
+  static List<List<String>> OrderFoodDes = [
+    [""]
+  ];
+  static List<List<int>> OrderFoodSize = [
+    [0]
+  ];
+  static List<List<String>> OrderFoodID = [
+    [""]
+  ];
 
   static List<String> HistoryStallName = [""];
   static List<String> HistoryOrderTime = [""];
-
-
 }

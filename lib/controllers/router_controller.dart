@@ -30,6 +30,8 @@ class RouterHelper {
   static CartData cart = CartData.delete();
   static int initialQuantity = 0;
 
+  static int stallOrders = 0;
+  static int foodOrders = 0;
   static bool fromCart = false;
 //
   //$use to pass variables
@@ -52,7 +54,9 @@ class RouterHelper {
 
     //HomePage
     GetPage(
-        name: initial, page: () => const HomePage(), transition: Transition.fadeIn),
+        name: initial,
+        page: () => const HomePage(),
+        transition: Transition.fadeIn),
     //food Details Page
     GetPage(
         name: fooddetails,
@@ -84,7 +88,9 @@ class RouterHelper {
 
     //CartPage
     GetPage(
-        name: cartPage, page: () => const CartPage(), transition: Transition.fadeIn),
+        name: cartPage,
+        page: () => const CartPage(),
+        transition: Transition.fadeIn),
 
     //LoginPage
     GetPage(

@@ -34,7 +34,7 @@ class _homepageState extends State<homepage> {
                     boxShadow: [
                       BoxShadow(
                           blurRadius: Dimensions.radius10,
-                          spreadRadius: Dimensions.radius10*0.7,
+                          spreadRadius: Dimensions.radius10 * 0.7,
                           offset: const Offset(1, 1),
                           color: Colors.grey.withOpacity(0.3))
                     ]),
@@ -51,15 +51,20 @@ class _homepageState extends State<homepage> {
                             color: AppColors.mainColor,
                           )),
                       focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(Dimensions.radius30),
-                          borderSide:
-                              BorderSide(color: Colors.white, width: Dimensions.width10/10)),
+                          borderRadius:
+                              BorderRadius.circular(Dimensions.radius30),
+                          borderSide: BorderSide(
+                              color: Colors.white,
+                              width: Dimensions.width10 / 10)),
                       enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(Dimensions.radius30),
-                          borderSide:
-                              BorderSide(color: Colors.white, width: Dimensions.width10/10)),
+                          borderRadius:
+                              BorderRadius.circular(Dimensions.radius30),
+                          borderSide: BorderSide(
+                              color: Colors.white,
+                              width: Dimensions.width10 / 10)),
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(Dimensions.radius30))),
+                          borderRadius:
+                              BorderRadius.circular(Dimensions.radius30))),
                 ),
               ),
             ),

@@ -3,7 +3,6 @@ import 'package:hawker_buddy/controllers/auth_controller.dart';
 import 'package:hawker_buddy/utils/colors.dart';
 import 'package:hawker_buddy/utils/dimensions.dart';
 
-
 class LoginGoogle extends StatefulWidget {
   const LoginGoogle({Key? key}) : super(key: key);
 
@@ -87,11 +86,11 @@ class _LoginGoogleState extends State<LoginGoogle> {
                 fit: BoxFit.cover,
               ),
             ),
-            child:  Center(
+            child: Center(
               child: Text(
                 "Sign-in with Email",
                 style: TextStyle(
-                  fontSize: Dimensions.font15*2,
+                  fontSize: Dimensions.font15 * 2,
                   //fontWeight: FontWeight.bold,
                   color: AppColors.black,
                 ),

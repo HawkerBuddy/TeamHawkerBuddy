@@ -79,8 +79,9 @@ class _FoodDetailsState extends State<FoodDetails> {
                       onTap: () {
                         Get.back();
                       },
-                      child:
-                          AppIcons(icon: Icons.arrow_back_outlined, size: Dimensions.iconSize50)),
+                      child: AppIcons(
+                          icon: Icons.arrow_back_outlined,
+                          size: Dimensions.iconSize50)),
                   //View Digital Menu
                   GestureDetector(
                       onTap: () {
@@ -93,7 +94,9 @@ class _FoodDetailsState extends State<FoodDetails> {
                       },
                       child: RouterHelper.fromCart
                           ? AppIcons(icon: Icons.shopping_cart)
-                          : AppIcons(icon: Icons.menu_book, size: Dimensions.iconSize50)),
+                          : AppIcons(
+                              icon: Icons.menu_book,
+                              size: Dimensions.iconSize50)),
                 ],
               )),
           Positioned(
@@ -122,10 +125,9 @@ class _FoodDetailsState extends State<FoodDetails> {
                     SizedBox(height: Dimensions.height10),
                     Expanded(
                       child: SingleChildScrollView(
-                          child:
-                              ExpandableFood(
-                                  text: DataController.PGPFoodDes[widget.pageId]
-                                      [widget.foodID])),
+                          child: ExpandableFood(
+                              text: DataController.PGPFoodDes[widget.pageId]
+                                  [widget.foodID])),
                     ), //ExpandableFood(text: "hi"),
                   ],
                 ),
@@ -133,7 +135,7 @@ class _FoodDetailsState extends State<FoodDetails> {
         ],
       ),
       bottomNavigationBar: Container(
-        height: Dimensions.height50*2,
+        height: Dimensions.height50 * 2,
         padding: EdgeInsets.only(
             top: Dimensions.height30,
             left: Dimensions.width20,
@@ -270,10 +272,8 @@ class _FoodDetailsState extends State<FoodDetails> {
                   color: AppColors.mainColor,
                 ),
                 child: uniqueText(
-                    text: '\$${(double.parse(DataController.PGPFoodPrice[widget.pageId]
-                                    [widget.foodID]) *
-                                widget.count)
-                            .toStringAsFixed(2)}| Add to Cart',
+                    text:
+                        '\$${(double.parse(DataController.PGPFoodPrice[widget.pageId][widget.foodID]) * widget.count).toStringAsFixed(2)}| Add to Cart',
                     color: Colors.black54),
               ),
             )
