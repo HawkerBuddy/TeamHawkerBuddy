@@ -39,7 +39,7 @@ class _CartPageState extends State<CartPage> {
                         if (index >= DataController.OrderStallImgUrl.length) {
                           index = 0;
                         }
-                        return Container(
+                        return SizedBox(
                           height: Dimensions.height50 * 2,
                           width: double.maxFinite,
                           child: Row(

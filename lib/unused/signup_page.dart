@@ -1,9 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hawker_buddy/controllers/auth_controller.dart';
-import 'package:hawker_buddy/unused/googleSignIn.dart';
-import 'package:hawker_buddy/unused/login_page.dart';
 import '../utils/dimensions.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -57,7 +54,7 @@ class SignUpPage extends StatelessWidget {
                         BoxShadow(
                             blurRadius: 10,
                             spreadRadius: 7,
-                            offset: Offset(1, 1),
+                            offset: const Offset(1, 1),
                             color: Colors.grey.withOpacity(0.3))
                       ]),
                   child: TextField(
@@ -65,7 +62,7 @@ class SignUpPage extends StatelessWidget {
                     //obscureText: true,
                     decoration: InputDecoration(
                         hintText: "Email Address",
-                        prefixIcon: Icon(
+                        prefixIcon: const Icon(
                           Icons.email_outlined,
                           color: Colors.orange,
                         ),
@@ -90,7 +87,7 @@ class SignUpPage extends StatelessWidget {
                         BoxShadow(
                             blurRadius: 10,
                             spreadRadius: 7,
-                            offset: Offset(1, 1),
+                            offset: const Offset(1, 1),
                             color: Colors.grey.withOpacity(0.3))
                       ]),
                   child: TextField(
@@ -98,7 +95,7 @@ class SignUpPage extends StatelessWidget {
                     //obscureText: true,
                     decoration: InputDecoration(
                         hintText: "Password",
-                        prefixIcon: Icon(
+                        prefixIcon: const Icon(
                           Icons.password,
                           color: Colors.orange,
                         ),

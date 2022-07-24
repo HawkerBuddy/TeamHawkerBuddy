@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hawker_buddy/pages/food/Food_details_page.dart';
 
 import 'data_controller.dart';
-import '../utils/colors.dart';
 
 class SearchBar extends SearchDelegate {
   static List<String> foodName = converter(DataController.PGPFoodName);
@@ -17,12 +16,12 @@ class SearchBar extends SearchDelegate {
                 query = '';
               }
             },
-            icon: Icon(Icons.clear))
+            icon: const Icon(Icons.clear))
       ];
 
   @override
   Widget buildLeading(BuildContext context) => IconButton(
-        icon: Icon(Icons.arrow_back),
+        icon: const Icon(Icons.arrow_back),
         onPressed: () => close(context, ''),
       );
 

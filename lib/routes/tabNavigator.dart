@@ -1,8 +1,6 @@
-import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hawker_buddy/controllers/auth_controller.dart';
 import 'package:hawker_buddy/controllers/backend_controller.dart';
 import 'package:hawker_buddy/controllers/data_controller.dart';
@@ -11,8 +9,7 @@ import 'package:hawker_buddy/pages/home/stallsPage.dart';
 import 'package:hawker_buddy/pages/orders/order_history.dart';
 import 'package:hawker_buddy/pages/user/user_profie.dart';
 import '../pages/cart/cart_page.dart';
-import '../pages/home/home_Page.dart';
-import '../unused/login_page.dart';
+
 
 class tabNavi extends StatefulWidget {
   final GlobalKey<NavigatorState> navigatorKey;
@@ -30,18 +27,16 @@ class _tabNaviState extends State<tabNavi> {
   Widget build(BuildContext context) {
     Widget child = stallsPage();
     getData();
-    if (widget.tabItem == "Page1")
-      child = homepage();
-    else if (widget.tabItem == "Page2") {
-      child = OrderHistory();
+    if (widget.tabItem == "Page1") {
+      child = const homepage();
+    } else if (widget.tabItem == "Page2") {
+      child = const OrderHistory();
     } else if (widget.tabItem == "Page3") {
-      for (int x = 0; x < DataController.OrderStallName.length; x++) {
-        print(DataController.OrderStallName[x]);
-      }
       //sleep(Duration(milliseconds: 20));
-      child = CartPage();
-    } else if (widget.tabItem == "Page4")
+      child = const CartPage();
+    } else if (widget.tabItem == "Page4") {
       child = WelcomePage(email: AuthController.userName!);
+    }
     return Container(
       child: child,
     );

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hawker_buddy/utils/colors.dart';
 import 'package:hawker_buddy/utils/dimensions.dart';
@@ -40,7 +39,7 @@ class _MessageAppState extends State<MessageApp> {
           return listViewItem(index);
         },
         separatorBuilder: (context, index) {
-          return Divider(height: 5);
+          return const Divider(height: 5);
         },
         itemCount: 1);
   }
@@ -48,7 +47,7 @@ class _MessageAppState extends State<MessageApp> {
   Widget listViewItem(int index) {
     return Container(
       //color: Colors.blue,
-      margin: EdgeInsets.only(left: 10),
+      margin: const EdgeInsets.only(left: 10),
 
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,12 +62,12 @@ class _MessageAppState extends State<MessageApp> {
   }
 
   Widget message(index) {
-    return ExpandableFood(text: "Hi please confirm your order");
+    return const ExpandableFood(text: "Hi please confirm your order");
   }
 
   Widget timeAndDate(int index) {
     return Container(
-      margin: EdgeInsets.only(top: 5),
+      margin: const EdgeInsets.only(top: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

@@ -1,15 +1,9 @@
-/**
- * Loading Screen
- */
+/// Loading Screen
 
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:hawker_buddy/controllers/auth_controller.dart';
-import 'package:hawker_buddy/controllers/router_controller.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -28,13 +22,13 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     //init animation controller and created object and use dot operator calling inner class method
     controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 2))
+        AnimationController(vsync: this, duration: const Duration(seconds: 2))
           ..forward();
     //type of animation
     animation = CurvedAnimation(parent: controller, curve: Curves.linear);
 
     //delay function
-    Timer(Duration(seconds: 3), () => AuthController().handleAuthState());
+    Timer(const Duration(seconds: 3), () => AuthController().handleAuthState());
   }
 
   @override

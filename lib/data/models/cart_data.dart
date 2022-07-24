@@ -124,7 +124,9 @@ class CartData {
         .doc(stallID)
         .collection('Order')
         .get();
-    name.docs.forEach((doc) => doc.reference.delete());
+    for (var doc in name.docs) {
+      doc.reference.delete();
+    }
 
     var name2 = await FirebaseFirestore.instance
         .collection('Cart')
@@ -163,6 +165,7 @@ class CartData {
 
   double? setTotalPrice(double totalPrice) {
     this.totalPrice = totalPrice;
+    return null;
   }
 
   addtoCartindex() {

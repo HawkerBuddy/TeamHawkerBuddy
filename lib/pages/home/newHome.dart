@@ -46,7 +46,7 @@ class _homepageState extends State<homepage> {
                           onTap: () {
                             showSearch(context: context, delegate: SearchBar());
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.search,
                             color: AppColors.mainColor,
                           )),

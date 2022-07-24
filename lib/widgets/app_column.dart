@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hawker_buddy/widgets/small_text.dart';
 import 'package:hawker_buddy/widgets/unique_text.dart';
 
@@ -46,7 +44,7 @@ class AppColumn extends StatelessWidget {
         SizedBox(height: Dimensions.height5),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children: const [
             IconsAndText(
               icon: Icons.circle_sharp,
               text: "Open",
