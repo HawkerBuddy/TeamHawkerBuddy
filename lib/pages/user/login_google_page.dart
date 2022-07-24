@@ -51,46 +51,49 @@ class _LoginGoogleState extends State<LoginGoogle> {
               AuthController().signInWithGoogle();
             },
             child: Container(
-              width: w * 0.75,
+              width: w * 0.73,
               height: 0.1 * h,
               decoration: const BoxDecoration(
                 //borderRadius: BorderRadius.circular(30),
                 image: DecorationImage(
                   image: AssetImage("assets/images/google.png"),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
           ),
           //facebook
+          /*
           Container(
             width: w * 0.73,
-            height: 0.11 * h,
+            height: 0.1 * h,
             decoration: const BoxDecoration(
               //borderRadius: BorderRadius.circular(30),
               image: DecorationImage(
                 image: AssetImage("assets/images/fb.png"),
-                //fit: BoxFit.cover,
+                fit: BoxFit.fill,
               ),
             ),
           ),
 
+           */
+
           //lead to old login and sign up page
           Container(
-            width: w * 0.73,
-            height: 0.09 * h,
+            width: w * 0.72,
+            height: 0.1 * h,
             decoration: const BoxDecoration(
               //borderRadius: BorderRadius.circular(30),
               image: DecorationImage(
                 image: AssetImage("assets/images/yellow.png"),
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
               ),
             ),
             child: Center(
               child: Text(
                 "Sign-in with Email",
                 style: TextStyle(
-                  fontSize: Dimensions.font15 * 2,
+                  fontSize: Dimensions.font15 * 1.6,
                   //fontWeight: FontWeight.bold,
                   color: AppColors.black,
                 ),

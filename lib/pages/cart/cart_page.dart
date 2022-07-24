@@ -85,7 +85,7 @@ class _CartPageState extends State<CartPage> {
                                         uniqueText(
                                           text: "Self Pick Up",
                                           color: AppColors.iconque,
-                                          size: Dimensions.font15,
+                                          size: Dimensions.font15/1.5,
                                         ),
                                         GestureDetector(
                                           onTap: () {
@@ -135,10 +135,12 @@ class _CartPageState extends State<CartPage> {
                                                         Dimensions.radius20),
                                                 color: AppColors.mainColor,
                                               ),
-                                              child: uniqueText(
-                                                text: 'Place Order',
-                                                color: AppColors.black,
-                                                size: Dimensions.font15,
+                                              child: Center(
+                                                child: uniqueText(
+                                                  text: 'Order',
+                                                  color: AppColors.black,
+                                                  size: Dimensions.font15,
+                                                ),
                                               ),
                                             ),
                                           ),

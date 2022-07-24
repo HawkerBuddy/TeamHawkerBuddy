@@ -45,7 +45,7 @@ class _OrderHistoryState extends State<OrderHistory> {
                             GestureDetector(
                               onTap: () {},
                               child: Container(
-                                width: Dimensions.height20 * 5,
+                                width: Dimensions.height20 * 4,
                                 height: Dimensions.height20 * 5,
                                 margin: EdgeInsets.only(
                                     bottom: Dimensions.height10),
@@ -60,7 +60,7 @@ class _OrderHistoryState extends State<OrderHistory> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: Dimensions.width10),
+                            SizedBox(width: Dimensions.width10/2),
                             Expanded(
                                 child: SizedBox(
                               height: Dimensions.height20 * 5,
@@ -71,72 +71,74 @@ class _OrderHistoryState extends State<OrderHistory> {
                                 children: [
                                   uniqueText(
                                       text: DataController
-                                          .HistoryStallName[index]),
+                                          .HistoryStallName[index],size: Dimensions.font15,),
                                   //miniText(text: "Order History on"),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      uniqueText(
-                                        text: DataController
-                                            .HistoryOrderTime[index],
-                                        color: AppColors.blue,
-                                        size: Dimensions.font15,
-                                      ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          for (int x = 0;
-                                              x <
+                                  SingleChildScrollView(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        uniqueText(
+                                          text: DataController
+                                              .HistoryOrderTime[index],
+                                          color: AppColors.blue,
+                                          size: Dimensions.font15/1.5,
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            for (int x = 0;
+                                                x <
+                                                    DataController
+                                                            .HistoryOrderTime
+                                                            .length -
+                                                        DataController
+                                                            .PGPStallNames.length;
+                                                x++) {
+                                              if (DataController
+                                                      .HistoryStallName[index] ==
                                                   DataController
-                                                          .HistoryOrderTime
-                                                          .length -
-                                                      DataController
-                                                          .PGPStallNames.length;
-                                              x++) {
-                                            if (DataController
-                                                    .HistoryStallName[index] ==
-                                                DataController
-                                                    .PGPStallNames[index]) {
-                                              Get.toNamed(
-                                                  RouterHelper.getMenu(index));
+                                                      .PGPStallNames[index]) {
+                                                Get.toNamed(
+                                                    RouterHelper.getMenu(index));
+                                              }
                                             }
-                                          }
-                                        },
-                                        child: Container(
-                                          height: Dimensions.height50 * 1.25,
-                                          width: Dimensions.width45 * 2,
-                                          padding: EdgeInsets.only(
-                                              left: Dimensions.width10,
-                                              bottom: Dimensions.width20,
-                                              right: Dimensions.width10),
-                                          decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(
-                                                      Dimensions.radius20 * 2),
-                                                  topRight: Radius.circular(
-                                                      Dimensions.radius20 *
-                                                          2))),
+                                          },
                                           child: Container(
-                                            //height: Dimensions.height30,
+                                            height: Dimensions.height50 * 1.25,
+                                            width: Dimensions.width45 * 2,
                                             padding: EdgeInsets.only(
-                                                top: Dimensions.height5,
-                                                bottom: Dimensions.height5),
+                                                left: Dimensions.width10,
+                                                bottom: Dimensions.width20,
+                                                right: Dimensions.width10),
                                             decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      Dimensions.radius20),
-                                              color: AppColors.mainColor,
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft: Radius.circular(
+                                                        Dimensions.radius20 * 2),
+                                                    topRight: Radius.circular(
+                                                        Dimensions.radius20 *
+                                                            2))),
+                                            child: Container(
+                                              //height: Dimensions.height30,
+                                              padding: EdgeInsets.only(
+                                                  top: Dimensions.height5,
+                                                  bottom: Dimensions.height5),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        Dimensions.radius20),
+                                                color: AppColors.mainColor,
+                                              ),
+                                              child: Center(
+                                                  child: uniqueText(
+                                                text: 'ReOrder',
+                                                color: Colors.black54,
+                                                size: Dimensions.font15 * 0.9,
+                                              )),
                                             ),
-                                            child: Center(
-                                                child: uniqueText(
-                                              text: 'ReOrder',
-                                              color: Colors.black54,
-                                              size: Dimensions.font15,
-                                            )),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
