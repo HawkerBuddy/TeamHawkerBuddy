@@ -19,7 +19,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       body: Stack(
         children: [
           Positioned(
@@ -137,7 +137,7 @@ class _CartPageState extends State<CartPage> {
                                               ),
                                               child: uniqueText(
                                                 text: 'Place Order',
-                                                color: Colors.black54,
+                                                color: AppColors.black,
                                                 size: Dimensions.font15,
                                               ),
                                             ),

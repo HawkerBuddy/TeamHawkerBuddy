@@ -140,17 +140,50 @@ class _OrderPageState extends State<OrderPage> {
                                                       Dimensions.radius20 *
                                                           2))),
                                           child: GestureDetector(
-                                            onTap: () {
-                                              RouterHelper.cart
-                                                  .deleteFoodDocument(
-                                                      DataController.StallsID[
-                                                          RouterHelper
-                                                              .stallOrders],
-                                                      DataController
-                                                                  .OrderFoodID[
-                                                              widget
-                                                                  .orderpageID]
-                                                          [index]);
+                                            onTap: () async {
+                                              if (DataController
+                                                      .OrderFoodID[
+                                                          widget.orderpageID]
+                                                      .length ==
+                                                  1) {
+                                                RouterHelper.cart
+                                                    .deleteCartDocument(
+                                                        DataController
+                                                                .OrderStallID[
+                                                            widget
+                                                                .orderpageID]);
+                                                final LinktoBackends reading =
+                                                    LinktoBackends(index: 0);
+                                                DataController.OrderStallID =
+                                                    await reading
+                                                        .orderGetStallID();
+                                                DataController.OrderStallName =
+                                                    await reading
+                                                        .orderGetStallName();
+                                                DataController
+                                                        .OrderStallImgUrl =
+                                                    await reading
+                                                        .orderGetStallUrl();
+                                                DataController.OrderFoodName =
+                                                    await reading.orderfoodName(
+                                                        DataController
+                                                            .OrderStallID);
+                                                DataController
+                                                        .HistoryStallName =
+                                                    await reading
+                                                        .historyStallName();
+                                              } else {
+                                                RouterHelper.cart
+                                                    .deleteFoodDocument(
+                                                        DataController.StallsID[
+                                                            RouterHelper
+                                                                .stallOrders],
+                                                        DataController
+                                                                    .OrderFoodID[
+                                                                widget
+                                                                    .orderpageID]
+                                                            [index]);
+                                              }
                                               Get.to(() => HomePage());
                                             },
                                             child: Container(
@@ -232,24 +265,24 @@ class _OrderPageState extends State<OrderPage> {
                     onTap: () {
                       setState() async {
                         IDdetails.time = DateTime.now();
-                        DataController.PGPFoodPrice[widget.orderpageID]
+                        DataController.PGPFoodPrice[RouterHelper.stallOrders]
                             .removeWhere((item) => ["", null].contains(item));
-                        DataController.PGPFoodName[widget.orderpageID]
+                        DataController.PGPFoodName[RouterHelper.stallOrders]
                             .removeWhere((item) => ["", null].contains(item));
                         Orders order = Orders(
                             orderID: IDdetails.orderNumberID(),
                             cartID: AuthController.userId,
-                            stallID:
-                                DataController.StallsID[widget.orderpageID],
+                            stallID: DataController
+                                .StallsID[RouterHelper.stallOrders],
                             orderTime: IDdetails.timeStamp(),
                             status: 'orders Made',
-                            foodPrice:
-                                DataController.PGPFoodPrice[widget.orderpageID],
+                            foodPrice: DataController
+                                .PGPFoodPrice[RouterHelper.stallOrders],
                             stallName: DataController
-                                .PGPStallNames[widget.orderpageID],
+                                .PGPStallNames[RouterHelper.stallOrders],
                             totalPrice: 100,
-                            foodNames:
-                                DataController.PGPFoodName[widget.orderpageID]);
+                            foodNames: DataController
+                                .PGPFoodName[RouterHelper.stallOrders]);
                         order.addtoCart(order, "hello");
                         order.arrangeDocument();
                         RouterHelper.cart.deleteCartDocument(

@@ -52,14 +52,14 @@ class _MenuPageState extends State<MenuPage> {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        Get.back();
+                        RouterHelper.fromCart ? Get.back() : Get.to(() => const HomePage());
                       },
                       child:
                           AppIcons(icon: Icons.arrow_back_outlined, size: 50)),
                   //View Digital Menu
                   GestureDetector(
                       onTap: () {
-                        Get.to(const HomePage());
+                        Get.to(()=> const HomePage());
                       },
                       child: AppIcons(icon: Icons.home, size: 50)),
                 ],

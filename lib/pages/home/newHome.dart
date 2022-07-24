@@ -29,7 +29,7 @@ class _homepageState extends State<homepage> {
               child: Container(
                 width: Dimensions.width350,
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.white,
                     borderRadius: BorderRadius.circular(Dimensions.radius30),
                     boxShadow: [
                       BoxShadow(
@@ -54,13 +54,13 @@ class _homepageState extends State<homepage> {
                           borderRadius:
                               BorderRadius.circular(Dimensions.radius30),
                           borderSide: BorderSide(
-                              color: Colors.white,
+                              color: AppColors.white,
                               width: Dimensions.width10 / 10)),
                       enabledBorder: OutlineInputBorder(
                           borderRadius:
                               BorderRadius.circular(Dimensions.radius30),
                           borderSide: BorderSide(
-                              color: Colors.white,
+                              color: AppColors.white,
                               width: Dimensions.width10 / 10)),
                       border: OutlineInputBorder(
                           borderRadius:
