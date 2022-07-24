@@ -49,7 +49,7 @@ Future<void> loadData() async {
   DataController.PGPFoodDes = await data.foodDes(DataController.StallsID);
   DataController.PGPFoodPrice = await data.foodPrice(DataController.StallsID);
   DataController.PGPFoodID = await data.foodID(DataController.StallsID);
-
+  /*
   DataController.OrderStallID = await data.orderGetStallID();
   DataController.OrderStallName = await data.orderGetStallName();
   DataController.OrderStallImgUrl = await data.orderGetStallUrl();
@@ -63,6 +63,8 @@ Future<void> loadData() async {
       await data.orderfoodSize(DataController.OrderStallID);
   DataController.OrderFoodID =
       await data.orderfoodID(DataController.OrderStallID);
+
+   */
 
   DataController.HistoryStallName = await data.historyStallName();
   DataController.HistoryOrderTime = await data.historyOrderTime();
