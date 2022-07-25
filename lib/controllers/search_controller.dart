@@ -14,6 +14,7 @@ class SearchBar extends SearchDelegate {
                 close(context, null);
               } else {
                 query = '';
+                showSuggestions(context);
               }
             },
             icon: const Icon(Icons.clear))
