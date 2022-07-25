@@ -68,7 +68,7 @@ class WelcomePage extends StatelessWidget {
           GestureDetector(
             onTap: () {
               AuthController().signOut(); //AuthController.instance.logout();
-              AuthController().handleAuthState();
+              AuthController().handleAuthState(); //
             },
             child: Container(
               width: w * 0.5,
