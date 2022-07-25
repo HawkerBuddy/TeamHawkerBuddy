@@ -7,6 +7,7 @@ import '../../controllers/data_controller.dart';
 import '../../controllers/router_controller.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
+import '../home/home_Page.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -89,22 +90,26 @@ class _CartPageState extends State<CartPage> {
                                         ),
                                         GestureDetector(
                                           onTap: () {
-                                            for (int x = 0;
-                                                x <
-                                                    DataController
-                                                        .PGPStallNames.length;
-                                                x++) {
-                                              if (DataController
-                                                      .PGPStallNames[x] ==
+                                            if(index >= 0) {
+                                              for (int x = 0;
+                                              x <
                                                   DataController
-                                                      .OrderStallName[index]) {
-                                                //find the actual pageID
-                                                RouterHelper.stallOrders = x;
+                                                      .PGPStallNames.length;
+                                              x++) {
+                                                if (DataController
+                                                    .PGPStallNames[x] ==
+                                                    DataController
+                                                        .OrderStallName[index]) {
+                                                  //find the actual pageID
+                                                  RouterHelper.stallOrders = x;
+                                                }
                                               }
+                                              Get.toNamed(
+                                                  RouterHelper.geOrderPage(
+                                                      index));
+                                            } else {
+                                              Get.to(() => const HomePage());
                                             }
-                                            Get.toNamed(
-                                                RouterHelper.geOrderPage(
-                                                    index));
                                           },
                                           child: Container(
                                             height: Dimensions.height50 * 1.25,
