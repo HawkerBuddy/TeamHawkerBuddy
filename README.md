@@ -1,16 +1,16 @@
-# hawker_buddy
+ HAWKERBUDDY 
 
-Obital Project
+NATIONAL UNIVERSITY OF SINGAPORE 
+CP2106 (Orbital) 
+WANG SHAOFENG 
+TEO WEI DE 
 
-## Getting Started
+Code Base 
+https://github.com/HawkerBuddy/TeamHawkerBuddy  
 
-This project is a starting point for a Flutter application.
+Video Link
+https://drive.google.com/file/d/1LqIVDHyfKiEKNj-JiRdDGBvq-TX6uQ-Q/view?usp=sharing
 
-A few resources to get you started if this is your first Flutter project:
+Page Pictures
+https://drive.google.com/drive/folders/1mH9jsNK5b53w1THo8QyjH-HQrsf85PST?usp=share_link
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
